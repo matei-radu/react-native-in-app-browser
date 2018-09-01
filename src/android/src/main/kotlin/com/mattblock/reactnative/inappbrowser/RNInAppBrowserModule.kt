@@ -7,6 +7,9 @@
 
 package com.mattblock.reactnative.inappbrowser
 
+import android.net.Uri
+import android.support.customtabs.CustomTabsIntent
+
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
@@ -17,6 +20,7 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
 
     @ReactMethod
     fun openInApp(url: String) {
-        // Open the URL!
+        val customTabsIntent = CustomTabsIntent.Builder().build()
+        customTabsIntent.launchUrl(currentActivity, Uri.parse(url))
     }
 }
