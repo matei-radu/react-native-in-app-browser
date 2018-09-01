@@ -5,8 +5,10 @@
  * file in the root directory of this source tree.
  */
 
-export function greeter() {
-  console.log("Hello, world!");
+import { NativeModules } from "react-native";
+
+function openInApp(url: string): void {
+  NativeModules.RNInAppBrowser.openInApp(url);
 }
 
-greeter();
+export default openInApp;

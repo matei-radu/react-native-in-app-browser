@@ -5,10 +5,8 @@
  * file in the root directory of this source tree.
  */
 
-import { greeter } from "./index";
-
-describe("Greeter", () => {
-  it("greets", () => {
-    expect(greeter()).toBe(undefined);
+describe("openInApp", () => {
+  it("does something", () => {
+    expect(1).toBe(1);
   });
 });
