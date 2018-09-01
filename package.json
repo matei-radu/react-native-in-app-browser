@@ -24,13 +24,19 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest --config jestconfig.json"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.1",
     "@types/node": "^10.9.4",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
     "husky": "^1.0.0-rc.13",
+    "jest": "^23.5.0",
     "precise-commits": "^1.0.2",
     "prettier": "1.14.2",
+    "ts-jest": "^23.1.4",
     "typescript": "^3.0.3"
   },
   "husky": {

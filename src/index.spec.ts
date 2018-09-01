@@ -5,8 +5,10 @@
  * file in the root directory of this source tree.
  */
 
-export function greeter() {
-  console.log("Hello, world!");
-}
+import { greeter } from "./index";
 
-greeter();
+describe("Greeter", () => {
+  it("greets", () => {
+    expect(greeter()).toBe(undefined);
+  });
+});
