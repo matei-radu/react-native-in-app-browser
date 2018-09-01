@@ -13,7 +13,7 @@
     "safari-view-controller",
     "SFSafariViewController"
   ],
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/matt-block/react-native-in-app-browser.git"
