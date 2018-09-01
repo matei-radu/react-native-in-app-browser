@@ -22,5 +22,15 @@
   "homepage": "https://github.com/matt-block/react-native-in-app-browser#readme",
   "author": "Matei Bogdan Radu <matei.radu.92@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "husky": "^1.0.0-rc.13",
+    "precise-commits": "^1.0.2",
+    "prettier": "1.14.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "precise-commits"
+    }
+  }
 }
