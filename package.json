@@ -1,0 +1,26 @@
+{
+  "name": "@matt-block/react-native-in-app-browser",
+  "version": "0.0.1",
+  "description": "React Native in-app browser",
+  "keywords": [
+    "in-app",
+    "browser",
+    "react-native",
+    "custom-tabs",
+    "tabs",
+    "chrome",
+    "chrome-custom-tabs",
+    "safari-view-controller",
+    "SFSafariViewController"
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matt-block/react-native-in-app-browser.git"
+  },
+  "bugs": "https://github.com/matt-block/react-native-in-app-browser/issues",
+  "homepage": "https://github.com/matt-block/react-native-in-app-browser#readme",
+  "author": "Matei Bogdan Radu <matei.radu.92@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
