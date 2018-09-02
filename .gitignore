@@ -5,7 +5,12 @@
 # Node
 #
 node_modules/
+yarn-error.log
 
 ## Build artifacts
 #
 lib/
+android/
+ios/
+package/
+*.tgz

@@ -17,7 +17,12 @@
 
     "lib": ["es2015"],
     "outDir": "./lib",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "types": [
+      "react",
+      "react-native",
+      "jest"
+    ]
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.spec.ts"]
