@@ -5,8 +5,11 @@
  * file in the root directory of this source tree.
  */
 
-describe("openInApp", () => {
-  it("does something", () => {
-    expect(1).toBe(1);
-  });
-});
+/**
+ * Checks if a url is HTTP or HTTPS.
+ *
+ * Other protocols are not supported by both platforms.
+ */
+export function isUrlValid(url: string): boolean {
+  return RegExp(/^(http|https):\/\//).test(url);
+}

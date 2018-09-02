@@ -6,9 +6,17 @@
  */
 
 import { NativeModules } from "react-native";
+import { isUrlValid } from "./utils/validation";
 
-function openInApp(url: string): void {
-  NativeModules.RNInAppBrowser.openInApp(url);
+function openInApp(url: string): Promise<{}> {
+  return new Promise((resolve, reject) => {
+    if (!isUrlValid(url)) {
+      reject("Invalid URL");
+      return;
+    }
+
+    NativeModules.RNInAppBrowser.openInApp(url);
+    resolve();
+  });
 }
-
 export default openInApp;
