@@ -15,14 +15,10 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
 
-    "lib": ["es2015"],
+    "lib": ["es2015", "es2016.array.include"],
     "outDir": "./lib",
     "baseUrl": "./src",
-    "types": [
-      "react",
-      "react-native",
-      "jest"
-    ]
+    "types": ["react", "react-native", "jest"]
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.spec.ts"]
