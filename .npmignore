@@ -2,6 +2,7 @@
 .gitignore
 .vscode
 src/
+!android/src/
 scripts/
 package/
 tsconfig.json
