@@ -2,3 +2,4 @@
 *.podspec linguist-detectable=false
 *.m linguist-language=objectivec
 *.h linguist-language=objectivec
+scripts/*.ts linguist-vendored
