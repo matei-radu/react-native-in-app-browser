@@ -16,9 +16,9 @@ import path from "path";
 
 fs.removeSync("android");
 fs.copySync("src/android", "android");
-// TODO: uncomment after iOS implementation.
-//fs.removeSync("ios");
-//fs.copySync("src/ios", "ios");
+
+fs.removeSync("ios");
+fs.copySync("src/ios", "ios");
 
 // Separate type definitions into dedicated folder.
 fs.removeSync("types");

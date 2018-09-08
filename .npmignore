@@ -1,5 +1,6 @@
 .editorconfig
 .gitignore
+.gitattributes
 .vscode
 src/
 !android/src/

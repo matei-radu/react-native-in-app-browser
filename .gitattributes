@@ -1,0 +1,4 @@
+*.pbxproj -text
+*.podspec linguist-detectable=false
+*.m linguist-language=objectivec
+*.h linguist-language=objectivec
