@@ -5,17 +5,26 @@
  * file in the root directory of this source tree.
  */
 
-import { NativeModules } from "react-native";
+import { NativeModules, Platform } from "react-native";
 import { isUrlValid } from "./utils/validation";
+import { SettingsAndroid, sanitize } from "./settings";
 
-function openInApp(url: string): Promise<{}> {
+function openInApp(
+  url: string,
+  settingsAndroid?: SettingsAndroid
+): Promise<{}> {
   return new Promise((resolve, reject) => {
     if (!isUrlValid(url)) {
       reject("Invalid URL");
       return;
     }
 
-    NativeModules.RNInAppBrowser.openInApp(url);
+    if (Platform.OS === "android") {
+      NativeModules.RNInAppBrowser.openInApp(url, sanitize(settingsAndroid));
+    } else {
+      NativeModules.RNInAppBrowser.openInApp(url);
+    }
+
     resolve();
   });
 }
