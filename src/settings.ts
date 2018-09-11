@@ -11,6 +11,10 @@ export interface SettingsAndroid {
   toolbarColor?: string;
 }
 
+export interface SettingsIOS {
+  preferredBarTintColor?: string;
+}
+
 export function sanitize(settings?: SettingsAndroid): SettingsAndroid {
   const sanitizedSettings: SettingsAndroid = {};
 

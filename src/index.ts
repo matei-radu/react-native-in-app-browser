@@ -7,11 +7,12 @@
 
 import { NativeModules, Platform } from "react-native";
 import { isUrlValid } from "./utils/validation";
-import { SettingsAndroid, sanitize } from "./settings";
+import { sanitize, SettingsAndroid, SettingsIOS } from "./settings";
 
 function openInApp(
   url: string,
-  settingsAndroid?: SettingsAndroid
+  settingsAndroid?: SettingsAndroid,
+  settingsIOS?: SettingsIOS
 ): Promise<{}> {
   return new Promise((resolve, reject) => {
     if (!isUrlValid(url)) {
@@ -22,7 +23,8 @@ function openInApp(
     if (Platform.OS === "android") {
       NativeModules.RNInAppBrowser.openInApp(url, sanitize(settingsAndroid));
     } else {
-      NativeModules.RNInAppBrowser.openInApp(url);
+      // TODO: sanitize settings.
+      NativeModules.RNInAppBrowser.openInApp(url, settingsIOS);
     }
 
     resolve();

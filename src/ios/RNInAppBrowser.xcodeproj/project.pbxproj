@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2368AFB2145A439001D57EB /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2368AFA2145A439001D57EB /* UIColorExtensions.swift */; };
 		C27CBC6F213343230051E7F6 /* RNInAppBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27CBC6E213343230051E7F6 /* RNInAppBrowser.swift */; };
 		C27CBC71213347400051E7F6 /* RNInAppBrowserBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = C27CBC70213347400051E7F6 /* RNInAppBrowserBridge.m */; };
 /* End PBXBuildFile section */
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNInAppBrowser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNInAppBrowser.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2368AFA2145A439001D57EB /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		C27CBC6D213343230051E7F6 /* RNInAppBrowser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNInAppBrowser-Bridging-Header.h"; sourceTree = "<group>"; };
 		C27CBC6E213343230051E7F6 /* RNInAppBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNInAppBrowser.swift; sourceTree = "<group>"; };
 		C27CBC70213347400051E7F6 /* RNInAppBrowserBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNInAppBrowserBridge.m; sourceTree = "<group>"; };
@@ -58,9 +60,18 @@
 			sourceTree = "<group>";
 			usesTabs = 0;
 		};
+		C2368AF92145A41D001D57EB /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				C2368AFA2145A439001D57EB /* UIColorExtensions.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		C2A8F543214451F90013A720 /* RNInAppBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				C2368AF92145A41D001D57EB /* utils */,
 				C27CBC6D213343230051E7F6 /* RNInAppBrowser-Bridging-Header.h */,
 				C27CBC6E213343230051E7F6 /* RNInAppBrowser.swift */,
 				C27CBC70213347400051E7F6 /* RNInAppBrowserBridge.m */,
@@ -125,6 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2368AFB2145A439001D57EB /* UIColorExtensions.swift in Sources */,
 				C27CBC71213347400051E7F6 /* RNInAppBrowserBridge.m in Sources */,
 				C27CBC6F213343230051E7F6 /* RNInAppBrowser.swift in Sources */,
 			);
