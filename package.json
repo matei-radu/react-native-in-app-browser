@@ -32,12 +32,13 @@
     "postpack": "ts-node scripts/postpack.ts"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.1",
     "@types/fs-extra": "^5.0.4",
     "@types/jest": "^23.3.1",
     "@types/react-native": "^0.56.15",
     "@types/tar": "^4.0.0",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^23.4.2",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^23.6.0",
     "fs-extra": "^7.0.0",
     "husky": "^1.0.0-rc.13",
     "jest": "^23.5.0",
@@ -50,8 +51,8 @@
     "typescript": "^3.0.3"
   },
   "peerDependencies": {
-    "react": "16.4.1",
-    "react-native": "0.57.0-rc.4"
+    "react": "16.5.0",
+    "react-native": "0.57.0"
   },
   "husky": {
     "hooks": {
