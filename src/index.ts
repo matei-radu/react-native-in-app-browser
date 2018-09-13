@@ -9,6 +9,14 @@ import { NativeModules, Platform } from "react-native";
 import { isUrlValid } from "./utils/validation";
 import { sanitize, Settings } from "./settings";
 
+/**
+ * Open a URL in app.
+ *
+ * @param {string} url http(s) URL to open.
+ * @param {Object} settings platform-specific settings for the in-app browsers.
+ *
+ * @throws If the `url` is not a valid http(s) URL.
+ */
 function openInApp(url: string, settings?: Settings): Promise<{}> {
   return new Promise((resolve, reject) => {
     if (!isUrlValid(url)) {

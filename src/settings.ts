@@ -9,18 +9,112 @@ import { PlatformOSType } from "react-native";
 import { getValidColorAndroid, sanitizeHexColor } from "./utils/color";
 
 export interface Settings {
+  /**
+   * Android specific settings.
+   *
+   * All settings are optional and invalid ones will be ignored.
+   *
+   * The implementation uses Chrome Custom Tabs.
+   */
   android?: SettingsAndroid;
+
+  /**
+   * iOS specific settings.
+   *
+   * All settings are optional and invalid ones will be ignored.
+   *
+   * The implementation uses Safari View Manager.
+   */
   ios?: SettingsIOS;
 }
 
 export interface SettingsAndroid {
+  /**
+   * The color to tint the background of the toolbar.
+   *
+   * Provided color can be in a hexadecimal format:
+   * - #RRGGBB
+   * - #RGB
+   * - #AARRGGBB
+   * - #ARGB
+   *
+   * Alternatively, following color names are accepted:
+   * - `red`
+   * - `blue`
+   * - `green`
+   * - `black`
+   * - `white`
+   * - `gray`
+   * - `cyan`
+   * - `magenta`
+   * - `yellow`
+   * - `lightgray`
+   * - `darkgray`
+   * - `grey`
+   * - `lightgrey`
+   * - `darkgrey`
+   * - `aqua`
+   * - `fuchsia`
+   * - `lime`
+   * - `maroon`
+   * - `navy`
+   * - `olive`
+   * - `purple`
+   * - `silver`
+   * - `teal`
+   *
+   * **Note**: if the color string is invalid, this setting will be ignored.
+   */
   toolbarColor?: string;
+
+  /**
+   * Flag to toggle if the title should be shown in the custom tab.
+   *
+   * **Note**: if the value is invalid, this setting will be ignored.
+   */
   showTitle?: boolean;
 }
 
 export interface SettingsIOS {
+  /**
+   * The color to tint the background of the navigation bar and the toolbar.
+   *
+   * Provided color must be in a hexadecimal format:
+   * - #RRGGBB
+   * - #RGB
+   * - #AARRGGBB
+   * - #ARGB
+   *
+   * **Available on**: iOS >= 10.0.
+   *
+   * **Note**: if the color string is invalid or if the current iOS version
+   * is < 10.0, this setting will be ignored.
+   */
   preferredBarTintColor?: string;
+
+  /**
+   * The color to tint the control buttons on the navigation bar and the
+   * toolbar.
+   *
+   * Provided color must be in a hexadecimal format:
+   * - #RRGGBB
+   * - #RGB
+   * - #AARRGGBB
+   * - #ARGB
+   *
+   * **Available on**: iOS >= 10.0.
+   *
+   * **Note**: if the color string is invalid or if the current iOS version
+   * is < 10.0, this setting will be ignored.
+   */
   preferredControlTintColor?: string;
+
+  /**
+   * **Available on**: iOS >= 11.0.
+   *
+   * **Note**: if the value is invalid or if the current iOS version
+   * is < 11.0, this setting will be ignored.
+   */
   barCollapsingEnabled?: boolean;
 }
 
