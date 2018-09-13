@@ -20,7 +20,7 @@ describe("Sanitize settings - Android", () => {
     expect(sanitize("android")).toEqual({});
   });
 
-  it("keeps all valid properties", () => {
+  it("returns all valid properties", () => {
     expect(
       sanitize("android", {
         android: { toolbarColor: "#3fF" }
@@ -40,14 +40,25 @@ describe("Sanitize settings - iOS", () => {
     ).toEqual({});
   });
 
+  it("filters out invalid preferredControlTintColor", () => {
+    expect(
+      sanitize("ios", {
+        ios: { preferredControlTintColor: "spaghetti" }
+      })
+    ).toEqual({});
+  });
+
   it("returns empty Settings if none provided", () => {
     expect(sanitize("ios")).toEqual({});
   });
 
-  it("keeps all valid properties", () => {
+  it("returns all valid properties", () => {
     expect(
       sanitize("ios", {
-        ios: { preferredBarTintColor: "#3fF" }
+        ios: {
+          preferredBarTintColor: "#3fF",
+          preferredControlTintColor: "3#fF"
+        }
       })
     ).toEqual({
       preferredBarTintColor: "#33ffFF"

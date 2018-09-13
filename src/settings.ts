@@ -19,6 +19,7 @@ export interface SettingsAndroid {
 
 export interface SettingsIOS {
   preferredBarTintColor?: string;
+  preferredControlTintColor?: string;
 }
 
 /**
@@ -75,6 +76,20 @@ function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
     try {
       sanitizedSettings.preferredBarTintColor = sanitizeHexColor(
         settings.preferredBarTintColor
+      );
+    } catch (unusedError) {
+      // Given color is invalid.
+      // Silently fail and proceed without it.
+    }
+  }
+
+  if (
+    settings.preferredControlTintColor &&
+    typeof settings.preferredControlTintColor === "string"
+  ) {
+    try {
+      sanitizedSettings.preferredControlTintColor = sanitizeHexColor(
+        settings.preferredControlTintColor
       );
     } catch (unusedError) {
       // Given color is invalid.

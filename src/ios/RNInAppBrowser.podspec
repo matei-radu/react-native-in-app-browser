@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name = '@matt-block/react-native-in-app-browser'
-  s.version = '0.3.0'
+  s.version = '0.5.0'
   s.description = 'React Native in-app browser'
   s.license = 'MIT'
   s.requires_arc = true

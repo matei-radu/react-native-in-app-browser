@@ -10,6 +10,7 @@ import SafariServices
 @objc(RNInAppBrowser)
 class RNInAppBrowser: NSObject {
     private let SETTING_BARTINT = "preferredBarTintColor"
+    private let SETTING_CONTROLTINT = "preferredControlTintColor"
     
     @objc(openInApp:settings:)
     func openInApp(url: String, settings: NSDictionary) -> Void {
@@ -38,6 +39,11 @@ class RNInAppBrowser: NSObject {
         if #available(iOS 10.0, *) , settings.value(forKey: SETTING_BARTINT) != nil {
             let barTint = settings.value(forKey: SETTING_BARTINT) as! String
             safariView.preferredBarTintColor = UIColor(hex: barTint)
+        }
+
+        if #available(iOS 10.0, *) , settings.value(forKey: SETTING_CONTROLTINT) != nil {
+            let ctrlTint = settings.value(forKey: SETTING_CONTROLTINT) as! String
+            safariView.preferredControlTintColor = UIColor(hex: ctrlTint)
         }
     }
     
