@@ -5,7 +5,13 @@
  * file in the root directory of this source tree.
  */
 
-import { getValidColorAndroid } from "./utils/color";
+import { PlatformOSType } from "react-native";
+import { getValidColorAndroid, sanitizeHexColor } from "./utils/color";
+
+export interface Settings {
+  android?: SettingsAndroid;
+  ios?: SettingsIOS;
+}
 
 export interface SettingsAndroid {
   toolbarColor?: string;
@@ -15,10 +21,29 @@ export interface SettingsIOS {
   preferredBarTintColor?: string;
 }
 
-export function sanitize(settings?: SettingsAndroid): SettingsAndroid {
+/**
+ * Sanitize the settings based on the running OS.
+ */
+export function sanitize(os: PlatformOSType, settings?: Settings) {
+  if (!settings) {
+    return {};
+  }
+
+  switch (os) {
+    case "android":
+      return sanitizeAndroid(settings.android);
+    case "ios":
+      return sanitizeIOS(settings.ios);
+    // Other platforms in the future.
+    default:
+      return {};
+  }
+}
+
+function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
   const sanitizedSettings: SettingsAndroid = {};
 
-  if (settings == null) {
+  if (!settings) {
     return sanitizedSettings;
   }
 
@@ -26,6 +51,30 @@ export function sanitize(settings?: SettingsAndroid): SettingsAndroid {
     try {
       sanitizedSettings.toolbarColor = getValidColorAndroid(
         settings.toolbarColor
+      );
+    } catch (unusedError) {
+      // Given color is invalid.
+      // Silently fail and proceed without it.
+    }
+  }
+
+  return sanitizedSettings;
+}
+
+function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
+  const sanitizedSettings: SettingsIOS = {};
+
+  if (!settings) {
+    return sanitizedSettings;
+  }
+
+  if (
+    settings.preferredBarTintColor &&
+    typeof settings.preferredBarTintColor === "string"
+  ) {
+    try {
+      sanitizedSettings.preferredBarTintColor = sanitizeHexColor(
+        settings.preferredBarTintColor
       );
     } catch (unusedError) {
       // Given color is invalid.

@@ -38,24 +38,33 @@ export const acceptedColorKeywordsAndroid = [
 
 export function getValidColorAndroid(color: string): string {
   // #RRGGBB, #AARRGGBB or accepted keyword.
-  if (
-    RegExp(/^#[0-9a-f]{6,8}$/i).test(color) ||
-    acceptedColorKeywordsAndroid.includes(color)
-  ) {
+  if (acceptedColorKeywordsAndroid.includes(color)) {
     return color;
   }
 
+  try {
+    return sanitizeHexColor(color);
+  } catch (unusedError) {
+    throw "Given color is invalid or not accepted by android.graphics.Color.\n" +
+      "See https://developer.android.com/reference/android/graphics/Color#parseColor(java.lang.String) " +
+      "for more information.";
+  }
+}
+
+export function sanitizeHexColor(hex: string): string {
+  if (RegExp(/^#[0-9a-f]{6,8}$/i).test(hex)) {
+    return hex;
+  }
+
   // Short hex color syntax #RGB, #ARGB.
-  if (RegExp(/^#[0-9a-f]{3,4}$/i).test(color)) {
+  if (RegExp(/^#[0-9a-f]{3,4}$/i).test(hex)) {
     let fullHexColor = "#";
-    for (const char of color.slice(1)) {
+    for (const char of hex.slice(1)) {
       fullHexColor += char + char;
     }
 
     return fullHexColor;
   }
 
-  throw "Given color is invalid or not accepted by android.graphics.Color.\n" +
-    "See https://developer.android.com/reference/android/graphics/Color#parseColor(java.lang.String) " +
-    "for more information.";
+  throw "Given Hex color string is invalid.";
 }
