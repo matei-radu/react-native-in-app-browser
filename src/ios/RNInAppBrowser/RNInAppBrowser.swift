@@ -11,6 +11,7 @@ import SafariServices
 class RNInAppBrowser: NSObject {
     private let SETTING_BARTINT = "preferredBarTintColor"
     private let SETTING_CONTROLTINT = "preferredControlTintColor"
+    private let SETTING_COLLAPSEBAR = "barCollapsingEnabled"
     
     @objc(openInApp:settings:)
     func openInApp(url: String, settings: NSDictionary) -> Void {
@@ -44,6 +45,11 @@ class RNInAppBrowser: NSObject {
         if #available(iOS 10.0, *) , settings.value(forKey: SETTING_CONTROLTINT) != nil {
             let ctrlTint = settings.value(forKey: SETTING_CONTROLTINT) as! String
             safariView.preferredControlTintColor = UIColor(hex: ctrlTint)
+        }
+
+        if #available(iOS 11.0, *) , settings.value(forKey: SETTING_COLLAPSEBAR) != nil {
+            let collapse = settings.value(forKey: SETTING_COLLAPSEBAR) as! Bool
+            safariView.configuration.barCollapsingEnabled = collapse
         }
     }
     

@@ -20,6 +20,7 @@ export interface SettingsAndroid {
 export interface SettingsIOS {
   preferredBarTintColor?: string;
   preferredControlTintColor?: string;
+  barCollapsingEnabled?: boolean;
 }
 
 /**
@@ -95,6 +96,10 @@ function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
       // Given color is invalid.
       // Silently fail and proceed without it.
     }
+  }
+
+  if (typeof settings.barCollapsingEnabled === "boolean") {
+    sanitizedSettings.barCollapsingEnabled = settings.barCollapsingEnabled;
   }
 
   return sanitizedSettings;

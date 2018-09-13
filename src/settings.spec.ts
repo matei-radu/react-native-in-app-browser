@@ -48,6 +48,14 @@ describe("Sanitize settings - iOS", () => {
     ).toEqual({});
   });
 
+  it("filters out invalid barCollapsingEnabled", () => {
+    expect(
+      sanitize("ios", {
+        ios: { barCollapsingEnabled: null }
+      })
+    ).toEqual({});
+  });
+
   it("returns empty Settings if none provided", () => {
     expect(sanitize("ios")).toEqual({});
   });
@@ -57,11 +65,13 @@ describe("Sanitize settings - iOS", () => {
       sanitize("ios", {
         ios: {
           preferredBarTintColor: "#3fF",
-          preferredControlTintColor: "3#fF"
+          preferredControlTintColor: "3#fF",
+          barCollapsingEnabled: true
         }
       })
     ).toEqual({
-      preferredBarTintColor: "#33ffFF"
+      preferredBarTintColor: "#33ffFF",
+      barCollapsingEnabled: true
     });
   });
 });
