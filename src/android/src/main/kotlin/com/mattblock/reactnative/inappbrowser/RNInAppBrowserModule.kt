@@ -19,6 +19,7 @@ import com.facebook.react.bridge.ReadableMap
 class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJavaModule(context) {
     companion object {
         private const val SETTING_COLOR = "toolbarColor"
+        private const val SETTING_SHOW_TITLE = "showTitle"
     }
 
     override fun getName() = "RNInAppBrowser"
@@ -30,6 +31,10 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
         if (settings.hasKey(SETTING_COLOR)) {
             val color = Color.parseColor(settings.getString(SETTING_COLOR))
             builder.setToolbarColor(color)
+        }
+
+        if (settings.hasKey(SETTING_SHOW_TITLE)) {
+            builder.setShowTitle(settings.getBoolean(SETTING_SHOW_TITLE))
         }
 
         val customTabsIntent = builder.build()

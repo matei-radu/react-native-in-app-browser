@@ -16,6 +16,14 @@ describe("Sanitize settings - Android", () => {
     ).toEqual({});
   });
 
+  it("filters out undefined showTitle", () => {
+    expect(
+      sanitize("android", {
+        android: { showTitle: undefined }
+      })
+    ).toEqual({});
+  });
+
   it("returns empty Settings if none provided", () => {
     expect(sanitize("android")).toEqual({});
   });
@@ -23,7 +31,10 @@ describe("Sanitize settings - Android", () => {
   it("returns all valid properties", () => {
     expect(
       sanitize("android", {
-        android: { toolbarColor: "#3fF" }
+        android: {
+          toolbarColor: "#3fF",
+          showTitle: null
+        }
       })
     ).toEqual({
       toolbarColor: "#33ffFF"

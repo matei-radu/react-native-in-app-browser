@@ -15,6 +15,7 @@ export interface Settings {
 
 export interface SettingsAndroid {
   toolbarColor?: string;
+  showTitle?: boolean;
 }
 
 export interface SettingsIOS {
@@ -58,6 +59,10 @@ function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
       // Given color is invalid.
       // Silently fail and proceed without it.
     }
+  }
+
+  if (typeof settings.showTitle === "boolean") {
+    sanitizedSettings.showTitle = settings.showTitle;
   }
 
   return sanitizedSettings;
