@@ -45,8 +45,6 @@ android {
     defaultConfig {
         minSdkVersion getRootProjectOrDefaultValueFor("minSdkVersion")
         targetSdkVersion getRootProjectOrDefaultValueFor("targetSdkVersion")
-        versionCode 7
-        versionName '0.7.2'
     }
     lintOptions {
         abortOnError false
