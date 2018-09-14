@@ -6,7 +6,22 @@
  */
 
 buildscript {
-    ext.kotlin_version = '1.2.50'
+    ext {
+        kotlin_version = "1.2.50"
+        buildToolsVersion = "27.0.3"
+        minSdkVersion = 16
+        compileSdkVersion = 27
+        targetSdkVersion = 26
+        supportLibVersion = "27.1.1"
+    }
+
+    ext.getRootProjectOrDefaultValueFor = { key ->
+        if (rootProject.ext.properties.containsKey(key)) {
+            return rootProject.ext.properties.get(key)
+        } else {
+            return ext.properties.get(key)
+        }
+    }
 
     repositories {
         jcenter()
@@ -24,14 +39,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion getRootProjectOrDefaultValueFor("compileSdkVersion")
+    buildToolsVersion getRootProjectOrDefaultValueFor("buildToolsVersion")
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 6
-        versionName '0.7.0'
+        minSdkVersion getRootProjectOrDefaultValueFor("minSdkVersion")
+        targetSdkVersion getRootProjectOrDefaultValueFor("targetSdkVersion")
+        versionCode 7
+        versionName '0.7.2'
     }
     lintOptions {
         abortOnError false
@@ -52,7 +67,7 @@ repositories {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.facebook.react:react-native:+'
-    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
-    implementation "com.android.support:support-v4:${rootProject.ext.supportLibVersion}"
-    implementation "com.android.support:customtabs:${rootProject.ext.supportLibVersion}"
+    implementation "com.android.support:appcompat-v7:${getRootProjectOrDefaultValueFor("supportLibVersion")}"
+    implementation "com.android.support:support-v4:${getRootProjectOrDefaultValueFor("supportLibVersion")}"
+    implementation "com.android.support:customtabs:${getRootProjectOrDefaultValueFor("supportLibVersion")}"
 }
