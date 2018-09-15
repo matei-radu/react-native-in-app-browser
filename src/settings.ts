@@ -5,7 +5,7 @@
  * file in the root directory of this source tree.
  */
 
-import { PlatformOSType } from "react-native";
+import { PlatformOSType, Image } from "react-native";
 import { getValidColorAndroid, sanitizeHexColor } from "./utils/color";
 
 export interface Settings {
@@ -73,6 +73,15 @@ export interface SettingsAndroid {
    * **Note**: if the value is invalid, this setting will be ignored.
    */
   showTitle?: boolean;
+
+  /**
+   * Custom close button icon.
+   *
+   * Provided icon must be a `.png`, `.jpg`, or `.gif` file.
+   *
+   * **Note**: if icon asset is invalid, this setting will be ignored.
+   */
+  closeButtonIcon?: any;
 }
 
 export interface SettingsIOS {
@@ -157,6 +166,17 @@ function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
 
   if (typeof settings.showTitle === "boolean") {
     sanitizedSettings.showTitle = settings.showTitle;
+  }
+
+  if (settings.closeButtonIcon) {
+    try {
+      sanitizedSettings.closeButtonIcon = Image.resolveAssetSource(
+        settings.closeButtonIcon
+      ).uri;
+    } catch (unusedError) {
+      // Given icon image is invalid.
+      // Silently fail and proceed without it.
+    }
   }
 
   return sanitizedSettings;

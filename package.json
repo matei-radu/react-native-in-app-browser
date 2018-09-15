@@ -1,6 +1,6 @@
 {
   "name": "@matt-block/react-native-in-app-browser",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "description": "React Native in-app browser",
   "keywords": [
     "in-app",
@@ -29,10 +29,12 @@
     "test": "jest --config jestconfig.json",
     "prepack": "run-s test build prepack:script",
     "prepack:script": "ts-node scripts/prepack.ts",
-    "postpack": "ts-node scripts/postpack.ts"
+    "postpack": "ts-node scripts/postpack.ts",
+    "prepare": "install-self-peers -- --ignore-scripts"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",
+    "@team-griffin/install-self-peers": "^1.1.1",
     "@types/fs-extra": "^5.0.4",
     "@types/jest": "^23.3.1",
     "@types/react-native": "^0.56.15",
