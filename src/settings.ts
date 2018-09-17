@@ -82,6 +82,13 @@ export interface SettingsAndroid {
    * **Note**: if icon asset is invalid, this setting will be ignored.
    */
   closeButtonIcon?: any;
+
+  /**
+   * Flag to toggle the default share menu.
+   *
+   * **Note**: if the value is invalid, this setting will be ignored.
+   */
+  addDefaultShareMenu?: boolean;
 }
 
 export interface SettingsIOS {
@@ -177,6 +184,10 @@ function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
       // Given icon image is invalid.
       // Silently fail and proceed without it.
     }
+  }
+
+  if (typeof settings.addDefaultShareMenu === "boolean") {
+    sanitizedSettings.addDefaultShareMenu = settings.addDefaultShareMenu;
   }
 
   return sanitizedSettings;

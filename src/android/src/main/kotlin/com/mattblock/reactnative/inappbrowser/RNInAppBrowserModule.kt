@@ -25,6 +25,7 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
         private const val SETTING_COLOR = "toolbarColor"
         private const val SETTING_SHOW_TITLE = "showTitle"
         private const val SETTING_CLOSE_BUTTON = "closeButtonIcon"
+        private const val SETTING_SHARE_MENU = "addDefaultShareMenu"
     }
 
     override fun getName() = "RNInAppBrowser"
@@ -51,6 +52,10 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
                 val resizedIcon = Bitmap.createScaledBitmap(it, sizeInPixels, sizeInPixels, false)
                 builder.setCloseButtonIcon(resizedIcon)
             }
+        }
+
+        if (settings.hasKey(SETTING_SHARE_MENU) && settings.getBoolean(SETTING_SHARE_MENU)) {
+            builder.addDefaultShareMenuItem()
         }
 
         val customTabsIntent = builder.build()

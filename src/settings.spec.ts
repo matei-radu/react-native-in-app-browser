@@ -28,6 +28,22 @@ describe("Sanitize settings - Android", () => {
     expect(sanitize("android")).toEqual({});
   });
 
+  it("filters out null addDefaultShareMenu", () => {
+    expect(
+      sanitize("android", {
+        android: { addDefaultShareMenu: null }
+      })
+    ).toEqual({});
+  });
+
+  it("filters out undefined addDefaultShareMenu", () => {
+    expect(
+      sanitize("android", {
+        android: { addDefaultShareMenu: undefined }
+      })
+    ).toEqual({});
+  });
+
   it("returns all valid properties", () => {
     expect(
       sanitize("android", {
