@@ -1,6 +1,7 @@
 # React Native In-App Browser
 
-![license: mit][license_shield] [![code style: prettier][prettier_shield]][prettier]
+[![npm (scoped)][npm_shield]][npm] ![license: mit][license_shield]
+[![code style: prettier][prettier_shield]][prettier]
 
 In-App browser support for React Native, using [Chrome Custom Tabs][chromecustomtabs]
 on Android
@@ -139,3 +140,5 @@ This source code is licensed under the MIT license found in the
 [license_shield]: https://img.shields.io/badge/license-MIT-blue.svg
 [prettier_shield]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
 [prettier]: https://github.com/prettier/prettier
+[npm]: https://www.npmjs.com/package/@matt-block/react-native-in-app-browser
+[npm_shield]: https://img.shields.io/npm/v/@matt-block/react-native-in-app-browser.svg
