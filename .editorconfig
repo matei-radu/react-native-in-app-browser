@@ -6,7 +6,7 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 
-[*.{json,js,ts}]
+[*.{json,js,flow,ts}]
 indent_style = space
 indent_size = 2
 

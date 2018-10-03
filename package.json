@@ -1,6 +1,6 @@
 {
   "name": "@matt-block/react-native-in-app-browser",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "React Native in-app browser",
   "keywords": [
     "in-app",
@@ -62,7 +62,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,json,css,md}": [
+    "*.{js,flow,ts,json,css,md}": [
       "prettier --write",
       "git add"
     ]

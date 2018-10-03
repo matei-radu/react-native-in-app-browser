@@ -20,7 +20,10 @@ fs.copySync("src/android", "android");
 fs.removeSync("ios");
 fs.copySync("src/ios", "ios");
 
-// Separate type definitions into dedicated folder.
+// Copy Flow definitions.
+fs.copyFileSync("src/index.js.flow", "lib/index.js.flow");
+
+// Separate Typescript definitions into dedicated folder.
 fs.removeSync("types");
 moveDefinitionsFrom("lib");
 
