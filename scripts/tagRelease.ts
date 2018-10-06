@@ -50,9 +50,9 @@ function removeRCBuild(version: string) {
 // See https://git-scm.com/docs/git-commit#git-commit---no-verify
 function amendCommit() {
   if (userHasSigningKey()) {
-    sh.exec(`git commit -S --amend --no-verify`);
+    sh.exec(`git commit -S --amend --no-verify --no-edit`);
   } else {
-    sh.exec(`git commit --amend --no-verify`);
+    sh.exec(`git commit --amend --no-verify --no-edit`);
   }
 }
 
