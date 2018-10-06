@@ -6,7 +6,7 @@
  */
 
 import sh from "shelljs";
-import { getCurrentVersion } from "./utils";
+import { getCurrentVersion, versionIsRC } from "./utils";
 
 const tag = getPublishingTag(process.env.CIRCLE_BRANCH!);
 
@@ -21,6 +21,13 @@ function createTarball() {
 }
 
 function publish(tarball: string, version: string, tag: string) {
+  // If version is not a release candidate and we are in release branch,
+  // skip publishing as this is just a tag and amend commit.
+  if (!versionIsRC(tag) && tag === "next") {
+    console.log("Final tag and amend release commit, skipping publish.");
+    process.exit(0);
+  }
+
   sh.exec(
     `yarn publish ${tarball} --new-version ${version} --tag ${tag} --access=public`
   );

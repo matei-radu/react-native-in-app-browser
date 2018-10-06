@@ -17,7 +17,7 @@ if (currentBranch.startsWith("release-")) {
   const ver = getCurrentVersion();
   const newVer = versionIsRC(ver) ? bumpRCBuild(ver) : makeVersionRC(ver);
   updatePackageJson(newVer);
-
+  sh.exec("git add package.json");
   console.log(`New build is ${newVer}.`);
 } else {
   console.log("Not a release branch, ignoring build bump.");
