@@ -33,7 +33,8 @@
     "prepare": "install-self-peers -- --ignore-scripts",
     "husky:pre-commit": "run-s husky:rc-bump husky:lint",
     "husky:rc-bump": "ts-node scripts/rcBump.ts",
-    "husky:lint": "lint-staged"
+    "husky:lint": "lint-staged",
+    "create-release": "ts-node -O '{\"types\":[\"node\"]}' scripts/createRelease.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",

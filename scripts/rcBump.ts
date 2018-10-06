@@ -11,7 +11,7 @@ import sh from "shelljs";
 const { stdout } = sh.exec("git rev-parse --abbrev-ref HEAD");
 const currentBranch = stdout.slice(0, -1); // Last character is newline.
 
-if (currentBranch === "release") {
+if (currentBranch.startsWith("release-")) {
   console.log("Bumping release candidate build...");
 
   const packageJson = JSON.parse(fs.readFileSync("package.json").toString());
@@ -40,7 +40,7 @@ function makeVersionRC(version: string) {
   return version.concat("-rc.0");
 }
 
-function replacer(newVersion: string) {
+export function replacer(newVersion: string) {
   return function(key: string, value: any): any {
     return key === "version" ? newVersion : value;
   };
