@@ -34,7 +34,8 @@
     "husky:pre-commit": "run-s husky:rc-bump husky:lint",
     "husky:rc-bump": "ts-node scripts/rcBump.ts",
     "husky:lint": "lint-staged",
-    "create-release": "ts-node -O '{\"types\":[\"node\"]}' scripts/createRelease.ts"
+    "create-release": "ts-node -O '{\"types\":[\"node\"]}' scripts/createRelease.ts",
+    "prepare-release-merge": "ts-node -O '{\"types\":[\"node\"]}' scripts/prepareRelease.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",
