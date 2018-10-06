@@ -52,8 +52,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-          name: Creating package
-          command: yarn pack
+          name: Publishing new release
+          command: yarn ci-publish
 
 workflows:
   version: 2
