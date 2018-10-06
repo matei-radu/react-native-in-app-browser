@@ -3,6 +3,7 @@
 .gitattributes
 .vscode
 .nvmrc
+.npmrc
 .circleci/
 android/.idea/
 src/

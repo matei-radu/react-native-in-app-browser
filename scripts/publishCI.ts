@@ -8,27 +8,22 @@
 import sh from "shelljs";
 import { getCurrentVersion } from "./utils";
 
-const tag = getPublishingTag(process.env.CIRCLE_BRANCH);
-
-if (!tag) {
-  console.warn("Current branch is not ment for publishing.");
-  process.exit(0);
-}
+const tag = getPublishingTag(process.env.CIRCLE_BRANCH!);
 
 // Continue with publish process.
 createTarball();
 const tarballName = `matt-block-react-native-in-app-browser-v${getCurrentVersion()}.tgz`;
 setupNpm();
-publish(tarballName, tag);
+publish(tarballName, getCurrentVersion(), tag);
 
 function createTarball() {
   sh.exec("yarn pack");
 }
 
-function publish(tarball: string, tag: string) {
-  // Temporarily se npm since yarn seems to have some issues
-  // with npm auth tokens.
-  sh.exec(`npm publish ${tarball} --tag ${tag} --access=public`);
+function publish(tarball: string, version: string, tag: string) {
+  sh.exec(
+    `yarn publish ${tarball} --new-version ${version} --tag ${tag} --access=public`
+  );
 }
 
 function getPublishingTag(branchName: string) {
@@ -40,11 +35,11 @@ function getPublishingTag(branchName: string) {
     return "latest";
   }
 
-  return undefined;
+  console.warn("Current branch is not ment for publishing.");
+  process.exit(0);
+  return "";
 }
 
 function setupNpm() {
-  sh.exec(
-    'echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/deploy/.npmrc'
-  );
+  sh.exec('echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc');
 }
