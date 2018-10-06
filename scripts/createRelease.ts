@@ -5,9 +5,12 @@
  * file in the root directory of this source tree.
  */
 
-import fs from "fs-extra";
 import sh from "shelljs";
-import { replacer } from "./rcBump";
+import {
+  updatePackageJson,
+  getCurrentVersion,
+  userHasSigningKey
+} from "./utils";
 
 const releaseVersion = getReleaseVersion(process);
 
@@ -62,26 +65,10 @@ function bumpMinor(version: string) {
   return `${major}.${Number(minor) + 1}.0`;
 }
 
-function getCurrentVersion() {
-  const packageJson = JSON.parse(fs.readFileSync("package.json").toString());
-  return packageJson.version as string;
-}
-
-function updatePackageJson(version: string) {
-  const packageJson = JSON.parse(fs.readFileSync("package.json").toString());
-  const updatedPackageJson = JSON.stringify(packageJson, replacer(version), 2);
-  fs.writeFileSync("package.json", updatedPackageJson, { encoding: "utf-8" });
-}
-
 function bumpCommit(version: string) {
   if (userHasSigningKey()) {
     sh.exec(`git commit -S -m "Bump version to ${version}"`);
   } else {
     sh.exec(`git commit -m "Bump version to ${version}"`);
   }
-}
-
-function userHasSigningKey() {
-  const { stdout } = sh.exec("git config --list | grep user.signingkey");
-  return stdout === "" ? false : true;
 }
