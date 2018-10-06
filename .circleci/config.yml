@@ -65,5 +65,6 @@ workflows:
             - unit
           filters:
             branches:
-              only: /release-.*/
-              only: master
+              only:
+                - /release-.*/
+                - master
