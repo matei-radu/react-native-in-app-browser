@@ -17,19 +17,12 @@ import { sanitize, Settings } from "./settings";
  *
  * @throws If the `url` is not a valid http(s) URL.
  */
-function openInApp(url: string, settings?: Settings): Promise<{}> {
-  return new Promise((resolve, reject) => {
-    if (!isUrlValid(url)) {
-      reject("Invalid URL");
-      return;
-    }
+async function openInApp(url: string, settings?: Settings) {
+  if (!isUrlValid(url)) {
+    throw "Invalid URL";
+  }
 
-    NativeModules.RNInAppBrowser.openInApp(
-      url,
-      sanitize(Platform.OS, settings)
-    );
-    resolve();
-  });
+  NativeModules.RNInAppBrowser.openInApp(url, sanitize(Platform.OS, settings));
 }
 
 export default openInApp;
