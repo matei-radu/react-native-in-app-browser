@@ -23,7 +23,7 @@ function createTarball() {
 function publish(tarball: string, version: string, tag: string) {
   // If version is not a release candidate and we are in release branch,
   // skip publishing as this is just a tag and amend commit.
-  if (!versionIsRC(tag) && tag === "next") {
+  if (!versionIsRC(version) && tag === "next") {
     console.log("Final tag and amend release commit, skipping publish.");
     process.exit(0);
   }
