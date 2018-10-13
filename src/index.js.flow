@@ -31,3 +31,5 @@ declare export default function openInApp(
   url: string,
   settings?: Settings
 ): Promise<{}>;
+
+declare export function initialize(settings: Settings): void;
