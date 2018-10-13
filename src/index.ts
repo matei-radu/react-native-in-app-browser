@@ -7,7 +7,7 @@
 
 import { NativeModules, Platform } from "react-native";
 import { isUrlValid } from "./utils/validation";
-import { sanitize, Settings } from "./settings";
+import { sanitize, initialize, Settings } from "./settings";
 
 /**
  * Open a URL in app.
@@ -25,4 +25,4 @@ async function openInApp(url: string, settings?: Settings) {
   NativeModules.RNInAppBrowser.openInApp(url, sanitize(Platform.OS, settings));
 }
 
-export default openInApp;
+export { openInApp as default, initialize };
