@@ -55,7 +55,7 @@ note.
 - Individual example snippets
 
 ```javascript
-import openInApp from '@matt-block/react-native-in-app-browser';
+import openInApp from "@matt-block/react-native-in-app-browser";
 
 
 // Minimal setup.
@@ -96,6 +96,47 @@ platform:
 openInApp("https://www.wikipedia.org/", {
   android: {},
   ios: {}
+});
+```
+
+Settings can also be initialized separately with `initialize` so that each `openInApp` call won't need to specify them each time:
+
+```javascript
+import openInApp, { initialize } from "@matt-block/react-native-in-app-browser";
+
+// Somewhere in your app initialization logic.
+initialize({
+  android: {},
+  ios: {}
+});
+
+// Other part of your code base.
+// Previously initialized settings will apply.
+openInApp("https://www.wikipedia.org/");
+```
+
+Note that `openInApp` will still accept settings as always but will effectively perform a merge between the initialized properties and the provided settings object (which will have priority over the initialized properties):
+
+```javascript
+import openInApp, { initialize } from "@matt-block/react-native-in-app-browser";
+
+// Somewhere in your app initialization logic.
+initialize({
+  android: {
+    toolbarColor: "red",
+    showTitle: true
+  }
+});
+
+// Other part of your code base.
+// Merged settings for this call will result in:
+//
+// - toolbarColor: "blue",
+// - showTitle: true
+openInApp("https://www.wikipedia.org/", {
+  android: {
+    toolbarColor: "blue"
+  }
 });
 ```
 

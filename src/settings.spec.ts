@@ -5,9 +5,22 @@
  * file in the root directory of this source tree.
  */
 
-import { sanitize } from "./settings";
+import {
+  sanitize,
+  initialize,
+  SettingsAndroid,
+  Settings,
+  defaultSettings
+} from "./settings";
 
 describe("Sanitize settings - Android", () => {
+  beforeEach(() => {
+    initialize({
+      android: {},
+      ios: {}
+    });
+  });
+
   it("filters out invalid toolbarColor", () => {
     expect(
       sanitize("android", {
@@ -56,9 +69,36 @@ describe("Sanitize settings - Android", () => {
       toolbarColor: "#33ffFF"
     });
   });
+
+  it("returns default settings for non provided ones", () => {
+    const settings: Settings = {
+      android: {
+        toolbarColor: "red"
+      }
+    };
+    initialize(settings);
+
+    expect(
+      sanitize("android", {
+        android: {
+          showTitle: true
+        }
+      })
+    ).toEqual({
+      toolbarColor: "red",
+      showTitle: true
+    });
+  });
 });
 
 describe("Sanitize settings - iOS", () => {
+  beforeEach(() => {
+    initialize({
+      android: {},
+      ios: {}
+    });
+  });
+
   it("filters out invalid preferredBarTintColor", () => {
     expect(
       sanitize("ios", {
@@ -99,6 +139,58 @@ describe("Sanitize settings - iOS", () => {
     ).toEqual({
       preferredBarTintColor: "#33ffFF",
       barCollapsingEnabled: true
+    });
+  });
+
+  it("returns default settings for non provided ones", () => {
+    const settings: Settings = {
+      ios: {
+        preferredBarTintColor: "#3fF"
+      }
+    };
+    initialize(settings);
+
+    expect(
+      sanitize("ios", {
+        ios: {
+          preferredControlTintColor: "#3fF",
+          barCollapsingEnabled: true
+        }
+      })
+    ).toEqual({
+      preferredBarTintColor: "#33ffFF",
+      preferredControlTintColor: "#33ffFF",
+      barCollapsingEnabled: true
+    });
+  });
+});
+
+describe("Initialize", () => {
+  beforeEach(() => {
+    initialize({
+      android: {},
+      ios: {}
+    });
+  });
+
+  it("correctly initializes default settings", () => {
+    const settings: Settings = {
+      android: {
+        toolbarColor: "red"
+      },
+      ios: {
+        preferredBarTintColor: "#3fF"
+      }
+    };
+    initialize(settings);
+
+    expect(defaultSettings).toEqual({
+      android: {
+        toolbarColor: "red"
+      },
+      ios: {
+        preferredBarTintColor: "#33ffFF"
+      }
     });
   });
 });

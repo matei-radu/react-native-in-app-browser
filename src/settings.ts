@@ -135,18 +135,46 @@ export interface SettingsIOS {
 }
 
 /**
+ * Default settings.
+ *
+ * These values can be augmented throgh initialization.
+ */
+export const defaultSettings: Settings = {
+  android: {},
+  ios: {}
+};
+
+/**
+ * Initializes the platform-specific settings for the in-app browser
+ * experience.
+ *
+ * This utility function is useful when `openInApp` is used in several
+ * portions of the application code base as it allows to provide the
+ * settings only once instead of specifing them with each call.
+ */
+export function initialize(settings: Settings) {
+  // First, reset directly as `sanitize` will otherwise merge with
+  // previous defaults: it would not be possible to remove properties.
+  defaultSettings.android = {};
+  defaultSettings.ios = {};
+
+  defaultSettings.android = sanitize("android", settings) as SettingsAndroid;
+  defaultSettings.ios = sanitize("ios", settings) as SettingsIOS;
+}
+
+/**
  * Sanitize the settings based on the running OS.
+ *
+ * Provided settings will be merged with the default ones.
+ * Also, in case of same properties, provided ones have priority
+ * over defaults.
  */
 export function sanitize(os: PlatformOSType, settings?: Settings) {
-  if (!settings) {
-    return {};
-  }
-
   switch (os) {
     case "android":
-      return sanitizeAndroid(settings.android);
+      return sanitizeAndroid(settings ? settings.android : {});
     case "ios":
-      return sanitizeIOS(settings.ios);
+      return sanitizeIOS(settings ? settings.ios : {});
     // Other platforms in the future.
     default:
       return {};
@@ -154,7 +182,7 @@ export function sanitize(os: PlatformOSType, settings?: Settings) {
 }
 
 function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
-  const sanitizedSettings: SettingsAndroid = {};
+  const sanitizedSettings = defaultSettings.android!;
 
   if (!settings) {
     return sanitizedSettings;
@@ -194,7 +222,7 @@ function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
 }
 
 function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
-  const sanitizedSettings: SettingsIOS = {};
+  const sanitizedSettings = defaultSettings.ios!;
 
   if (!settings) {
     return sanitizedSettings;
