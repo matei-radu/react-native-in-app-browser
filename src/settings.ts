@@ -182,7 +182,7 @@ export function sanitize(os: PlatformOSType, settings?: Settings) {
 }
 
 function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
-  const sanitizedSettings = defaultSettings.android!;
+  const sanitizedSettings = { ...defaultSettings.android! };
 
   if (!settings) {
     return sanitizedSettings;
@@ -222,7 +222,7 @@ function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
 }
 
 function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
-  const sanitizedSettings = defaultSettings.ios!;
+  const sanitizedSettings = { ...defaultSettings.ios! };
 
   if (!settings) {
     return sanitizedSettings;
