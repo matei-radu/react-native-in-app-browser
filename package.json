@@ -1,6 +1,6 @@
 {
   "name": "@matt-block/react-native-in-app-browser",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "React Native in-app browser",
   "keywords": [
     "in-app",
@@ -35,7 +35,7 @@
     "husky:rc-bump": "ts-node --project tsconfig.prod.json scripts/rcBump.ts",
     "husky:lint": "lint-staged",
     "create-release": "ts-node --project tsconfig.prod.json -O '{\"types\":[\"node\"]}' scripts/createRelease.ts",
-    "prepare-release-merge": "ts-node --project tsconfig.prod.json-O '{\"types\":[\"node\"]}' scripts/prepareRelease.ts",
+    "prepare-release-merge": "ts-node --project tsconfig.prod.json -O '{\"types\":[\"node\"]}' scripts/prepareRelease.ts",
     "ci-publish": "ts-node --project tsconfig.prod.json -O '{\"types\":[\"node\"]}' scripts/publishCI.ts"
   },
   "devDependencies": {
