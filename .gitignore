@@ -16,6 +16,7 @@ yarn-error.log
 lib/
 android/
 ios/
+types/
 !src/ios
 package/
 *.tgz
