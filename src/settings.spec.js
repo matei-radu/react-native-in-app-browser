@@ -5,13 +5,16 @@
  * file in the root directory of this source tree.
  */
 
-import {
-  sanitize,
-  initialize,
-  SettingsAndroid,
-  Settings,
-  defaultSettings
-} from "./settings";
+/**
+ * Since ts-jest v23.10.x, full type-checking is performed in TS test files, so
+ * tests would fail for incompatible assignments.
+ *
+ * This library can be used in plain Javascript project, so behaviour when
+ * incompatible assignments are made must be evaluated. To do so, this file
+ * must be kept in Javascript to correctly simulate that scenario.
+ */
+
+import { sanitize, initialize, defaultSettings } from "./settings";
 
 describe("Sanitize settings - Android", () => {
   beforeEach(() => {
@@ -71,7 +74,7 @@ describe("Sanitize settings - Android", () => {
   });
 
   it("returns default settings for non provided ones", () => {
-    const settings: Settings = {
+    const settings = {
       android: {
         toolbarColor: "red"
       }
@@ -143,7 +146,7 @@ describe("Sanitize settings - iOS", () => {
   });
 
   it("returns default settings for non provided ones", () => {
-    const settings: Settings = {
+    const settings = {
       ios: {
         preferredBarTintColor: "#3fF"
       }
@@ -174,7 +177,7 @@ describe("Initialize", () => {
   });
 
   it("correctly initializes default settings", () => {
-    const settings: Settings = {
+    const settings = {
       android: {
         toolbarColor: "red"
       },
