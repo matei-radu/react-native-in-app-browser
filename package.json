@@ -39,15 +39,12 @@
     "ci-publish": "ts-node --project tsconfig.prod.json -O '{\"types\":[\"node\"]}' scripts/publishCI.ts"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.1",
     "@team-griffin/install-self-peers": "^1.1.1",
     "@types/fs-extra": "^5.0.4",
     "@types/jest": "^23.3.8",
     "@types/react-native": "^0.57.7",
     "@types/shelljs": "^0.8.0",
     "@types/tar": "^4.0.0",
-    "babel-core": "^7.0.0-0",
-    "babel-jest": "^23.6.0",
     "fs-extra": "^7.0.0",
     "husky": "^1.1.2",
     "jest": "^23.5.0",
