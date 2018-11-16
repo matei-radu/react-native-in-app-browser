@@ -9,5 +9,6 @@
     }
   },
   "testMatch": ["**/*.(test|spec).+(ts|tsx|js)"],
-  "verbose": true
+  "verbose": true,
+  "coverageReporters": ["lcov"]
 }

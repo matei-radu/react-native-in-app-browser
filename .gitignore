@@ -20,3 +20,4 @@ types/
 !src/ios
 package/
 *.tgz
+coverage/
