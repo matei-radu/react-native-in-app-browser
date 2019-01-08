@@ -86,6 +86,18 @@ async onClickHandler() {
 }
 ```
 
+### Programmatically close (iOS only)
+
+It is possible to manually dismiss the iOS in-app instance invoking `closeInAppInstance`.
+
+```javascript
+import { closeInAppInstance } from "@matt-block/react-native-in-app-browser";
+
+closeInAppInstance();
+```
+
+This is not possible on Android since Chrome Custom Tabs do not expose such functionality and [Activity workarounds][customtabsmanualclose] would bring this package way out of scope.
+
 ## Settings
 
 The main method `openInApp` accepts an object with settings objects for each
@@ -175,6 +187,7 @@ This source code is licensed under the MIT license found in the
 <!-- Sources -->
 
 [chromecustomtabs]: https://developer.chrome.com/multidevice/android/customtabs
+[customtabsmanualclose]: https://stackoverflow.com/a/41596629/1887860
 [sfsafariviewcontroller]: https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller
 [license]: https://github.com/matt-block/react-native-in-app-browser/blob/master/LICENSE
 [license_shield]: https://img.shields.io/badge/license-MIT-blue.svg
