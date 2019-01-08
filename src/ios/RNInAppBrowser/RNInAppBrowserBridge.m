@@ -11,5 +11,6 @@
 @interface RCT_EXTERN_MODULE(RNInAppBrowser, NSObject)
 
 RCT_EXTERN_METHOD(openInApp:(NSString *)url settings:(NSDictionary *)settings)
+RCT_EXTERN_METHOD(closeInApp)
 
 @end

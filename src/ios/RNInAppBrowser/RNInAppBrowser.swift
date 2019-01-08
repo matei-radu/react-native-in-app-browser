@@ -12,6 +12,7 @@ class RNInAppBrowser: NSObject {
     private let SETTING_BARTINT = "preferredBarTintColor"
     private let SETTING_CONTROLTINT = "preferredControlTintColor"
     private let SETTING_COLLAPSEBAR = "barCollapsingEnabled"
+    private let presentedSafariVC = RCTPresentedViewController()
     
     @objc(openInApp:settings:)
     func openInApp(url: String, settings: NSDictionary) -> Void {
@@ -23,7 +24,6 @@ class RNInAppBrowser: NSObject {
             let safariVC = SFSafariViewController(url: url)
             customize(safariView: safariVC, settings: settings)
             
-            let presentedVC = RCTPresentedViewController();
             presentedVC?.present(safariVC, animated: true)
         }
         
@@ -51,6 +51,11 @@ class RNInAppBrowser: NSObject {
             let collapse = settings.value(forKey: SETTING_COLLAPSEBAR) as! Bool
             safariView.configuration.barCollapsingEnabled = collapse
         }
+    }
+
+    @objc(closeInApp)
+    func closeInApp() -> Void {
+        presentedSafariVC?.dismiss(animated: true)
     }
     
     /// See [Difference requiresMainQueueSetup and dispatch_get_main_queue?](https://stackoverflow.com/a/50775641)
