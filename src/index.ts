@@ -25,4 +25,16 @@ async function openInApp(url: string, settings?: Settings) {
   NativeModules.RNInAppBrowser.openInApp(url, sanitize(Platform.OS, settings));
 }
 
-export { openInApp as default, initialize };
+/**
+ * Close the current in app browser instance.
+ *
+ * This feature is iOS only as Chrome Custom Tabs does not support programmatic
+ * dismissal.
+ */
+function closeInAppInstance() {
+  if (Platform.OS === "ios") {
+    NativeModules.RNInAppBrowser.closeInApp();
+  }
+}
+
+export { openInApp as default, closeInAppInstance, initialize };
