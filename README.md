@@ -17,9 +17,9 @@ This library will always target the most recent React Native package. If you are
 using an older release of React Native, use the correct version of this library
 from the compatibility table below (if available):
 
-| React Native | Library |
-| :----------: | :-----: |
-|    0.57.x    | latest  |
+|  React Native   | Library |
+| :-------------: | :-----: |
+| 0.57.0 - 0.58.x | latest  |
 
 ## Installation
 
