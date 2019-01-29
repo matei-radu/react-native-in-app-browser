@@ -24,7 +24,9 @@ class RNInAppBrowser: NSObject {
             let safariVC = SFSafariViewController(url: url)
             customize(safariView: safariVC, settings: settings)
             
-            presentedSafariVC?.present(safariVC, animated: true)
+            DispatchQueue.main.async { [weak self] in
+                self?.presentedSafariVC?.present(safariVC, animated: true)
+            }
         }
         
         // Fallback to default browser.
