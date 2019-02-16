@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Missing Flow definitions for `closeInAppInstance`.
 
+### Changed
+
+- Bump Kotlin to version `1.3.21`.
+
 ## [1.2.4] - 2019-01-29
 
 ### Added
