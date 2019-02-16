@@ -132,6 +132,8 @@ export interface SettingsIOS {
    * is < 11.0, this setting will be ignored.
    */
   barCollapsingEnabled?: boolean;
+
+  [key: string]: any;
 }
 
 /**
@@ -182,83 +184,59 @@ export function sanitize(os: PlatformOSType, settings?: Settings) {
 }
 
 function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
-  const sanitizedSettings = { ...defaultSettings.android! };
+  const sanitized = { ...defaultSettings.android! };
 
   if (!settings) {
-    return sanitizedSettings;
+    return sanitized;
   }
 
-  if (settings.toolbarColor && typeof settings.toolbarColor === "string") {
-    try {
-      sanitizedSettings.toolbarColor = getValidColorAndroid(
-        settings.toolbarColor
-      );
-    } catch (unusedError) {
-      // Given color is invalid.
-      // Silently fail and proceed without it.
-    }
+  try {
+    sanitized.toolbarColor = getValidColorAndroid(settings.toolbarColor!);
+  } catch (unusedError) {
+    // Given color is invalid.
+    // Silently fail and proceed without it.
   }
 
   if (typeof settings.showTitle === "boolean") {
-    sanitizedSettings.showTitle = settings.showTitle;
+    sanitized.showTitle = settings.showTitle;
   }
 
-  if (settings.closeButtonIcon) {
-    try {
-      sanitizedSettings.closeButtonIcon = Image.resolveAssetSource(
-        settings.closeButtonIcon
-      ).uri;
-    } catch (unusedError) {
-      // Given icon image is invalid.
-      // Silently fail and proceed without it.
-    }
+  try {
+    sanitized.closeButtonIcon = Image.resolveAssetSource(
+      settings.closeButtonIcon
+    ).uri;
+  } catch (unusedError) {
+    // Given icon image is invalid.
+    // Silently fail and proceed without it.
   }
 
   if (typeof settings.addDefaultShareMenu === "boolean") {
-    sanitizedSettings.addDefaultShareMenu = settings.addDefaultShareMenu;
+    sanitized.addDefaultShareMenu = settings.addDefaultShareMenu;
   }
 
-  return sanitizedSettings;
+  return sanitized;
 }
 
 function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
-  const sanitizedSettings = { ...defaultSettings.ios! };
+  const sanitized = { ...defaultSettings.ios! };
 
   if (!settings) {
-    return sanitizedSettings;
+    return sanitized;
   }
 
-  if (
-    settings.preferredBarTintColor &&
-    typeof settings.preferredBarTintColor === "string"
-  ) {
+  const colors = ["preferredBarTintColor", "preferredControlTintColor"];
+  colors.forEach(color => {
     try {
-      sanitizedSettings.preferredBarTintColor = sanitizeHexColor(
-        settings.preferredBarTintColor
-      );
+      sanitized[color] = sanitizeHexColor(settings[color]!);
     } catch (unusedError) {
       // Given color is invalid.
       // Silently fail and proceed without it.
     }
-  }
-
-  if (
-    settings.preferredControlTintColor &&
-    typeof settings.preferredControlTintColor === "string"
-  ) {
-    try {
-      sanitizedSettings.preferredControlTintColor = sanitizeHexColor(
-        settings.preferredControlTintColor
-      );
-    } catch (unusedError) {
-      // Given color is invalid.
-      // Silently fail and proceed without it.
-    }
-  }
+  });
 
   if (typeof settings.barCollapsingEnabled === "boolean") {
-    sanitizedSettings.barCollapsingEnabled = settings.barCollapsingEnabled;
+    sanitized.barCollapsingEnabled = settings.barCollapsingEnabled;
   }
 
-  return sanitizedSettings;
+  return sanitized;
 }
