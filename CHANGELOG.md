@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Bump Kotlin to version `1.3.21`.
+- Minor refactoring of `settings.ts`.
 
 ## [1.2.4] - 2019-01-29
 
