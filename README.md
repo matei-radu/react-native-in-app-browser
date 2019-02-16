@@ -51,20 +51,24 @@ note.
 
 ## Usage
 
-- Individual example snippets
+> ⚠️ Some functions have been deprecated in favor of an object-wrapping approach
+> to expose functionalities (see rationale [here](https://github.com/matt-block/react-native-in-app-browser/issues/19)).
+> Update your projects to use the new preferred
+> approach showcased in this section and check the [Deprecated Features](#deprecated-features) section
+> for migration details.
 
 ```javascript
-import openInApp from "@matt-block/react-native-in-app-browser";
+import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
 
 
 // Minimal setup.
-openInApp("https://www.wikipedia.org/").catch(error => {
+InAppBrowser.open("https://www.wikipedia.org/").catch(error => {
   console.log(error);
 });
 
 
 // With platform-specific optional settings.
-openInApp("https://www.wikipedia.org/", {
+InAppBrowser.open("https://www.wikipedia.org/", {
   android: {
     //...,
   },
@@ -79,7 +83,7 @@ openInApp("https://www.wikipedia.org/", {
 // Using async/await.
 async onClickHandler() {
   try {
-    await openInApp("https://www.wikipedia.org/");
+    await InAppBrowser.open("https://www.wikipedia.org/");
   } catch (error) {
     console.log(error);
   }
@@ -88,51 +92,53 @@ async onClickHandler() {
 
 ### Programmatically close (iOS only)
 
-It is possible to manually dismiss the iOS in-app instance invoking `closeInAppInstance`.
+It is possible to manually dismiss the iOS in-app instance by calling the method `close`.
 
 ```javascript
-import { closeInAppInstance } from "@matt-block/react-native-in-app-browser";
+import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
 
-closeInAppInstance();
+InAppBrowser.close();
 ```
 
 This is not possible on Android since Chrome Custom Tabs do not expose such functionality and [Activity workarounds][customtabsmanualclose] would bring this package way out of scope.
 
 ## Settings
 
-The main method `openInApp` accepts an object with settings objects for each
+The main method `open` accepts an object with settings objects for each
 platform:
 
 ```javascript
-openInApp("https://www.wikipedia.org/", {
+import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
+
+InAppBrowser.open("https://www.wikipedia.org/", {
   android: {},
   ios: {}
 });
 ```
 
-Settings can also be initialized separately with `initialize` so that each `openInApp` call won't need to specify them each time:
+Settings can also be initialized separately with `configure` so that each `open` call won't need to specify them each time:
 
 ```javascript
-import openInApp, { initialize } from "@matt-block/react-native-in-app-browser";
+import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
 
 // Somewhere in your app initialization logic.
-initialize({
+InAppBrowser.configure({
   android: {},
   ios: {}
 });
 
 // Other part of your code base.
 // Previously initialized settings will apply.
-openInApp("https://www.wikipedia.org/");
+InAppBrowser.open("https://www.wikipedia.org/");
 ```
 
-Note that `openInApp` will still accept settings as always but will effectively perform a merge between the initialized properties and the provided settings object (which will have priority over the initialized properties):
+Note that `open` will still accept settings as always but will effectively perform a merge between the initialized properties and the provided settings object (which will have priority over the initialized properties):
 
 ```javascript
-import openInApp, { initialize } from "@matt-block/react-native-in-app-browser";
+import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
 
 // Somewhere in your app initialization logic.
-initialize({
+InAppBrowser.configure({
   android: {
     toolbarColor: "red",
     showTitle: true
@@ -144,7 +150,7 @@ initialize({
 //
 // - toolbarColor: "blue",
 // - showTitle: true
-openInApp("https://www.wikipedia.org/", {
+InAppBrowser.open("https://www.wikipedia.org/", {
   android: {
     toolbarColor: "blue"
   }
@@ -189,6 +195,87 @@ git clone https://github.com/matt-block/react-native-in-app-browser.git
 cd react-native-in-app-browser/example
 npm install #or yarn install
 $ react-native run-android #or react-native run-ios
+```
+
+## Deprecated features
+
+Some functions have been deprecated and will be removed in version `2.0.0` which
+is scheduled for release on June 1st 2019. You can check the rationale behind
+these braking changes [here](https://github.com/matt-block/react-native-in-app-browser/issues/19).
+
+The affected features are:
+
+- `openInApp`
+- `initialize`
+- `closeInAppInstance`
+
+Below are migration paths for the deprecated features.
+
+### openInApp
+
+This function is now exposed as the method `open` of the object `InAppBrowser`.
+Both functions share the same signature.
+
+```javascript
+import openInApp, {
+  InAppBrowser
+} from "@matt-block/react-native-in-app-browser";
+
+// New usage.
+InAppBrowser.open("https://www.wikipedia.org/").catch(error => {
+  console.log(error);
+});
+
+// Deprecated.
+openInApp("https://www.wikipedia.org/").catch(error => {
+  console.log(error);
+});
+```
+
+### initialize
+
+This function is now exposed as the method `configure` of the object `InAppBrowser`.
+Both functions share the same signature.
+
+```javascript
+import {
+  initialize,
+  InAppBrowser
+} from "@matt-block/react-native-in-app-browser";
+
+// New usage.
+InAppBrowser.configure({
+  android: {
+    toolbarColor: "red",
+    showTitle: true
+  }
+});
+
+// Deprecated.
+initialize({
+  android: {
+    toolbarColor: "red",
+    showTitle: true
+  }
+});
+```
+
+### closeInAppInstance
+
+This function is now exposed as the method `close` of the object `InAppBrowser`.
+Both functions share the same signature.
+
+```javascript
+import {
+  closeInAppInstance,
+  InAppBrowser
+} from "@matt-block/react-native-in-app-browser";
+
+// New usage.
+InAppBrowser.close();
+
+// Deprecated.
+closeInAppInstance();
 ```
 
 ## License
