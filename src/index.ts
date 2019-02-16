@@ -7,7 +7,7 @@
 
 import { NativeModules, Platform } from "react-native";
 import { isUrlValid } from "./utils/validation";
-import { sanitize, initialize, Settings } from "./settings";
+import { sanitize, initialize as configure, Settings } from "./settings";
 
 /**
  * In-app browser functionalities.
@@ -52,7 +52,7 @@ class InAppBrowser {
    * portions of the application code base as it allows to provide the
    * settings only once instead of specifing them with each call.
    */
-  static configure = initialize;
+  static configure = configure;
 }
 
 /**
@@ -65,6 +65,9 @@ class InAppBrowser {
  * @deprecated
  */
 async function openInApp(url: string, settings?: Settings) {
+  console.warn(
+    '"openInApp" is deprecated and will be removed in version 2.0.0. Please use "InAppBrowser.open" instead. See https://github.com/matt-block/react-native-in-app-browser#deprecated-features for more details.'
+  );
   if (!isUrlValid(url)) {
     throw "Invalid URL";
   }
@@ -81,9 +84,29 @@ async function openInApp(url: string, settings?: Settings) {
  * @deprecated
  */
 function closeInAppInstance() {
+  console.warn(
+    '"closeInAppInstance" is deprecated and will be removed in version 2.0.0. Please use "InAppBrowser.close" instead. See https://github.com/matt-block/react-native-in-app-browser#deprecated-features for more details.'
+  );
   if (Platform.OS === "ios") {
     NativeModules.RNInAppBrowser.closeInApp();
   }
+}
+
+/**
+ * Configure the platform-specific settings for the in-app browser
+ * experience.
+ *
+ * This utility function is useful when `openInApp` is used in several
+ * portions of the application code base as it allows to provide the
+ * settings only once instead of specifing them with each call.
+ *
+ * @deprecated
+ */
+function initialize(settings: Settings) {
+  console.warn(
+    '"initialize" is deprecated and will be removed in version 2.0.0. Please use "InAppBrowser.configure" instead. See https://github.com/matt-block/react-native-in-app-browser#deprecated-features for more details.'
+  );
+  configure(settings);
 }
 
 export { openInApp as default, closeInAppInstance, initialize, InAppBrowser };
