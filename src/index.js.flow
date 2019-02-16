@@ -33,3 +33,5 @@ declare export default function openInApp(
 ): Promise<{}>;
 
 declare export function initialize(settings: Settings): void;
+
+declare export function closeInAppInstance(): void;

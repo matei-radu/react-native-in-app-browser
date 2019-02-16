@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Compatibility with React Native `0.59.0`.
 
+### Fixed
+
+- Missing Flow definitions for `closeInAppInstance`.
+
 ## [1.2.4] - 2019-01-29
 
 ### Added
