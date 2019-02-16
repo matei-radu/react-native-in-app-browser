@@ -132,6 +132,8 @@ export interface SettingsIOS {
    * is < 11.0, this setting will be ignored.
    */
   barCollapsingEnabled?: boolean;
+
+  [key: string]: any;
 }
 
 /**
@@ -222,23 +224,15 @@ function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
     return sanitized;
   }
 
-  try {
-    sanitized.preferredBarTintColor = sanitizeHexColor(
-      settings.preferredBarTintColor!
-    );
-  } catch (unusedError) {
-    // Given color is invalid.
-    // Silently fail and proceed without it.
-  }
-
-  try {
-    sanitized.preferredControlTintColor = sanitizeHexColor(
-      settings.preferredControlTintColor!
-    );
-  } catch (unusedError) {
-    // Given color is invalid.
-    // Silently fail and proceed without it.
-  }
+  const colors = ["preferredBarTintColor", "preferredControlTintColor"];
+  colors.forEach(color => {
+    try {
+      sanitized[color] = sanitizeHexColor(settings[color]!);
+    } catch (unusedError) {
+      // Given color is invalid.
+      // Silently fail and proceed without it.
+    }
+  });
 
   if (typeof settings.barCollapsingEnabled === "boolean") {
     sanitized.barCollapsingEnabled = settings.barCollapsingEnabled;
