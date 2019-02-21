@@ -45,7 +45,9 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
 
         if (settings.hasKey(SETTING_CLOSE_BUTTON)) {
             val uriOrDrawable = settings.getString(SETTING_CLOSE_BUTTON)
-            val icon = getBitmapFromUriOrDrawable(uriOrDrawable)
+            val icon = uriOrDrawable?.let {
+                getBitmapFromUriOrDrawable(it)
+            }
 
             icon?.let { it ->
                 val sizeInPixels = convertDpToPixel(24f).toInt()

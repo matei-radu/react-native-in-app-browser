@@ -19,7 +19,7 @@ from the compatibility table below (if available):
 
 |  React Native   | Library |
 | :-------------: | :-----: |
-| 0.57.0 - 0.58.x | latest  |
+| 0.57.0 - 0.59.x | latest  |
 
 ## Installation
 
