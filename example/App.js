@@ -8,24 +8,19 @@
  */
 
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
-
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
-});
+import { Platform, StyleSheet, Text, View, ScrollView } from "react-native";
+import Configurator from "./Config";
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.welcome}>React Native In-App Browser</Text>
+          <Configurator />
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -33,14 +28,14 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    paddingVertical: 48,
+    paddingHorizontal: 32,
     backgroundColor: "#F5FCFF"
   },
   welcome: {
     fontSize: 20,
-    textAlign: "center",
-    margin: 10
+    color: "#333",
+    marginBottom: 10
   },
   instructions: {
     textAlign: "center",
