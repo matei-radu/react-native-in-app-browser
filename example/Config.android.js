@@ -56,7 +56,7 @@ class Configurator extends Component {
           The following is the available set of customizations for Android.
         </Text>
         <Text style={styles.intro}>
-          To try out the iOS conterpart, run this example on an iOS device.
+          To try out the iOS conterpart, run this example app on an iOS device.
         </Text>
         <Text style={styles.heading}>Android Settings</Text>
         <View style={styles.settingRow}>
