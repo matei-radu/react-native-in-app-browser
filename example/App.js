@@ -15,7 +15,7 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={styles.scrollBackground}>
         <View style={styles.container}>
           <Text style={styles.welcome}>React Native In-App Browser</Text>
           <Configurator />
@@ -26,6 +26,10 @@ export default class App extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
+  scrollBackground: {
+    flex: 1,
+    backgroundColor: "#F5FCFF"
+  },
   container: {
     flex: 1,
     paddingVertical: 48,
