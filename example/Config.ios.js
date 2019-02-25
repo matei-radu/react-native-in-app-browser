@@ -170,6 +170,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#333"
   },
+  colorString: {
+    height: 24,
+    paddingTop: 4
+  },
   colorPreview: {
     flexDirection: "column",
     alignItems: "center",
