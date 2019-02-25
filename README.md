@@ -177,6 +177,20 @@ supported by the iOS version at runtime will be ignored as well.
 | `preferredControlTintColor` | `string`  | `undefined` | The color to tint the control buttons on the navigation bar and the toolbar.<br/><br/>Provided color can be in a hexadecimal format: <br/><ul><li>#RRGGBB</li><li>#RGB</li><li>#AARRGGBB</li><li>#ARGB</ul>**Available on**: iOS >= 10.0. |
 | `barCollapsingEnabled`      | `boolean` | `true`      | **Available on**: iOS >= 11.0.                                                                                                                                                                                                            |
 
+## Example
+
+An example project showcasing the various configurations can be found in the
+`example` directory.
+Simply clone this repository, navigate into `example`, install the dependencies
+and run the app.
+
+```sh
+git clone https://github.com/matt-block/react-native-in-app-browser.git
+cd react-native-in-app-browser/example
+npm install #or yarn install
+$ react-native run-android #or react-native run-ios
+```
+
 ## License
 
 Copyright (c) 2018-present Matei Bogdan Radu.
