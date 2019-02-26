@@ -1,17 +1,8 @@
-/**
+/*
  * Copyright (c) 2018-present, Matei Bogdan Radu <matei.radu.92@gmail.com>
  *
  * This source code is licensed under the MIT license found in the LICENSE
  * file in the root directory of this source tree.
- */
-
-/**
- * Since ts-jest v23.10.x, full type-checking is performed in TS test files, so
- * tests would fail for incompatible assignments.
- *
- * This library can be used in plain Javascript project, so behaviour when
- * incompatible assignments are made must be evaluated. To do so, this file
- * must be kept in Javascript to correctly simulate that scenario.
  */
 
 import { sanitize, initialize, defaultSettings } from "./settings";
@@ -48,7 +39,7 @@ describe("Sanitize settings - Android", () => {
     expect(
       sanitize("android", {
         android: { addDefaultShareMenu: null }
-      })
+      } as any)
     ).toEqual({});
   });
 
@@ -67,7 +58,7 @@ describe("Sanitize settings - Android", () => {
           toolbarColor: "#3fF",
           showTitle: null
         }
-      })
+      } as any)
     ).toEqual({
       toolbarColor: "#33ffff"
     });
@@ -122,7 +113,7 @@ describe("Sanitize settings - iOS", () => {
     expect(
       sanitize("ios", {
         ios: { barCollapsingEnabled: null }
-      })
+      } as any)
     ).toEqual({});
   });
 
