@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Example project in the `example` directory.
 
+### Changed
+
+- Color properties (`toolbarColor`, `preferredBarTintColor` and `preferredControlTintColor`) now
+  accept more color formats. Please refer to TinyColor's [Accepted String Input](https://github.com/bgrins/TinyColor#accepted-string-input) to see all available formats.
+
 ## [1.2.7] - 2019-01-29
 
 ### Added

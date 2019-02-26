@@ -45,6 +45,7 @@
     "@types/react-native": "^0.57.7",
     "@types/shelljs": "^0.8.0",
     "@types/tar": "^4.0.0",
+    "@types/tinycolor2": "^1.4.1",
     "fs-extra": "^7.0.0",
     "husky": "^1.1.2",
     "jest": "^23.5.0",
@@ -71,5 +72,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "dependencies": {
+    "tinycolor2": "^1.4.1"
   }
 }
