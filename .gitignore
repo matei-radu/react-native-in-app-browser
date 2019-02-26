@@ -21,3 +21,7 @@ types/
 package/
 *.tgz
 coverage/
+
+## Example project exceptions
+!example/android
+!example/ios

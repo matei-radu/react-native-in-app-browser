@@ -69,7 +69,7 @@ describe("Sanitize settings - Android", () => {
         }
       })
     ).toEqual({
-      toolbarColor: "#33ffFF"
+      toolbarColor: "#33ffff"
     });
   });
 
@@ -88,7 +88,7 @@ describe("Sanitize settings - Android", () => {
         }
       })
     ).toEqual({
-      toolbarColor: "red",
+      toolbarColor: "#ff0000",
       showTitle: true
     });
   });
@@ -140,7 +140,7 @@ describe("Sanitize settings - iOS", () => {
         }
       })
     ).toEqual({
-      preferredBarTintColor: "#33ffFF",
+      preferredBarTintColor: "#33ffff",
       barCollapsingEnabled: true
     });
   });
@@ -161,8 +161,8 @@ describe("Sanitize settings - iOS", () => {
         }
       })
     ).toEqual({
-      preferredBarTintColor: "#33ffFF",
-      preferredControlTintColor: "#33ffFF",
+      preferredBarTintColor: "#33ffff",
+      preferredControlTintColor: "#33ffff",
       barCollapsingEnabled: true
     });
   });
@@ -189,10 +189,10 @@ describe("Initialize", () => {
 
     expect(defaultSettings).toEqual({
       android: {
-        toolbarColor: "red"
+        toolbarColor: "#ff0000"
       },
       ios: {
-        preferredBarTintColor: "#33ffFF"
+        preferredBarTintColor: "#33ffff"
       }
     });
   });
