@@ -1,13 +1,15 @@
-# Keep in sync with package.json
+require 'json'
+
+package = JSON.parse(File.read(File.join(__dir__, '..', '..', 'package.json')))
 
 Pod::Spec.new do |s|
-  s.name = '@matt-block/react-native-in-app-browser'
-  s.version = '1.2.7'
-  s.description = 'React Native in-app browser'
-  s.license = 'MIT'
+  s.name = package['name'].gsub(/@matt-block\//, '')
+  s.version = package['version']
+  s.summary = package['description']
+  s.license = package['license']
   s.requires_arc = true
-  s.author = { 'Matei Bogdan Radu' => 'matei.radu.92@gmail.com' }
-  s.homepage = 'https://github.com/matt-block'
+  s.author = package['author']
+  s.homepage = package['homepage']
   s.source = { :git => 'https://github.com/matt-block/react-native-in-app-browser' }
   s.platform = :ios, '9.0'
   s.dependency 'React'
