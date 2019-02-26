@@ -1,9 +1,9 @@
 # Keep in sync with package.json
 
 Pod::Spec.new do |s|
-  s.name = '@matt-block/react-native-in-app-browser'
+  s.name = 'react-native-in-app-browser'
   s.version = '1.2.7'
-  s.description = 'React Native in-app browser'
+  s.summary = 'React Native in-app browser'
   s.license = 'MIT'
   s.requires_arc = true
   s.author = { 'Matei Bogdan Radu' => 'matei.radu.92@gmail.com' }
