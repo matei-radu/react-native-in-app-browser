@@ -1,0 +1,5 @@
+rootProject.name = 'example'
+include ':@matt-block_react-native-in-app-browser'
+project(':@matt-block_react-native-in-app-browser').projectDir = new File(rootProject.projectDir, '../node_modules/@matt-block/react-native-in-app-browser/android')
+
+include ':app'

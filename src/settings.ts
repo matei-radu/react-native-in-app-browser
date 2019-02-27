@@ -6,7 +6,7 @@
  */
 
 import { PlatformOSType, Image } from "react-native";
-import { getValidColorAndroid, sanitizeHexColor } from "./utils/color";
+import tinycolor, { ColorInputWithoutInstance } from "tinycolor2";
 
 export interface Settings {
   /**
@@ -32,40 +32,9 @@ export interface SettingsAndroid {
   /**
    * The color to tint the background of the toolbar.
    *
-   * Provided color can be in a hexadecimal format:
-   * - #RRGGBB
-   * - #RGB
-   * - #AARRGGBB
-   * - #ARGB
-   *
-   * Alternatively, following color names are accepted:
-   * - `red`
-   * - `blue`
-   * - `green`
-   * - `black`
-   * - `white`
-   * - `gray`
-   * - `cyan`
-   * - `magenta`
-   * - `yellow`
-   * - `lightgray`
-   * - `darkgray`
-   * - `grey`
-   * - `lightgrey`
-   * - `darkgrey`
-   * - `aqua`
-   * - `fuchsia`
-   * - `lime`
-   * - `maroon`
-   * - `navy`
-   * - `olive`
-   * - `purple`
-   * - `silver`
-   * - `teal`
-   *
    * **Note**: if the color string is invalid, this setting will be ignored.
    */
-  toolbarColor?: string;
+  toolbarColor?: ColorInputWithoutInstance;
 
   /**
    * Flag to toggle if the title should be shown in the custom tab.
@@ -95,35 +64,23 @@ export interface SettingsIOS {
   /**
    * The color to tint the background of the navigation bar and the toolbar.
    *
-   * Provided color must be in a hexadecimal format:
-   * - #RRGGBB
-   * - #RGB
-   * - #AARRGGBB
-   * - #ARGB
-   *
    * **Available on**: iOS >= 10.0.
    *
    * **Note**: if the color string is invalid or if the current iOS version
    * is < 10.0, this setting will be ignored.
    */
-  preferredBarTintColor?: string;
+  preferredBarTintColor?: ColorInputWithoutInstance;
 
   /**
    * The color to tint the control buttons on the navigation bar and the
    * toolbar.
    *
-   * Provided color must be in a hexadecimal format:
-   * - #RRGGBB
-   * - #RGB
-   * - #AARRGGBB
-   * - #ARGB
-   *
    * **Available on**: iOS >= 10.0.
    *
    * **Note**: if the color string is invalid or if the current iOS version
    * is < 10.0, this setting will be ignored.
    */
-  preferredControlTintColor?: string;
+  preferredControlTintColor?: ColorInputWithoutInstance;
 
   /**
    * **Available on**: iOS >= 11.0.
@@ -190,11 +147,8 @@ function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
     return sanitized;
   }
 
-  try {
-    sanitized.toolbarColor = getValidColorAndroid(settings.toolbarColor!);
-  } catch (unusedError) {
-    // Given color is invalid.
-    // Silently fail and proceed without it.
+  if (tinycolor(settings.toolbarColor).isValid()) {
+    sanitized.toolbarColor = tinycolor(settings.toolbarColor).toHexString();
   }
 
   if (typeof settings.showTitle === "boolean") {
@@ -226,11 +180,8 @@ function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
 
   const colors = ["preferredBarTintColor", "preferredControlTintColor"];
   colors.forEach(color => {
-    try {
-      sanitized[color] = sanitizeHexColor(settings[color]!);
-    } catch (unusedError) {
-      // Given color is invalid.
-      // Silently fail and proceed without it.
+    if (tinycolor(settings[color]).isValid()) {
+      sanitized[color] = tinycolor(settings[color]).toHexString();
     }
   });
 

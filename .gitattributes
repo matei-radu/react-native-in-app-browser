@@ -3,3 +3,4 @@
 *.m linguist-language=objectivec
 *.h linguist-language=objectivec
 scripts/*.ts linguist-vendored
+example/* linguist-vendored

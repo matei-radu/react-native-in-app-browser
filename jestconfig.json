@@ -5,10 +5,10 @@
   },
   "globals": {
     "ts-jest": {
-      "tsConfig": "tsconfig.jest.json"
+      "tsConfig": "tsconfig.json"
     }
   },
-  "testMatch": ["**/*.(test|spec).+(ts|tsx|js)"],
+  "testMatch": ["**/*.(test|spec).+(ts|tsx)"],
   "verbose": true,
   "coverageReporters": ["lcov"]
 }
