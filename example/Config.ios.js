@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   StyleSheet
 } from "react-native";
-import openInApp from "@matt-block/react-native-in-app-browser";
+import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
 import { SlidersColorPicker } from "react-native-color";
 import tinycolor from "tinycolor2";
 
@@ -31,7 +31,7 @@ class Configurator extends Component {
 
   onOpen = () => {
     const { url, ...settings } = { ...this.state };
-    openInApp(url, { ios: settings });
+    InAppBrowser.open(url, { ios: settings });
   };
 
   render() {

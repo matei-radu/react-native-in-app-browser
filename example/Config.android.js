@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   StyleSheet
 } from "react-native";
-import openInApp from "@matt-block/react-native-in-app-browser";
+import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
 import { SlidersColorPicker } from "react-native-color";
 import tinycolor from "tinycolor2";
 import pizzaIcon from "./pizza-icon.png";
@@ -36,7 +36,7 @@ class Configurator extends Component {
       settings.closeButtonIcon = pizzaIcon;
     }
 
-    openInApp(url, { android: settings });
+    InAppBrowser.open(url, { android: settings });
   };
 
   render() {
