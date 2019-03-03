@@ -17,6 +17,7 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.uimanager.PixelUtil
 
 import java.net.URL
 
@@ -50,7 +51,7 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
             }
 
             icon?.let { it ->
-                val sizeInPixels = convertDpToPixel(24f).toInt()
+                val sizeInPixels = PixelUtil.toPixelFromDIP(24f).toInt()
                 val resizedIcon = Bitmap.createScaledBitmap(it, sizeInPixels, sizeInPixels, false)
                 builder.setCloseButtonIcon(resizedIcon)
             }
@@ -84,11 +85,5 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
                 null
             }
         }
-    }
-
-    private fun convertDpToPixel(dp: Float): Float {
-        val metrics = this.currentActivity?.resources?.displayMetrics!!
-        val px = dp * (metrics.densityDpi / 160f)
-        return Math.round(px).toFloat()
     }
 }
