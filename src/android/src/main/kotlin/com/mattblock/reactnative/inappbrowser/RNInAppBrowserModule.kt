@@ -7,6 +7,7 @@
 
 package com.mattblock.reactnative.inappbrowser
 
+import android.content.pm.ApplicationInfo
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -17,7 +18,9 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.uimanager.PixelUtil
 
+import java.io.IOException
 import java.net.URL
 
 class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJavaModule(context) {
@@ -50,7 +53,7 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
             }
 
             icon?.let { it ->
-                val sizeInPixels = convertDpToPixel(24f).toInt()
+                val sizeInPixels = PixelUtil.toPixelFromDIP(24f).toInt()
                 val resizedIcon = Bitmap.createScaledBitmap(it, sizeInPixels, sizeInPixels, false)
                 builder.setCloseButtonIcon(resizedIcon)
             }
@@ -65,30 +68,39 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
     }
 
     private fun getBitmapFromUriOrDrawable(uriOrDrawable: String): Bitmap? {
-        try {
-            // Development mode when images are served from localhost.
-            val url = URL(uriOrDrawable)
-            val connection = url.openConnection()
-            return BitmapFactory.decodeStream(connection.getInputStream())
-        } catch (e: Exception) {
-            return try {
-                // Release mode when images are bundled as drawables.
-                BitmapFactory.decodeResource(
-                        this.currentActivity?.resources,
-                        this.currentActivity?.resources?.getIdentifier(
-                                uriOrDrawable,
-                                "drawable",
-                                this.currentActivity?.packageName)!!
-                )
-            } catch (e: Exception) {
-                null
-            }
+        return if (isDebug()) {
+            getBitmapFromUri(uriOrDrawable)
+        } else {
+            getBitmapFromDrawable(uriOrDrawable)
         }
     }
 
-    private fun convertDpToPixel(dp: Float): Float {
-        val metrics = this.currentActivity?.resources?.displayMetrics!!
-        val px = dp * (metrics.densityDpi / 160f)
-        return Math.round(px).toFloat()
+    /**
+     * Load image from development server.
+     */
+    private fun getBitmapFromUri(uri: String): Bitmap? {
+        return try {
+            val url = URL(uri)
+            val connection = url.openConnection()
+            BitmapFactory.decodeStream(connection.getInputStream())
+        } catch (e: IOException) {
+            null
+        }
     }
+
+    private fun getBitmapFromDrawable(drawableName: String): Bitmap? {
+        return this.currentActivity?.let { activity ->
+            BitmapFactory.decodeResource(
+                activity.resources,
+                activity.resources?.getIdentifier(drawableName, "drawable", activity.packageName)!!
+            )
+        }
+    }
+
+    /**
+     * Since this is a separate module, [BuildConfig.DEBUG] is not reliable.
+     *
+     * @see [https://medium.com/@elye.project/checking-debug-build-the-right-way-d12da1098120]
+     */
+    private fun isDebug() = this.reactApplicationContext.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
 }

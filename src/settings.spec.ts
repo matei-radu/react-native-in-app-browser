@@ -5,6 +5,9 @@
  * file in the root directory of this source tree.
  */
 
+// See https://github.com/facebook/react-native/issues/23943
+jest.doMock("react-native", () => {});
+
 import { sanitize, initialize, defaultSettings } from "./settings";
 
 describe("Sanitize settings - Android", () => {

@@ -6,18 +6,17 @@
  */
 
 import sh from "shelljs";
-import { getCurrentVersion, versionIsRC } from "./utils";
+import { getCurrentVersion, versionIsRC, getTarballName } from "./utils";
 
 const tag = getPublishingTag(process.env.CIRCLE_BRANCH!);
 
 // Continue with publish process.
 createTarball();
-const tarballName = `matt-block-react-native-in-app-browser-v${getCurrentVersion()}.tgz`;
 setupNpm();
-publish(tarballName, getCurrentVersion(), tag);
+publish(getTarballName(), getCurrentVersion(), tag);
 
 function createTarball() {
-  sh.exec("yarn pack");
+  sh.exec(`yarn pack --filename ${getTarballName()}`);
 }
 
 function publish(tarball: string, version: string, tag: string) {
