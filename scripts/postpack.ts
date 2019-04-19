@@ -7,16 +7,17 @@
 
 import fs from "fs-extra";
 import tar from "tar";
+import { getTarballName } from "./utils";
 
 // Read development version of package.json.
 const packageJson = JSON.parse(fs.readFileSync("package.json").toString());
 
 // tarFile name
-const tarFileName = `matt-block-react-native-in-app-browser-${packageJson.version}.tgz`
+const tarballName = getTarballName();
 
 // Extract package made by `yarn pack`.
 tar.extract({
-  file: tarFileName,
+  file: tarballName,
   sync: true
 });
 
@@ -37,7 +38,7 @@ tar.create(
   {
     gzip: true,
     sync: true,
-    file: tarFileName
+    file: tarballName
   },
   ["package/"]
 );

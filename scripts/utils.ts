@@ -33,3 +33,10 @@ export function userHasSigningKey() {
   const { stdout } = sh.exec("git config --list | grep user.signingkey");
   return stdout === "" ? false : true;
 }
+
+export function getTarballName() {
+  const packageJson = JSON.parse(fs.readFileSync("package.json").toString());
+  return `${packageJson.name.replace("@", "").replace("/", "-")}-${
+    packageJson.version
+  }.tgz`;
+}
