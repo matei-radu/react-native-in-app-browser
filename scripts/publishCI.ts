@@ -6,13 +6,13 @@
  */
 
 import sh from "shelljs";
-import { getCurrentVersion, versionIsRC } from "./utils";
+import { getCurrentVersion, versionIsRC, getTarballName } from "./utils";
 
 const tag = getPublishingTag(process.env.CIRCLE_BRANCH!);
 
 // Continue with publish process.
 createTarball();
-const tarballName = `matt-block-react-native-in-app-browser-v${getCurrentVersion()}.tgz`;
+const tarballName = getTarballName();
 setupNpm();
 publish(tarballName, getCurrentVersion(), tag);
 
