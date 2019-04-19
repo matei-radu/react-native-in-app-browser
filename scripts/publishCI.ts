@@ -12,12 +12,11 @@ const tag = getPublishingTag(process.env.CIRCLE_BRANCH!);
 
 // Continue with publish process.
 createTarball();
-const tarballName = getTarballName();
 setupNpm();
-publish(tarballName, getCurrentVersion(), tag);
+publish(getTarballName(), getCurrentVersion(), tag);
 
 function createTarball() {
-  sh.exec("yarn pack");
+  sh.exec(`yarn pack --filename ${getTarballName()}`);
 }
 
 function publish(tarball: string, version: string, tag: string) {
