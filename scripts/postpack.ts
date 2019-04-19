@@ -11,9 +11,12 @@ import tar from "tar";
 // Read development version of package.json.
 const packageJson = JSON.parse(fs.readFileSync("package.json").toString());
 
+// tarFile name
+const tarFileName = `matt-block-react-native-in-app-browser-${packageJson.version}.tgz`
+
 // Extract package made by `yarn pack`.
 tar.extract({
-  file: `matt-block-react-native-in-app-browser-v${packageJson.version}.tgz`,
+  file: tarFileName,
   sync: true
 });
 
@@ -34,7 +37,7 @@ tar.create(
   {
     gzip: true,
     sync: true,
-    file: `matt-block-react-native-in-app-browser-v${packageJson.version}.tgz`
+    file: tarFileName
   },
   ["package/"]
 );
