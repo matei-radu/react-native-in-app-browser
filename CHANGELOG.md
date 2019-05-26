@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Bump Kotlin to version `1.3.31`.
+- Remove explicit Android Build Tools version from Gradle configuration.
 
 ### Removed
 
