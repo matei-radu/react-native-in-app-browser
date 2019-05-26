@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2019-06-01
+
+### Removed
+
+The following deprecated functions have been removed. Please see
+[Migrating from 1.x to 2.x](https://github.com/matt-block/react-native-in-app-browser/wiki/Migrating-from-1.x-to-2.x) for more details.
+
+- `openInApp`, use `InAppBrowser.open` instead.
+- `initialize`, use `InAppBrowser.configure` instead.
+- `closeInAppInstance`, use `InAppBrowser.close` instead.
+
 ## [1.4.1] - 2019-04-19
 
 ### Fixed
@@ -28,7 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deprecated
 
 The following functions have been deprecated. Please see
-[Deprecated Features](https://github.com/matt-block/react-native-in-app-browser#deprecated-features) for migration paths and rationale for these changes.
+[Migrating from 1.x to 2.x](https://github.com/matt-block/react-native-in-app-browser/wiki/Migrating-from-1.x-to-2.x) for more details.
 
 - `openInApp`, use `InAppBrowser.open` instead.
 - `initialize`, use `InAppBrowser.configure` instead.
@@ -126,6 +137,7 @@ The following functions have been deprecated. Please see
 
 - `openInApp`: open a valid http(s) URL with an in-app browser.
 
+[2.0.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.4.1...v2.0.0
 [1.4.1]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.2.7...v1.3.0
