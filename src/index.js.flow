@@ -30,14 +30,5 @@ export type Settings = {|
 declare export class InAppBrowser {
   static open(url: string, settings?: Settings): Promise<void>;
   static close(): void;
-  static configure: typeof initialize;
+  static configure(settings: Settings): void;
 }
-
-declare export default function openInApp(
-  url: string,
-  settings?: Settings
-): Promise<void>;
-
-declare export function initialize(settings: Settings): void;
-
-declare export function closeInAppInstance(): void;
