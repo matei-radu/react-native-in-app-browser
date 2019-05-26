@@ -51,11 +51,7 @@ note.
 
 ## Usage
 
-> ⚠️ Some functions have been deprecated in favor of an object-wrapping approach
-> to expose functionalities (see rationale [here](https://github.com/matt-block/react-native-in-app-browser/issues/19)).
-> Update your projects to use the new preferred
-> approach showcased in this section and check the [Deprecated Features](#deprecated-features) section
-> for migration details.
+> ⚠️ Still using version 1.x? [Migrate from 1.x to 2.x](https://github.com/matt-block/react-native-in-app-browser/wiki/Migrating-from-1.x-to-2.x).
 
 ```javascript
 import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
@@ -195,87 +191,6 @@ git clone https://github.com/matt-block/react-native-in-app-browser.git
 cd react-native-in-app-browser/example
 npm install #or yarn install
 $ react-native run-android #or react-native run-ios
-```
-
-## Deprecated features
-
-Some functions have been deprecated and will be removed in version `2.0.0` which
-is scheduled for release on June 1st 2019. You can check the rationale behind
-these braking changes [here](https://github.com/matt-block/react-native-in-app-browser/issues/19).
-
-The affected features are:
-
-- `openInApp`
-- `initialize`
-- `closeInAppInstance`
-
-Below are migration paths for the deprecated features.
-
-### openInApp
-
-This function is now exposed as the method `open` of the object `InAppBrowser`.
-Both functions share the same signature.
-
-```javascript
-import openInApp, {
-  InAppBrowser
-} from "@matt-block/react-native-in-app-browser";
-
-// New usage.
-InAppBrowser.open("https://www.wikipedia.org/").catch(error => {
-  console.log(error);
-});
-
-// Deprecated.
-openInApp("https://www.wikipedia.org/").catch(error => {
-  console.log(error);
-});
-```
-
-### initialize
-
-This function is now exposed as the method `configure` of the object `InAppBrowser`.
-Both functions share the same signature.
-
-```javascript
-import {
-  initialize,
-  InAppBrowser
-} from "@matt-block/react-native-in-app-browser";
-
-// New usage.
-InAppBrowser.configure({
-  android: {
-    toolbarColor: "red",
-    showTitle: true
-  }
-});
-
-// Deprecated.
-initialize({
-  android: {
-    toolbarColor: "red",
-    showTitle: true
-  }
-});
-```
-
-### closeInAppInstance
-
-This function is now exposed as the method `close` of the object `InAppBrowser`.
-Both functions share the same signature.
-
-```javascript
-import {
-  closeInAppInstance,
-  InAppBrowser
-} from "@matt-block/react-native-in-app-browser";
-
-// New usage.
-InAppBrowser.close();
-
-// Deprecated.
-closeInAppInstance();
 ```
 
 ## License
