@@ -1,6 +1,6 @@
 {
   "name": "@matt-block/react-native-in-app-browser",
-  "version": "2.0.0-rc.1",
+  "version": "2.0.0-rc.9",
   "description": "React Native in-app browser",
   "keywords": [
     "in-app",
@@ -21,7 +21,7 @@
   },
   "bugs": "https://github.com/matt-block/react-native-in-app-browser/issues",
   "homepage": "https://github.com/matt-block/react-native-in-app-browser#readme",
-  "author": "Matei Bogdan Radu <matei.radu.92@gmail.com>",
+  "author": "Matei Bogdan Radu <opensource@mateiradu.dev>",
   "license": "MIT",
   "private": false,
   "scripts": {
