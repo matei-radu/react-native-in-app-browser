@@ -51,7 +51,7 @@ note.
 
 ## Usage
 
-> ⚠️ Still using version 1.x? [Migrate from 1.x to 2.x](https://github.com/matt-block/react-native-in-app-browser/wiki/Migrating-from-1.x-to-2.x).
+> ⚠️ Still using version 1.x? [Migrate from 1.x to 2.x](https://github.com/matei-radu/react-native-in-app-browser/wiki/Migrating-from-1.x-to-2.x).
 
 ```javascript
 import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
@@ -187,7 +187,7 @@ Simply clone this repository, navigate into `example`, install the dependencies
 and run the app.
 
 ```sh
-git clone https://github.com/matt-block/react-native-in-app-browser.git
+git clone https://github.com/matei-radu/react-native-in-app-browser.git
 cd react-native-in-app-browser/example
 npm install #or yarn install
 $ react-native run-android #or react-native run-ios
@@ -205,16 +205,16 @@ This source code is licensed under the MIT license found in the
 [chromecustomtabs]: https://developer.chrome.com/multidevice/android/customtabs
 [customtabsmanualclose]: https://stackoverflow.com/a/41596629/1887860
 [sfsafariviewcontroller]: https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller
-[license]: https://github.com/matt-block/react-native-in-app-browser/blob/master/LICENSE
+[license]: https://github.com/matei-radu/react-native-in-app-browser/blob/master/LICENSE
 [license_shield]: https://img.shields.io/badge/license-MIT-blue.svg
 [prettier_shield]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
 [prettier]: https://github.com/prettier/prettier
 [npm]: https://www.npmjs.com/package/@matt-block/react-native-in-app-browser
 [npm_shield]: https://img.shields.io/npm/v/@matt-block/react-native-in-app-browser.svg
-[circleci]: https://circleci.com/gh/matt-block/react-native-in-app-browser/tree/master
-[circleci_shield]: https://circleci.com/gh/matt-block/react-native-in-app-browser/tree/master.svg?style=shield
-[codeclimate_main]: https://codeclimate.com/github/matt-block/react-native-in-app-browser/maintainability
-[codeclimate_main_shield]: https://img.shields.io/codeclimate/maintainability/matt-block/react-native-in-app-browser.svg
-[codeclimate_cov]: https://codeclimate.com/github/matt-block/react-native-in-app-browser/test_coverage
-[codeclimate_cov_shield]: https://img.shields.io/codeclimate/coverage/matt-block/react-native-in-app-browser.svg
+[circleci]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master
+[circleci_shield]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master.svg?style=shield
+[codeclimate_main]: https://codeclimate.com/github/matei-radu/react-native-in-app-browser/maintainability
+[codeclimate_main_shield]: https://img.shields.io/codeclimate/maintainability/matei-radu/react-native-in-app-browser.svg
+[codeclimate_cov]: https://codeclimate.com/github/matei-radu/react-native-in-app-browser/test_coverage
+[codeclimate_cov_shield]: https://img.shields.io/codeclimate/coverage/matei-radu/react-native-in-app-browser.svg
 [tinycolor]: https://github.com/bgrins/TinyColor
