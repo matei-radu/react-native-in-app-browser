@@ -707,10 +707,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@matt-block/react-native-in-app-browser@^1.4.0-rc.0":
-  version "1.4.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@matt-block/react-native-in-app-browser/-/react-native-in-app-browser-1.4.0-rc.0.tgz#42cd6a09824eebe934003aca7ea107fe3e96e0db"
-  integrity sha512-hIwqCXpL0ypoSO7xSmSxctyyJ+eVJ/yB5aZ/9Jxtx1G1xuB7wn9HmTqraN1GlAlycEEBjWZqtZjHsiLB05QFMA==
+"@matt-block/react-native-in-app-browser@^2.0.0-rc.10":
+  version "2.0.0-rc.10"
+  resolved "https://registry.yarnpkg.com/@matt-block/react-native-in-app-browser/-/react-native-in-app-browser-2.0.0-rc.10.tgz#bc88e1b5007210288e7765435c00f2c9ac1ffbf2"
+  integrity sha512-YN6JJ63O9VbWJiE0ZIIJgVrEcfBjcLi2IdNE5KglfObmOldIQmTbIrYEayoFUKO7Yy/QZhDzOCWnO7A9Asb0wg==
   dependencies:
     tinycolor2 "^1.4.1"
 
