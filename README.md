@@ -51,11 +51,7 @@ note.
 
 ## Usage
 
-> ⚠️ Some functions have been deprecated in favor of an object-wrapping approach
-> to expose functionalities (see rationale [here](https://github.com/matt-block/react-native-in-app-browser/issues/19)).
-> Update your projects to use the new preferred
-> approach showcased in this section and check the [Deprecated Features](#deprecated-features) section
-> for migration details.
+> ⚠️ Still using version 1.x? [Migrate from 1.x to 2.x](https://github.com/matei-radu/react-native-in-app-browser/wiki/Migrating-from-1.x-to-2.x).
 
 ```javascript
 import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
@@ -191,91 +187,10 @@ Simply clone this repository, navigate into `example`, install the dependencies
 and run the app.
 
 ```sh
-git clone https://github.com/matt-block/react-native-in-app-browser.git
+git clone https://github.com/matei-radu/react-native-in-app-browser.git
 cd react-native-in-app-browser/example
 npm install #or yarn install
 $ react-native run-android #or react-native run-ios
-```
-
-## Deprecated features
-
-Some functions have been deprecated and will be removed in version `2.0.0` which
-is scheduled for release on June 1st 2019. You can check the rationale behind
-these braking changes [here](https://github.com/matt-block/react-native-in-app-browser/issues/19).
-
-The affected features are:
-
-- `openInApp`
-- `initialize`
-- `closeInAppInstance`
-
-Below are migration paths for the deprecated features.
-
-### openInApp
-
-This function is now exposed as the method `open` of the object `InAppBrowser`.
-Both functions share the same signature.
-
-```javascript
-import openInApp, {
-  InAppBrowser
-} from "@matt-block/react-native-in-app-browser";
-
-// New usage.
-InAppBrowser.open("https://www.wikipedia.org/").catch(error => {
-  console.log(error);
-});
-
-// Deprecated.
-openInApp("https://www.wikipedia.org/").catch(error => {
-  console.log(error);
-});
-```
-
-### initialize
-
-This function is now exposed as the method `configure` of the object `InAppBrowser`.
-Both functions share the same signature.
-
-```javascript
-import {
-  initialize,
-  InAppBrowser
-} from "@matt-block/react-native-in-app-browser";
-
-// New usage.
-InAppBrowser.configure({
-  android: {
-    toolbarColor: "red",
-    showTitle: true
-  }
-});
-
-// Deprecated.
-initialize({
-  android: {
-    toolbarColor: "red",
-    showTitle: true
-  }
-});
-```
-
-### closeInAppInstance
-
-This function is now exposed as the method `close` of the object `InAppBrowser`.
-Both functions share the same signature.
-
-```javascript
-import {
-  closeInAppInstance,
-  InAppBrowser
-} from "@matt-block/react-native-in-app-browser";
-
-// New usage.
-InAppBrowser.close();
-
-// Deprecated.
-closeInAppInstance();
 ```
 
 ## License
@@ -290,16 +205,16 @@ This source code is licensed under the MIT license found in the
 [chromecustomtabs]: https://developer.chrome.com/multidevice/android/customtabs
 [customtabsmanualclose]: https://stackoverflow.com/a/41596629/1887860
 [sfsafariviewcontroller]: https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller
-[license]: https://github.com/matt-block/react-native-in-app-browser/blob/master/LICENSE
+[license]: https://github.com/matei-radu/react-native-in-app-browser/blob/master/LICENSE
 [license_shield]: https://img.shields.io/badge/license-MIT-blue.svg
 [prettier_shield]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
 [prettier]: https://github.com/prettier/prettier
 [npm]: https://www.npmjs.com/package/@matt-block/react-native-in-app-browser
 [npm_shield]: https://img.shields.io/npm/v/@matt-block/react-native-in-app-browser.svg
-[circleci]: https://circleci.com/gh/matt-block/react-native-in-app-browser/tree/master
-[circleci_shield]: https://circleci.com/gh/matt-block/react-native-in-app-browser/tree/master.svg?style=shield
-[codeclimate_main]: https://codeclimate.com/github/matt-block/react-native-in-app-browser/maintainability
-[codeclimate_main_shield]: https://img.shields.io/codeclimate/maintainability/matt-block/react-native-in-app-browser.svg
-[codeclimate_cov]: https://codeclimate.com/github/matt-block/react-native-in-app-browser/test_coverage
-[codeclimate_cov_shield]: https://img.shields.io/codeclimate/coverage/matt-block/react-native-in-app-browser.svg
+[circleci]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master
+[circleci_shield]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master.svg?style=shield
+[codeclimate_main]: https://codeclimate.com/github/matei-radu/react-native-in-app-browser/maintainability
+[codeclimate_main_shield]: https://img.shields.io/codeclimate/maintainability/matei-radu/react-native-in-app-browser.svg
+[codeclimate_cov]: https://codeclimate.com/github/matei-radu/react-native-in-app-browser/test_coverage
+[codeclimate_cov_shield]: https://img.shields.io/codeclimate/coverage/matei-radu/react-native-in-app-browser.svg
 [tinycolor]: https://github.com/bgrins/TinyColor
