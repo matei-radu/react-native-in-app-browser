@@ -18,13 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - iOS podspec file has been updated to support React Native `0.60.0`.
-
-## [2.0.0] - 2019-06-01
-
-### Changed
-
 - Bump Kotlin to version `1.3.31`.
 - Remove explicit Android Build Tools version from Gradle configuration.
+
+## [2.0.0] - 2019-06-01
 
 ### Removed
 
