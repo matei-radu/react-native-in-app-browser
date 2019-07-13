@@ -1,6 +1,6 @@
 # React Native In-App Browser
 
-[![npm (scoped)][npm_shield]][npm] [![CircleCI][circleci_shield]][circleci] [![Code Climate Maintainability][codeclimate_main_shield]][codeclimate_main] [![Code Climate Test Coverage][codeclimate_cov_shield]][codeclimate_cov] ![license: mit][license_shield]
+[![npm (scoped)][npm_shield]][npm] [![CircleCI][circleci_shield]][circleci] ![license: mit][license_shield]
 
 In-App browser support for React Native, using [Chrome Custom Tabs][chromecustomtabs]
 on Android
@@ -19,23 +19,38 @@ from the compatibility table below (if available):
 
 |  React Native   | Library |
 | :-------------: | :-----: |
-| 0.57.0 - 0.59.x | latest  |
+|     0.60.x      | latest  |
+| 0.57.0 - 0.59.x |  2.0.0  |
+
+**Using Expo?** Check out [WebBrowser](https://docs.expo.io/versions/latest/sdk/webbrowser/).
 
 ## Installation
 
 Install the package via Yarn or npm:
 
-```
+```sh
 yarn add @matt-block/react-native-in-app-browser
 
-// or
-
+# or
 npm install --save @matt-block/react-native-in-app-browser
 ```
 
-Proceed to link the native module to your project:
+## Linking
 
+### React Native `0.60.0` and later
+
+Packages are [autolinked](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md),
+however an extra step for iOS projects is needed:
+
+```sh
+cd ios && pod install && cd ..
 ```
+
+### React Native `0.59.x` and below
+
+Manually link the native module to your project:
+
+```sh
 react-native link @matt-block/react-native-in-app-browser
 ```
 
@@ -51,7 +66,7 @@ note.
 
 ## Usage
 
-> ⚠️ Still using version 1.x? [Migrate from 1.x to 2.x](https://github.com/matei-radu/react-native-in-app-browser/wiki/Migrating-from-1.x-to-2.x).
+> ⚠️ Still using an older version ? Check out the [migration guides](https://github.com/matei-radu/react-native-in-app-browser/wiki/Migration-Guides).
 
 ```javascript
 import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
@@ -213,8 +228,4 @@ This source code is licensed under the MIT license found in the
 [npm_shield]: https://img.shields.io/npm/v/@matt-block/react-native-in-app-browser.svg
 [circleci]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master
 [circleci_shield]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master.svg?style=shield
-[codeclimate_main]: https://codeclimate.com/github/matei-radu/react-native-in-app-browser/maintainability
-[codeclimate_main_shield]: https://img.shields.io/codeclimate/maintainability/matei-radu/react-native-in-app-browser.svg
-[codeclimate_cov]: https://codeclimate.com/github/matei-radu/react-native-in-app-browser/test_coverage
-[codeclimate_cov_shield]: https://img.shields.io/codeclimate/coverage/matei-radu/react-native-in-app-browser.svg
 [tinycolor]: https://github.com/bgrins/TinyColor
