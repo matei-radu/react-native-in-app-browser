@@ -22,6 +22,8 @@ from the compatibility table below (if available):
 |     0.60.x      | latest  |
 | 0.57.0 - 0.59.x |  2.0.0  |
 
+**Using Expo?** Check out [WebBrowser](https://docs.expo.io/versions/latest/sdk/webbrowser/).
+
 ## Installation
 
 Install the package via Yarn or npm:
