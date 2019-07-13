@@ -19,7 +19,8 @@ from the compatibility table below (if available):
 
 |  React Native   | Library |
 | :-------------: | :-----: |
-| 0.57.0 - 0.59.x | latest  |
+|     0.60.x      | latest  |
+| 0.57.0 - 0.59.x |  2.0.0  |
 
 ## Installation
 
@@ -33,7 +34,7 @@ yarn add @matt-block/react-native-in-app-browser
 npm install --save @matt-block/react-native-in-app-browser
 ```
 
-Proceed to link the native module to your project:
+**Only for React Native `0.59.x` and below**: link the native module to your project:
 
 ```
 react-native link @matt-block/react-native-in-app-browser
