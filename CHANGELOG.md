@@ -5,7 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2019-07-13
+
+### Added
+
+- Compatibility with React Native `0.60.0` and, with it, [autolinking](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md): no need to manually link anymore.
+
+### Removed
+
+- Compatibility with React Native versions below `0.60.0`. If you need to use an older version of React Native, check the [compatibility table](https://github.com/matei-radu/react-native-in-app-browser#compatibility) to use the appropriate package.
+
+### Changed
+
+- iOS podspec file has been updated to support React Native `0.60.0`.
+
 ## [2.0.0] - 2019-06-01
+
+### Changed
+
+- Bump Kotlin to version `1.3.31`.
+- Remove explicit Android Build Tools version from Gradle configuration.
 
 ### Removed
 
@@ -137,6 +156,7 @@ The following functions have been deprecated. Please see
 
 - `openInApp`: open a valid http(s) URL with an in-app browser.
 
+[3.0.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.4.1...v2.0.0
 [1.4.1]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.3.0...v1.4.0
