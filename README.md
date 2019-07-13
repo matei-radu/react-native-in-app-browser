@@ -26,17 +26,29 @@ from the compatibility table below (if available):
 
 Install the package via Yarn or npm:
 
-```
+```sh
 yarn add @matt-block/react-native-in-app-browser
 
-// or
-
+# or
 npm install --save @matt-block/react-native-in-app-browser
 ```
 
-**Only for React Native `0.59.x` and below**: link the native module to your project:
+## Linking
 
+### React Native `0.60.0` and later
+
+Packages are [autolinked](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md),
+however an extra step for iOS projects is needed:
+
+```sh
+cd ios && pod install && cd ..
 ```
+
+### React Native `0.59.x` and below
+
+Manually link the native module to your project:
+
+```sh
 react-native link @matt-block/react-native-in-app-browser
 ```
 
@@ -52,7 +64,7 @@ note.
 
 ## Usage
 
-> ⚠️ Still using version 1.x? [Migrate from 1.x to 2.x](https://github.com/matei-radu/react-native-in-app-browser/wiki/Migrating-from-1.x-to-2.x).
+> ⚠️ Still using an older version ? Check out the [migration guides](https://github.com/matei-radu/react-native-in-app-browser/wiki/Migration-Guides).
 
 ```javascript
 import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
