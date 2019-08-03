@@ -7,13 +7,15 @@
 
 package com.mattblock.reactnative.inappbrowser
 
+import android.content.ComponentName
 import android.content.pm.ApplicationInfo
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsClient
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.browser.customtabs.CustomTabsServiceConnection
 
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
@@ -43,6 +45,21 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
 
                 "com.sec.android.app.sbrowser"  // Samsung Internet
         )
+    }
+
+    private var mClient: CustomTabsClient? = null
+
+    init {
+        val packageName = getPreferredBrowserPackageName()
+        CustomTabsClient.bindCustomTabsService(context, packageName, object : CustomTabsServiceConnection() {
+            override fun onCustomTabsServiceConnected(name: ComponentName, client: CustomTabsClient) {
+                mClient = client
+            }
+
+            override fun onServiceDisconnected(name: ComponentName) {
+                mClient = null
+            }
+        })
     }
 
     override fun getName() = "RNInAppBrowser"
