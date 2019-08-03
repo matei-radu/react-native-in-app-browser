@@ -13,6 +13,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.browser.customtabs.CustomTabsClient
 
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
@@ -29,6 +30,19 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
         private const val SETTING_SHOW_TITLE = "showTitle"
         private const val SETTING_CLOSE_BUTTON = "closeButtonIcon"
         private const val SETTING_SHARE_MENU = "addDefaultShareMenu"
+
+        private val CUSTOMTABS_BROWSERS = listOf(
+                "com.android.chrome",           // Google Chrome - Stable
+                "com.chrome.beta",              // Google Chrome - Beta
+                "com.chrome.dev",               // Google Chrome - Dev
+                "com.chrome.canary",            // Google Chrome - Canary
+
+                "org.mozilla.firefox",          // Mozilla Firefox - Stable
+                "org.mozilla.firefox_beta",     // Mozilla Firefox - Beta
+                "org.mozilla.fennec_aurora",    // Mozilla Firefox - Nightly
+
+                "com.sec.android.app.sbrowser"  // Samsung Internet
+        )
     }
 
     override fun getName() = "RNInAppBrowser"
@@ -91,11 +105,14 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
     private fun getBitmapFromDrawable(drawableName: String): Bitmap? {
         return this.currentActivity?.let { activity ->
             BitmapFactory.decodeResource(
-                activity.resources,
-                activity.resources?.getIdentifier(drawableName, "drawable", activity.packageName)!!
+                    activity.resources,
+                    activity.resources?.getIdentifier(drawableName, "drawable", activity.packageName)!!
             )
         }
     }
+
+    private fun getPreferredBrowserPackageName() =
+            CustomTabsClient.getPackageName(this.reactApplicationContext, CUSTOMTABS_BROWSERS)
 
     /**
      * Since this is a separate module, [BuildConfig.DEBUG] is not reliable.
