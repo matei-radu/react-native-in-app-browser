@@ -45,6 +45,21 @@ class InAppBrowser {
   }
 
   /**
+   * Tell the browser of a likely future navigation to a URL.
+   *
+   * All previous calls to this method will be deprioritized.
+   *
+   * This feature is Android only.
+   */
+  static async mayLaunchUrl(url: string): Promise<boolean> {
+    if (Platform.OS === "android") {
+      return NativeModules.RNInAppBrowser.mayLaunchUrl(url);
+    }
+
+    return false;
+  }
+
+  /**
    * Configure the platform-specific settings for the in-app browser
    * experience.
    *

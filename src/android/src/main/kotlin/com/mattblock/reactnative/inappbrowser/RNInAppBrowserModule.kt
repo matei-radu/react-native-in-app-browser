@@ -13,14 +13,9 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
-import androidx.browser.customtabs.CustomTabsClient
-import androidx.browser.customtabs.CustomTabsIntent
-import androidx.browser.customtabs.CustomTabsServiceConnection
+import androidx.browser.customtabs.*
 
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.bridge.*
 import com.facebook.react.uimanager.PixelUtil
 
 import java.io.IOException
@@ -48,16 +43,19 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
     }
 
     private var mClient: CustomTabsClient? = null
+    private var mSession: CustomTabsSession? = null
 
     init {
         val packageName = getPreferredBrowserPackageName()
         CustomTabsClient.bindCustomTabsService(context, packageName, object : CustomTabsServiceConnection() {
             override fun onCustomTabsServiceConnected(name: ComponentName, client: CustomTabsClient) {
                 mClient = client
+                mSession = client.newSession(CustomTabsCallback())
             }
 
             override fun onServiceDisconnected(name: ComponentName) {
                 mClient = null
+                mSession = null
             }
         })
     }
@@ -66,7 +64,7 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
 
     @ReactMethod
     fun openInApp(url: String, settings: ReadableMap) {
-        val builder = CustomTabsIntent.Builder()
+        val builder = CustomTabsIntent.Builder(mSession)
 
         if (settings.hasKey(SETTING_COLOR)) {
             val color = Color.parseColor(settings.getString(SETTING_COLOR))
@@ -97,6 +95,10 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
         val customTabsIntent = builder.build()
         customTabsIntent.launchUrl(currentActivity, Uri.parse(url))
     }
+
+    @ReactMethod
+    fun mayLaunchUrl(url: String, promise: Promise) =
+            promise.resolve(mSession?.mayLaunchUrl(Uri.parse(url), null, null) ?: false)
 
     private fun getBitmapFromUriOrDrawable(uriOrDrawable: String): Bitmap? {
         return if (isDebug()) {
