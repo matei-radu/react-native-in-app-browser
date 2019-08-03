@@ -13,6 +13,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
+import android.os.Bundle
 import androidx.browser.customtabs.*
 
 import com.facebook.react.bridge.*
@@ -106,8 +107,10 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
     }
 
     @ReactMethod
-    fun mayLaunchUrl(url: String, promise: Promise) =
-            promise.resolve(mSession?.mayLaunchUrl(Uri.parse(url), null, null) ?: false)
+    fun mayLaunchUrl(url: String, otherLikelyUrls: ReadableArray, promise: Promise) {
+        val additionalUris = createOtherLikelyUrlBundles(otherLikelyUrls)
+        promise.resolve(mSession?.mayLaunchUrl(Uri.parse(url), null, additionalUris) ?: false)
+    }
 
     private fun getBitmapFromUriOrDrawable(uriOrDrawable: String): Bitmap? {
         return if (isDebug()) {
@@ -141,6 +144,18 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
 
     private fun getPreferredBrowserPackageName() =
             CustomTabsClient.getPackageName(this.reactApplicationContext, CUSTOMTABS_BROWSERS)
+
+    private fun createOtherLikelyUrlBundles(otherLikelyUrls: ReadableArray): List<Bundle>? {
+        if (otherLikelyUrls.size() == 0) {
+            return null
+        }
+
+        return List(otherLikelyUrls.size()) {
+            val bundle = Bundle()
+            bundle.putString("url", otherLikelyUrls.getString(it))
+            bundle
+        }
+    }
 
     /**
      * Since this is a separate module, [BuildConfig.DEBUG] is not reliable.

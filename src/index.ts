@@ -68,13 +68,24 @@ class InAppBrowser {
   /**
    * Tell the browser of a likely future navigation to a URL.
    *
-   * All previous calls to this method will be deprioritized.
+   * The method `warmup()` has to be called beforehand.
+   *
+   * Optionally, a list of other likely URLs can be provided. They are treated
+   * as less likely than the first one, and have to be sorted in decreasing
+   * priority order. These additional URLs may be ignored.All previous calls to
+   * this method will be deprioritized.
    *
    * This feature is Android only.
    */
-  static async mayLaunchUrl(url: string): Promise<boolean> {
+  static async mayLaunchUrl(
+    url: string,
+    additionalUrls?: string[]
+  ): Promise<boolean> {
     if (Platform.OS === "android") {
-      return NativeModules.RNInAppBrowser.mayLaunchUrl(url);
+      return NativeModules.RNInAppBrowser.mayLaunchUrl(
+        url,
+        additionalUrls ? additionalUrls : []
+      );
     }
 
     return false;
