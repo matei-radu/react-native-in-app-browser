@@ -45,6 +45,27 @@ class InAppBrowser {
   }
 
   /**
+   * Warm up the browser process.
+   *
+   * Allows the browser application to pre-initialize itself in the background.
+   * Significantly speeds up URL opening in the browser. This is asynchronous
+   * and can be called several times.
+   *
+   * This feature is Android only.
+   */
+  static async warmup(): Promise<boolean> {
+    if (Platform.OS === "android") {
+      try {
+        return NativeModules.RNInAppBrowser.warmup();
+      } catch (e) {
+        return false;
+      }
+    }
+
+    return false;
+  }
+
+  /**
    * Tell the browser of a likely future navigation to a URL.
    *
    * All previous calls to this method will be deprioritized.

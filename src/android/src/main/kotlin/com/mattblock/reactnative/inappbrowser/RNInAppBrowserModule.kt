@@ -97,6 +97,15 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
     }
 
     @ReactMethod
+    fun warmup(promise: Promise) {
+        try {
+            promise.resolve(mClient!!.warmup(0))
+        } catch (e: NullPointerException) {
+            promise.reject(e)
+        }
+    }
+
+    @ReactMethod
     fun mayLaunchUrl(url: String, promise: Promise) =
             promise.resolve(mSession?.mayLaunchUrl(Uri.parse(url), null, null) ?: false)
 
