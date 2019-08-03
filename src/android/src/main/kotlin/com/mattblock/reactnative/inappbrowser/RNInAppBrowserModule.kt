@@ -7,17 +7,16 @@
 
 package com.mattblock.reactnative.inappbrowser
 
+import android.content.ComponentName
 import android.content.pm.ApplicationInfo
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
-import androidx.browser.customtabs.CustomTabsIntent
+import android.os.Bundle
+import androidx.browser.customtabs.*
 
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.bridge.*
 import com.facebook.react.uimanager.PixelUtil
 
 import java.io.IOException
@@ -29,13 +28,44 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
         private const val SETTING_SHOW_TITLE = "showTitle"
         private const val SETTING_CLOSE_BUTTON = "closeButtonIcon"
         private const val SETTING_SHARE_MENU = "addDefaultShareMenu"
+
+        private val CUSTOMTABS_BROWSERS = listOf(
+                "com.android.chrome",           // Google Chrome - Stable
+                "com.chrome.beta",              // Google Chrome - Beta
+                "com.chrome.dev",               // Google Chrome - Dev
+                "com.chrome.canary",            // Google Chrome - Canary
+
+                "org.mozilla.firefox",          // Mozilla Firefox - Stable
+                "org.mozilla.firefox_beta",     // Mozilla Firefox - Beta
+                "org.mozilla.fennec_aurora",    // Mozilla Firefox - Nightly
+
+                "com.sec.android.app.sbrowser"  // Samsung Internet
+        )
+    }
+
+    private var mClient: CustomTabsClient? = null
+    private var mSession: CustomTabsSession? = null
+
+    init {
+        val packageName = getPreferredBrowserPackageName()
+        CustomTabsClient.bindCustomTabsService(context, packageName, object : CustomTabsServiceConnection() {
+            override fun onCustomTabsServiceConnected(name: ComponentName, client: CustomTabsClient) {
+                mClient = client
+                mSession = client.newSession(CustomTabsCallback())
+            }
+
+            override fun onServiceDisconnected(name: ComponentName) {
+                mClient = null
+                mSession = null
+            }
+        })
     }
 
     override fun getName() = "RNInAppBrowser"
 
     @ReactMethod
     fun openInApp(url: String, settings: ReadableMap) {
-        val builder = CustomTabsIntent.Builder()
+        val builder = CustomTabsIntent.Builder(mSession)
 
         if (settings.hasKey(SETTING_COLOR)) {
             val color = Color.parseColor(settings.getString(SETTING_COLOR))
@@ -67,6 +97,21 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
         customTabsIntent.launchUrl(currentActivity, Uri.parse(url))
     }
 
+    @ReactMethod
+    fun warmup(promise: Promise) {
+        try {
+            promise.resolve(mClient!!.warmup(0))
+        } catch (e: NullPointerException) {
+            promise.reject(e)
+        }
+    }
+
+    @ReactMethod
+    fun mayLaunchUrl(url: String, otherLikelyUrls: ReadableArray, promise: Promise) {
+        val additionalUris = createOtherLikelyUrlBundles(otherLikelyUrls)
+        promise.resolve(mSession?.mayLaunchUrl(Uri.parse(url), null, additionalUris) ?: false)
+    }
+
     private fun getBitmapFromUriOrDrawable(uriOrDrawable: String): Bitmap? {
         return if (isDebug()) {
             getBitmapFromUri(uriOrDrawable)
@@ -91,9 +136,24 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
     private fun getBitmapFromDrawable(drawableName: String): Bitmap? {
         return this.currentActivity?.let { activity ->
             BitmapFactory.decodeResource(
-                activity.resources,
-                activity.resources?.getIdentifier(drawableName, "drawable", activity.packageName)!!
+                    activity.resources,
+                    activity.resources?.getIdentifier(drawableName, "drawable", activity.packageName)!!
             )
+        }
+    }
+
+    private fun getPreferredBrowserPackageName() =
+            CustomTabsClient.getPackageName(this.reactApplicationContext, CUSTOMTABS_BROWSERS)
+
+    private fun createOtherLikelyUrlBundles(otherLikelyUrls: ReadableArray): List<Bundle>? {
+        if (otherLikelyUrls.size() == 0) {
+            return null
+        }
+
+        return List(otherLikelyUrls.size()) {
+            val bundle = Bundle()
+            bundle.putString("url", otherLikelyUrls.getString(it))
+            bundle
         }
     }
 
