@@ -101,6 +101,19 @@ async onClickHandler() {
 }
 ```
 
+### Startup optimizations (Android only)
+
+Chrome Custom Tabs exposes methods to reduce the start time of a custom tab activity.
+
+For information on how these work, check [Custom Tabs - Example and Usage Optimization](https://chromium.googlesource.com/external/github.com/GoogleChrome/custom-tabs-client/+/08e2c9155aff7296428aae854769c30b4060ae88/README.md#optimization)
+
+```javascript
+import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
+
+InAppBrowser.warmup();
+InAppBrowser.mayLaunchUrl("https://wikipedia.org");
+```
+
 ### Programmatically close (iOS only)
 
 It is possible to manually dismiss the iOS in-app instance by calling the method `close`.
