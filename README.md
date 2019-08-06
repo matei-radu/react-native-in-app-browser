@@ -17,10 +17,10 @@ This library will always target the most recent React Native package. If you are
 using an older release of React Native, use the correct version of this library
 from the compatibility table below (if available):
 
-|  React Native   | Library |
-| :-------------: | :-----: |
-|     0.60.x      | latest  |
-| 0.57.0 - 0.59.x |  2.0.0  |
+|  React Native   |                  Library                  |
+| :-------------: | :---------------------------------------: |
+|     0.60.x      |    [![npm (scoped)][npm_shield]][npm]     |
+| 0.57.0 - 0.59.x | [![npm v2 (scoped)][npm_2_shield]][npm_2] |
 
 **Using Expo?** Check out [WebBrowser](https://docs.expo.io/versions/latest/sdk/webbrowser/).
 
@@ -239,6 +239,8 @@ This source code is licensed under the MIT license found in the
 [prettier]: https://github.com/prettier/prettier
 [npm]: https://www.npmjs.com/package/@matt-block/react-native-in-app-browser
 [npm_shield]: https://img.shields.io/npm/v/@matt-block/react-native-in-app-browser.svg
+[npm_2]: https://www.npmjs.com/package/@matt-block/react-native-in-app-browser/v/2.1.0
+[npm_2_shield]: https://img.shields.io/badge/npm-v2.1.0-blue
 [circleci]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master
 [circleci_shield]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master.svg?style=shield
 [tinycolor]: https://github.com/bgrins/TinyColor
