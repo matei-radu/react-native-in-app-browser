@@ -14,7 +14,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import androidx.browser.customtabs.*
+import android.support.customtabs.*
 
 import com.facebook.react.bridge.*
 import com.facebook.react.uimanager.PixelUtil
