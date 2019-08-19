@@ -48,17 +48,23 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
 
     init {
         val packageName = getPreferredBrowserPackageName()
-        CustomTabsClient.bindCustomTabsService(context, packageName, object : CustomTabsServiceConnection() {
-            override fun onCustomTabsServiceConnected(name: ComponentName, client: CustomTabsClient) {
-                mClient = client
-                mSession = client.newSession(CustomTabsCallback())
-            }
 
-            override fun onServiceDisconnected(name: ComponentName) {
-                mClient = null
-                mSession = null
-            }
-        })
+        // The device could have no Custom Tabs compatible browser, in which case `packageName`
+        // will be null.
+        // See https://github.com/matei-radu/react-native-in-app-browser/issues/75
+        packageName?.let { it ->
+            CustomTabsClient.bindCustomTabsService(context, it, object : CustomTabsServiceConnection() {
+                override fun onCustomTabsServiceConnected(name: ComponentName, client: CustomTabsClient) {
+                    mClient = client
+                    mSession = client.newSession(CustomTabsCallback())
+                }
+    
+                override fun onServiceDisconnected(name: ComponentName) {
+                    mClient = null
+                    mSession = null
+                }
+            })
+        }
     }
 
     override fun getName() = "RNInAppBrowser"
@@ -102,7 +108,7 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
         try {
             promise.resolve(mClient!!.warmup(0))
         } catch (e: NullPointerException) {
-            promise.reject(e)
+            promise.resolve(e)
         }
     }
 
