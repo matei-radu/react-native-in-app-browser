@@ -1,6 +1,6 @@
 {
   "name": "@matt-block/react-native-in-app-browser",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "React Native in-app browser",
   "keywords": [
     "in-app",
@@ -27,10 +27,6 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --config jestconfig.json",
-    "prepack": "run-s test build prepack:script",
-    "prepack:script": "ts-node scripts/prepack.ts",
-    "postpack": "ts-node scripts/postpack.ts",
-    "prepare": "install-self-peers -- --ignore-scripts",
     "husky:pre-commit": "run-s husky:rc-bump husky:lint",
     "husky:rc-bump": "ts-node scripts/rcBump.ts",
     "husky:lint": "lint-staged",
