@@ -57,7 +57,9 @@ class RNInAppBrowser: NSObject {
 
     @objc(closeInApp)
     func closeInApp() -> Void {
-        presentedSafariVC?.dismiss(animated: true)
+        DispatchQueue.main.async {
+            self.presentedSafariVC?.dismiss(animated: true)
+        }
     }
     
     /// See [Difference requiresMainQueueSetup and dispatch_get_main_queue?](https://stackoverflow.com/a/50775641)
