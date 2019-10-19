@@ -1,6 +1,6 @@
 {
   "name": "@matt-block/react-native-in-app-browser",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "React Native in-app browser",
   "keywords": [
     "in-app",
@@ -60,7 +60,7 @@
   },
   "peerDependencies": {
     "react": "^16.5.0",
-    "react-native": "^0.60.0"
+    "react-native": ">= 0.60.0"
   },
   "husky": {
     "hooks": {
