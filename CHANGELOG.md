@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Compatibility with React Native `0.61.0`.
+- Flow typings for Android `warmup` and `mayLaunchUrl` methods.
 
 ### Fixed
 
