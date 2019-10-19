@@ -239,7 +239,7 @@ This source code is licensed under the MIT license found in the
 [prettier]: https://github.com/prettier/prettier
 [npm]: https://www.npmjs.com/package/@matt-block/react-native-in-app-browser
 [npm_shield]: https://img.shields.io/npm/v/@matt-block/react-native-in-app-browser/latest
-[npm_2]: https://www.npmjs.com/package/@matt-block/react-native-in-app-browser/v/2.1.2
+[npm_2]: https://www.npmjs.com/package/@matt-block/react-native-in-app-browser/v/2.1.3
 [npm_2_shield]: https://img.shields.io/npm/v/@matt-block/react-native-in-app-browser/legacy
 [circleci]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master
 [circleci_shield]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master.svg?style=shield

@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [3.1.2] - 2019-10-19
 
 ### Added
 
@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- On iOS, `threading violation` exception thrown while invoking `closeInApp`.
+- On iOS, `threading violation` exception thrown while invoking `closeInApp` (thanks to [@fonov](https://github.com/fonov)).
 
 ## [3.1.1] - 2019-09-01
 
@@ -176,19 +176,20 @@ The following functions have been deprecated. Please see
 
 - `openInApp`: open a valid http(s) URL with an in-app browser.
 
-[3.1.1]: https://github.com/matt-block/react-native-in-app-browser/compare/v3.1.0...v3.1.1
-[3.1.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v3.0.0...v3.1.0
-[3.0.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v2.0.0...v3.0.0
-[2.0.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.4.1...v2.0.0
-[1.4.1]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.4.0...v1.4.1
-[1.4.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.3.0...v1.4.0
-[1.3.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.2.7...v1.3.0
-[1.2.7]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.2.4...v1.2.7
-[1.2.4]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.2.1...v1.2.4
-[1.2.1]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.2.0...v1.2.1
-[1.2.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.1.2...v1.2.0
-[1.1.2]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.1.1...v1.1.2
-[1.1.1]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.1.0...v1.1.1
-[1.1.0]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.0.1...v1.1.0
-[1.0.1]: https://github.com/matt-block/react-native-in-app-browser/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/matt-block/react-native-in-app-browser/compare/f06ef51f19295b73f8b51a8ba21932bf87fcb4a8...v1.0.0
+[3.1.2]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.1.1...v3.1.2
+[3.1.1]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.1.0...v3.1.1
+[3.1.0]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.0.0...v3.1.0
+[3.0.0]: https://github.com/matei-radu/react-native-in-app-browser/compare/v2.0.0...v3.0.0
+[2.0.0]: https://github.com/matei-radu/react-native-in-app-browser/compare/v1.4.1...v2.0.0
+[1.4.1]: https://github.com/matei-radu/react-native-in-app-browser/compare/v1.4.0...v1.4.1
+[1.4.0]: https://github.com/matei-radu/react-native-in-app-browser/compare/v1.3.0...v1.4.0
+[1.3.0]: https://github.com/matei-radu/react-native-in-app-browser/compare/v1.2.7...v1.3.0
+[1.2.7]: https://github.com/matei-radu/react-native-in-app-browser/compare/v1.2.4...v1.2.7
+[1.2.4]: https://github.com/matei-radu/react-native-in-app-browser/compare/v1.2.1...v1.2.4
+[1.2.1]: https://github.com/matei-radu/react-native-in-app-browser/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/matei-radu/react-native-in-app-browser/compare/v1.1.2...v1.2.0
+[1.1.2]: https://github.com/matei-radu/react-native-in-app-browser/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/matei-radu/react-native-in-app-browser/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/matei-radu/react-native-in-app-browser/compare/v1.0.1...v1.1.0
+[1.0.1]: https://github.com/matei-radu/react-native-in-app-browser/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/matei-radu/react-native-in-app-browser/compare/f06ef51f19295b73f8b51a8ba21932bf87fcb4a8...v1.0.0
