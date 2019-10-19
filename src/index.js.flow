@@ -30,5 +30,7 @@ export type Settings = {|
 declare export class InAppBrowser {
   static open(url: string, settings?: Settings): Promise<void>;
   static close(): void;
+  static warmup(): Promise<boolean>;
+  static mayLaunchUrl(url: string, additionalUrls?: string[]): Promise<boolean>;
   static configure(settings: Settings): void;
 }
