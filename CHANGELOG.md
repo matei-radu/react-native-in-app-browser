@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Flow typings for Android `warmup` and `mayLaunchUrl` methods.
 
+### Fixed
+
+- On iOS, `threading violation` exception thrown while invoking `closeInApp`.
+
 ## [2.1.2] - 2019-09-01
 
 ### Fixed
