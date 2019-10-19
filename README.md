@@ -21,6 +21,7 @@ from the compatibility table below (if available):
 | :---------------: | :---------------------------------------: | :--------: | :---------: |
 |    `>= 0.60.0`    |    [![npm (scoped)][npm_shield]][npm]     | **Active** | Not planned |
 | `0.57.x - 0.59.x` | [![npm v2 (scoped)][npm_2_shield]][npm_2] | **Active** | 2020-01-03  |
+| `0.57.x - 0.59.5` | [![npm v1 (scoped)][npm_1_shield]][npm_1] |  **EOL**   | 2019-06-09  |
 
 **Using Expo?** Check out [WebBrowser](https://docs.expo.io/versions/latest/sdk/webbrowser/).
 
@@ -241,6 +242,8 @@ This source code is licensed under the MIT license found in the
 [npm_shield]: https://img.shields.io/npm/v/@matt-block/react-native-in-app-browser/latest
 [npm_2]: https://www.npmjs.com/package/@matt-block/react-native-in-app-browser/v/2.1.2
 [npm_2_shield]: https://img.shields.io/npm/v/@matt-block/react-native-in-app-browser/legacy
+[npm_1]: https://www.npmjs.com/package/@matt-block/react-native-in-app-browser/v/1.4.1
+[npm_1_shield]: https://img.shields.io/badge/npm-v1.4.1-blue
 [circleci]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master
 [circleci_shield]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master.svg?style=shield
 [tinycolor]: https://github.com/bgrins/TinyColor
