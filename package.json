@@ -75,8 +75,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,flow,ts,json,css,md}": [
-      "prettier --write",
+    "*.{js,ts,tsx}": [
+      "yarn eslint --fix",
       "git add"
     ]
   },
