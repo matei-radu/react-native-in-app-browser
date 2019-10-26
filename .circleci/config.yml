@@ -48,13 +48,15 @@ jobs:
           command: yarn validate:eslint
 
   validate_android:
-    <<: *defaults
+    docker:
+      - image: circleci/android:api-28
+    working_directory: ~/react-native-in-app-browser
     steps:
       - attach_workspace:
           at: ~/react-native-in-app-browser
       - run:
           name: Linting Android files with Spotless
-          command: yarn validate:android
+          command: cd src/android && ./gradlew spotlessCheck
 
   unit:
     docker:
