@@ -21,6 +21,7 @@ types/
 package/
 *.tgz
 coverage/
+.gradle/
 
 ## Example project exceptions
 !example/android
