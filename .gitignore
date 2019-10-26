@@ -14,8 +14,6 @@ yarn-error.log
 ## Build artifacts
 #
 lib/
-android/
-ios/
 types/
 !src/ios
 package/
