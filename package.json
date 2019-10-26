@@ -37,6 +37,8 @@
     "create-release": "ts-node -O '{\"types\":[\"node\"]}' scripts/createRelease.ts",
     "prepare-release-merge": "ts-node -O '{\"types\":[\"node\"]}' scripts/prepareRelease.ts",
     "ci-publish": "ts-node -O '{\"types\":[\"node\"]}' scripts/publishCI.ts",
+    "validate:android": "cd src/android && ./gradlew spotlessCheck",
+    "validate:android:fix": "cd src/android && ./gradlew spotlessApply",
     "validate:eslint": "eslint \"src/**/*.{js,ts,tsx}\" \"example/**/*.{js,ts,tsx}\"",
     "validate:typescript": "tsc --noEmit"
   },
