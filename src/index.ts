@@ -5,9 +5,9 @@
  * file in the root directory of this source tree.
  */
 
-import { NativeModules, Platform } from "react-native";
-import { isUrlValid } from "./utils/validation";
-import { sanitize, initialize, Settings } from "./settings";
+import { NativeModules, Platform } from 'react-native';
+import { isUrlValid } from './utils/validation';
+import { sanitize, initialize, Settings } from './settings';
 
 /**
  * In-app browser functionalities.
@@ -17,13 +17,14 @@ class InAppBrowser {
    * Open a URL in app.
    *
    * @param {string} url http(s) URL to open.
-   * @param {Object} settings platform-specific settings for the in-app browsers.
+   * @param {Object} settings platform-specific settings for the in-app
+   * browsers.
    *
    * @throws If the `url` is not a valid http(s) URL.
    */
-  static async open(url: string, settings?: Settings) {
+  static async open(url: string, settings?: Settings): Promise<void> {
     if (!isUrlValid(url)) {
-      throw "Invalid URL";
+      throw 'Invalid URL';
     }
 
     NativeModules.RNInAppBrowser.openInApp(
@@ -35,11 +36,11 @@ class InAppBrowser {
   /**
    * Close the current in app browser instance.
    *
-   * This feature is iOS only as Chrome Custom Tabs does not support programmatic
-   * dismissal.
+   * This feature is iOS only as Chrome Custom Tabs does not support
+   * programmatic dismissal.
    */
-  static close() {
-    if (Platform.OS === "ios") {
+  static close(): void {
+    if (Platform.OS === 'ios') {
       NativeModules.RNInAppBrowser.closeInApp();
     }
   }
@@ -54,7 +55,7 @@ class InAppBrowser {
    * This feature is Android only.
    */
   static async warmup(): Promise<boolean> {
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       try {
         return NativeModules.RNInAppBrowser.warmup();
       } catch (e) {
@@ -81,7 +82,7 @@ class InAppBrowser {
     url: string,
     additionalUrls?: string[]
   ): Promise<boolean> {
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       return NativeModules.RNInAppBrowser.mayLaunchUrl(
         url,
         additionalUrls ? additionalUrls : []

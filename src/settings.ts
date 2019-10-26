@@ -5,8 +5,8 @@
  * file in the root directory of this source tree.
  */
 
-import { PlatformOSType, Image } from "react-native";
-import tinycolor, { ColorInputWithoutInstance } from "tinycolor2";
+import { PlatformOSType, Image } from 'react-native';
+import tinycolor, { ColorInputWithoutInstance } from 'tinycolor2';
 
 export interface Settings {
   /**
@@ -50,6 +50,7 @@ export interface SettingsAndroid {
    *
    * **Note**: if icon asset is invalid, this setting will be ignored.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   closeButtonIcon?: any;
 
   /**
@@ -90,6 +91,7 @@ export interface SettingsIOS {
    */
   barCollapsingEnabled?: boolean;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 
@@ -100,48 +102,13 @@ export interface SettingsIOS {
  */
 export const defaultSettings: Settings = {
   android: {},
-  ios: {}
+  ios: {},
 };
 
-/**
- * Initializes the platform-specific settings for the in-app browser
- * experience.
- *
- * This utility function is useful when `openInApp` is used in several
- * portions of the application code base as it allows to provide the
- * settings only once instead of specifing them with each call.
- */
-export function initialize(settings: Settings) {
-  // First, reset directly as `sanitize` will otherwise merge with
-  // previous defaults: it would not be possible to remove properties.
-  defaultSettings.android = {};
-  defaultSettings.ios = {};
-
-  defaultSettings.android = sanitize("android", settings) as SettingsAndroid;
-  defaultSettings.ios = sanitize("ios", settings) as SettingsIOS;
-}
-
-/**
- * Sanitize the settings based on the running OS.
- *
- * Provided settings will be merged with the default ones.
- * Also, in case of same properties, provided ones have priority
- * over defaults.
- */
-export function sanitize(os: PlatformOSType, settings?: Settings) {
-  switch (os) {
-    case "android":
-      return sanitizeAndroid(settings ? settings.android : {});
-    case "ios":
-      return sanitizeIOS(settings ? settings.ios : {});
-    // Other platforms in the future.
-    default:
-      return {};
-  }
-}
-
 function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
-  const sanitized = { ...defaultSettings.android! };
+  const sanitized = {
+    ...(defaultSettings.android ? defaultSettings.android : {}),
+  };
 
   if (!settings) {
     return sanitized;
@@ -151,20 +118,17 @@ function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
     sanitized.toolbarColor = tinycolor(settings.toolbarColor).toHexString();
   }
 
-  if (typeof settings.showTitle === "boolean") {
+  if (typeof settings.showTitle === 'boolean') {
     sanitized.showTitle = settings.showTitle;
   }
 
-  try {
+  if (settings.closeButtonIcon) {
     sanitized.closeButtonIcon = Image.resolveAssetSource(
       settings.closeButtonIcon
     ).uri;
-  } catch (unusedError) {
-    // Given icon image is invalid.
-    // Silently fail and proceed without it.
   }
 
-  if (typeof settings.addDefaultShareMenu === "boolean") {
+  if (typeof settings.addDefaultShareMenu === 'boolean') {
     sanitized.addDefaultShareMenu = settings.addDefaultShareMenu;
   }
 
@@ -172,22 +136,62 @@ function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
 }
 
 function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
-  const sanitized = { ...defaultSettings.ios! };
+  const sanitized = { ...(defaultSettings.ios ? defaultSettings.ios : {}) };
 
   if (!settings) {
     return sanitized;
   }
 
-  const colors = ["preferredBarTintColor", "preferredControlTintColor"];
+  const colors = ['preferredBarTintColor', 'preferredControlTintColor'];
   colors.forEach(color => {
     if (tinycolor(settings[color]).isValid()) {
       sanitized[color] = tinycolor(settings[color]).toHexString();
     }
   });
 
-  if (typeof settings.barCollapsingEnabled === "boolean") {
+  if (typeof settings.barCollapsingEnabled === 'boolean') {
     sanitized.barCollapsingEnabled = settings.barCollapsingEnabled;
   }
 
   return sanitized;
+}
+
+/**
+ * Sanitize the settings based on the running OS.
+ *
+ * Provided settings will be merged with the default ones.
+ * Also, in case of same properties, provided ones have priority
+ * over defaults.
+ */
+export function sanitize(
+  os: PlatformOSType,
+  settings?: Settings,
+): SettingsAndroid | SettingsIOS {
+  switch (os) {
+    case 'android':
+      return sanitizeAndroid(settings ? settings.android : {});
+    case 'ios':
+      return sanitizeIOS(settings ? settings.ios : {});
+    // Other platforms in the future.
+    default:
+      return {};
+  }
+}
+
+/**
+ * Initializes the platform-specific settings for the in-app browser
+ * experience.
+ *
+ * This utility function is useful when `openInApp` is used in several
+ * portions of the application code base as it allows to provide the
+ * settings only once instead of specifing them with each call.
+ */
+export function initialize(settings: Settings): void {
+  // First, reset directly as `sanitize` will otherwise merge with
+  // previous defaults: it would not be possible to remove properties.
+  defaultSettings.android = {};
+  defaultSettings.ios = {};
+
+  defaultSettings.android = sanitize('android', settings) as SettingsAndroid;
+  defaultSettings.ios = sanitize('ios', settings) as SettingsIOS;
 }

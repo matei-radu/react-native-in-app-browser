@@ -36,7 +36,8 @@
     "husky:lint": "lint-staged",
     "create-release": "ts-node -O '{\"types\":[\"node\"]}' scripts/createRelease.ts",
     "prepare-release-merge": "ts-node -O '{\"types\":[\"node\"]}' scripts/prepareRelease.ts",
-    "ci-publish": "ts-node -O '{\"types\":[\"node\"]}' scripts/publishCI.ts"
+    "ci-publish": "ts-node -O '{\"types\":[\"node\"]}' scripts/publishCI.ts",
+    "validate:eslint": "eslint \"src/**/*.{js,ts,tsx}\""
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^0.0.5",
