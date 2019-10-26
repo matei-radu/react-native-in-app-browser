@@ -58,7 +58,7 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
                     mClient = client
                     mSession = client.newSession(CustomTabsCallback())
                 }
-    
+
                 override fun onServiceDisconnected(name: ComponentName) {
                     mClient = null
                     mSession = null
