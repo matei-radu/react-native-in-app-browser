@@ -1,31 +1,30 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
   Button,
   Switch,
-  TextInput,
   TouchableOpacity,
-  StyleSheet
-} from "react-native";
-import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
-import { SlidersColorPicker } from "react-native-color";
-import tinycolor from "tinycolor2";
+  StyleSheet,
+} from 'react-native';
+import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
+import { SlidersColorPicker } from 'react-native-color';
+import tinycolor from 'tinycolor2';
 
 class Configurator extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      url: "https://www.wikipedia.org",
+      url: 'https://www.wikipedia.org',
       barModalVisible: false,
       controlModalVisible: false,
-      defaultCustomToolbarColor: "#490fa0",
+      defaultCustomToolbarColor: '#490fa0',
 
       // Actual setting values.
       preferredBarTintColor: undefined,
       preferredControlTintColor: undefined,
-      barCollapsingEnabled: false
+      barCollapsingEnabled: false,
     };
   }
 
@@ -41,16 +40,16 @@ class Configurator extends Component {
       defaultCustomToolbarColor,
       preferredBarTintColor,
       preferredControlTintColor,
-      barCollapsingEnabled
+      barCollapsingEnabled,
     } = this.state;
     const barOverlayTextColor =
       preferredBarTintColor && tinycolor(preferredBarTintColor).isDark()
-        ? "#FAFAFA"
-        : "#222";
+        ? '#FAFAFA'
+        : '#222';
     const controlOverlayTextColor =
       preferredControlTintColor && tinycolor(preferredControlTintColor).isDark()
-        ? "#FAFAFA"
-        : "#222";
+        ? '#FAFAFA'
+        : '#222';
 
     return (
       <View>
@@ -68,11 +67,11 @@ class Configurator extends Component {
             onPress={() => this.setState({ barModalVisible: true })}
             style={[
               styles.colorPreview,
-              { backgroundColor: preferredBarTintColor }
+              { backgroundColor: preferredBarTintColor },
             ]}
           >
             <Text style={[styles.colorString, { color: barOverlayTextColor }]}>
-              {!preferredBarTintColor ? "Click to set" : preferredBarTintColor}
+              {!preferredBarTintColor ? 'Click to set' : preferredBarTintColor}
             </Text>
           </TouchableOpacity>
         </View>
@@ -82,14 +81,14 @@ class Configurator extends Component {
             onPress={() => this.setState({ controlModalVisible: true })}
             style={[
               styles.colorPreview,
-              { backgroundColor: preferredControlTintColor }
+              { backgroundColor: preferredControlTintColor },
             ]}
           >
             <Text
               style={[styles.colorString, { color: controlOverlayTextColor }]}
             >
               {!preferredControlTintColor
-                ? "Click to set"
+                ? 'Click to set'
                 : preferredControlTintColor}
             </Text>
           </TouchableOpacity>
@@ -98,8 +97,8 @@ class Configurator extends Component {
           <Text>Enabled bar collapsing</Text>
           <Switch
             value={barCollapsingEnabled}
-            onValueChange={barCollapsingEnabled =>
-              this.setState({ barCollapsingEnabled })
+            onValueChange={newValue =>
+              this.setState({ barCollapsingEnabled: newValue })
             }
           />
         </View>
@@ -116,15 +115,15 @@ class Configurator extends Component {
               ? defaultCustomToolbarColor
               : preferredBarTintColor
           }
-          returnMode={"hex"}
+          returnMode={'hex'}
           onCancel={() => {
             this.setState({
               preferredBarTintColor: undefined,
-              barModalVisible: false
+              barModalVisible: false,
             });
           }}
-          onOk={preferredBarTintColor => {
-            this.setState({ preferredBarTintColor, barModalVisible: false });
+          onOk={newValue => {
+            this.setState({ preferredBarTintColor: newValue, barModalVisible: false });
           }}
           okLabel="Done"
           cancelLabel="Reset"
@@ -138,17 +137,17 @@ class Configurator extends Component {
               ? defaultCustomToolbarColor
               : preferredControlTintColor
           }
-          returnMode={"hex"}
+          returnMode={'hex'}
           onCancel={() => {
             this.setState({
               preferredControlTintColor: undefined,
-              controlModalVisible: false
+              controlModalVisible: false,
             });
           }}
-          onOk={preferredControlTintColor => {
+          onOk={newValue => {
             this.setState({
-              preferredControlTintColor,
-              controlModalVisible: false
+              preferredControlTintColor: newValue,
+              controlModalVisible: false,
             });
           }}
           okLabel="Done"
@@ -163,38 +162,38 @@ class Configurator extends Component {
 
 const styles = StyleSheet.create({
   intro: {
-    marginVertical: 4
+    marginVertical: 4,
   },
   heading: {
     marginVertical: 20,
     fontSize: 16,
-    color: "#333"
+    color: '#333',
   },
   colorString: {
     height: 24,
-    paddingTop: 4
+    paddingTop: 4,
   },
   colorPreview: {
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     height: 24,
     paddingVertical: 16,
     paddingHorizontal: 24,
     borderRadius: 3,
     borderWidth: 1,
-    borderColor: "#ebebeb"
+    borderColor: '#ebebeb',
   },
   settingRow: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: 48
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 48,
   },
   openButton: {
-    marginTop: 12
-  }
+    marginTop: 12,
+  },
 });
 
 export default Configurator;

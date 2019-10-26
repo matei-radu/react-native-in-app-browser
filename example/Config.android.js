@@ -1,32 +1,31 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
   Button,
   Switch,
-  TextInput,
   TouchableOpacity,
-  StyleSheet
-} from "react-native";
-import { InAppBrowser } from "@matt-block/react-native-in-app-browser";
-import { SlidersColorPicker } from "react-native-color";
-import tinycolor from "tinycolor2";
-import pizzaIcon from "./pizza-icon.png";
+  StyleSheet,
+} from 'react-native';
+import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
+import { SlidersColorPicker } from 'react-native-color';
+import tinycolor from 'tinycolor2';
+import pizzaIcon from './pizza-icon.png';
 
 class Configurator extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      url: "https://www.wikipedia.org",
+      url: 'https://www.wikipedia.org',
       modalVisible: false,
-      defaultCustomToolbarColor: "#490fa0",
+      defaultCustomToolbarColor: '#490fa0',
 
       // Actual setting values.
       toolbarColor: undefined,
       showTitle: false,
       addDefaultShareMenu: false,
-      closeButtonIcon: false
+      closeButtonIcon: false,
     };
   }
 
@@ -46,10 +45,10 @@ class Configurator extends Component {
       addDefaultShareMenu,
       toolbarColor,
       defaultCustomToolbarColor,
-      closeButtonIcon
+      closeButtonIcon,
     } = this.state;
     const overlayTextColor =
-      toolbarColor && tinycolor(toolbarColor).isDark() ? "#FAFAFA" : "#222";
+      toolbarColor && tinycolor(toolbarColor).isDark() ? '#FAFAFA' : '#222';
     return (
       <View>
         <Text style={styles.intro}>
@@ -66,7 +65,7 @@ class Configurator extends Component {
             style={[styles.colorPreview, { backgroundColor: toolbarColor }]}
           >
             <Text style={[styles.colorString, { color: overlayTextColor }]}>
-              {!toolbarColor ? "Click to set" : toolbarColor}
+              {!toolbarColor ? 'Click to set' : toolbarColor}
             </Text>
           </TouchableOpacity>
         </View>
@@ -74,15 +73,15 @@ class Configurator extends Component {
           <Text>Show site title</Text>
           <Switch
             value={showTitle}
-            onValueChange={showTitle => this.setState({ showTitle })}
+            onValueChange={newValue => this.setState({ showTitle: newValue })}
           />
         </View>
         <View style={styles.settingRow}>
           <Text>Add default share menu</Text>
           <Switch
             value={addDefaultShareMenu}
-            onValueChange={addDefaultShareMenu =>
-              this.setState({ addDefaultShareMenu })
+            onValueChange={newValue =>
+              this.setState({ addDefaultShareMenu: newValue })
             }
           />
         </View>
@@ -90,8 +89,8 @@ class Configurator extends Component {
           <Text>Use custom close button icon</Text>
           <Switch
             value={closeButtonIcon}
-            onValueChange={closeButtonIcon =>
-              this.setState({ closeButtonIcon })
+            onValueChange={newValue =>
+              this.setState({ closeButtonIcon: newValue })
             }
           />
         </View>
@@ -104,12 +103,12 @@ class Configurator extends Component {
         <SlidersColorPicker
           visible={modalVisible}
           color={!toolbarColor ? defaultCustomToolbarColor : toolbarColor}
-          returnMode={"hex"}
+          returnMode={'hex'}
           onCancel={() => {
             this.setState({ toolbarColor: undefined, modalVisible: false });
           }}
-          onOk={toolbarColor => {
-            this.setState({ toolbarColor, modalVisible: false });
+          onOk={newValue => {
+            this.setState({ toolbarColor: newValue, modalVisible: false });
           }}
           okLabel="Done"
           cancelLabel="Reset"
@@ -123,35 +122,35 @@ class Configurator extends Component {
 
 const styles = StyleSheet.create({
   intro: {
-    marginVertical: 4
+    marginVertical: 4,
   },
   heading: {
     marginVertical: 20,
     fontSize: 16,
-    color: "#333"
+    color: '#333',
   },
   colorPreview: {
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     height: 24,
     paddingVertical: 16,
     paddingHorizontal: 24,
     borderRadius: 3,
     borderWidth: 1,
-    borderColor: "#ebebeb",
-    elevation: 1
+    borderColor: '#ebebeb',
+    elevation: 1,
   },
   settingRow: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: 48
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 48,
   },
   openButton: {
-    marginTop: 12
-  }
+    marginTop: 12,
+  },
 });
 
 export default Configurator;
