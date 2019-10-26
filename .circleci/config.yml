@@ -1,5 +1,61 @@
 version: 2
+
+defaults: &defaults
+  docker:
+    - image: circleci/node:12.13.0
+  working_directory: ~/react-native-in-app-browser
+
 jobs:
+  checkout_code:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/react-native-in-app-browser
+      - restore_cache:
+          keys:
+          - dependencies-{{ checksum "package.json" }}
+          - dependencies-
+      - run:
+          name: Installing Dependencies
+          command: yarn install
+
+      - save_cache:
+          key: dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  validate_typescript:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native-in-app-browser
+      - run:
+          name: Validating TypeScript typings
+          command: yarn validate:typescript
+
+  validate_eslint:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native-in-app-browser
+      - run:
+          name: Linting JS/TS files with ESLint
+          command: yarn validate:eslint
+
+  validate_android:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native-in-app-browser
+      - run:
+          name: Linting Android files with Spotless
+          command: yarn validate:android
+
   unit:
     docker:
       - image: circleci/node:12.13.0
@@ -35,7 +91,7 @@ jobs:
           command: |
             ./cc-test-reporter before-build
             yarn test --coverage
-      
+
       - run:
           name: Reporting test coverage to Code Climate
           command: |
@@ -72,6 +128,16 @@ workflows:
   version: 2
   test_and_deploy:
     jobs:
+      - checkout_code
+      - validate_typescript:
+          requires:
+            - checkout_code
+      - validate_eslint:
+          requires:
+            - checkout_code
+      - validate_android:
+          requires:
+            - checkout_code
       - unit
       - deploy:
           requires:
