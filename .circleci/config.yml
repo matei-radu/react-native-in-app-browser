@@ -56,7 +56,7 @@ jobs:
           at: ~/react-native-in-app-browser
       - run:
           name: Linting Android files with Spotless
-          command: cd src/android && ./gradlew spotlessCheck
+          command: cd android && ./gradlew spotlessCheck
 
   test_js:
     <<: *defaults

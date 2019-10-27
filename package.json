@@ -40,8 +40,8 @@
     "prepare": "install-self-peers -- --ignore-scripts",
     "release-manager": "ts-node -P release-manager/tsconfig.json release-manager",
     "test": "jest --config jestconfig.json",
-    "validate:android": "cd src/android && ./gradlew spotlessCheck",
-    "validate:android:fix": "cd src/android && ./gradlew spotlessApply",
+    "validate:android": "cd android && ./gradlew spotlessCheck",
+    "validate:android:fix": "cd android && ./gradlew spotlessApply",
     "validate:eslint": "eslint \"src/**/*.{js,ts,tsx}\" \"example/**/*.{js,ts,tsx}\"",
     "validate:typescript": "tsc --noEmit"
   },
