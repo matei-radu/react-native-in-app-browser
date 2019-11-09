@@ -4,6 +4,8 @@ Thank you for even just considering to contribute to this package. Seeing people
 ## Table of Contents
 - [Bug Reporting](#bug-reporting)
   - [Valuable Environment Data](#valuable-environment-data)
+- [Code Contributions and PRs](#code-contributions-and-prs)
+  - [Tests](#tests)
 - [License](#license)
 
 ## Bug Reporting
@@ -63,6 +65,19 @@ If the error seems to be occuring only on specific devices and/or platforms, rep
 
 #### TypeScript/Flow
 If you are using [TypeScript](https://www.typescriptlang.org/) or [Flow](https://flow.org) for static type checking, report your version. This can be found in your `package.json` dependencies, in your `.flowconfig` under the [`[version]`](https://flow.org/en/docs/config/version/) section (Flow only) or by running `tsc --v` (TypeScript only).
+
+## Code Contributions and PRs
+### Tests
+This project uses [Jest](https://jestjs.io/) for unit testing. To run the complete test suite, run:
+
+```bash
+yarn test
+```
+
+#### What to Test
+React Native In-App Browser is a wrapper around [Chrome Custom Tabs](https://developer.chrome.com/multidevice/android/customtabs) and [Safari View Controller](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) and, because of that, the only meaningful things to test are functions that validate and sanitize arguments passed to [`InAppBrowser` methods](https://github.com/matei-radu/react-native-in-app-browser/wiki/InAppBrowser#methods).
+
+Consequently, all tests are at the JavaScript-level and this keeps things simple. However, if you think that this project is missing some valuable native-level unit tests, feel free to [open a PR](https://github.com/matei-radu/react-native-in-app-browser/pulls).
 
 ## License
 By contributing your code, you agree to license your contribution under the [MIT License](https://github.com/matei-radu/react-native-in-app-browser/blob/master/LICENSE).
