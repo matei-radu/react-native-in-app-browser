@@ -1,6 +1,11 @@
 # Contributing to React Native In-App Browser
 Thank you for even just considering to contribute to this package. Seeing people using and improving my projects, either by reporting bugs or making PRs, brings me more joy than it probably should :heart:
 
+## Table of Contents
+- [Bug Reporting](#bug-reporting)
+  - [Valuable Environment Data](#valuable-environment-data)
+- [License](#license)
+
 ## Bug Reporting
 If you're new to this package, please check the [API Wiki](https://github.com/matei-radu/react-native-in-app-browser/wiki/Api) first to exclude misuse and misconfiguration.
 
