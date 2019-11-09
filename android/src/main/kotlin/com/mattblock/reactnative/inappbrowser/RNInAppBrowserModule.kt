@@ -14,11 +14,18 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import androidx.browser.customtabs.*
-
-import com.facebook.react.bridge.*
+import androidx.browser.customtabs.CustomTabsCallback
+import androidx.browser.customtabs.CustomTabsClient
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.browser.customtabs.CustomTabsServiceConnection
+import androidx.browser.customtabs.CustomTabsSession
+import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReactContextBaseJavaModule
+import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.ReadableArray
+import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.PixelUtil
-
 import java.io.IOException
 import java.net.URL
 
@@ -30,16 +37,16 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
         private const val SETTING_SHARE_MENU = "addDefaultShareMenu"
 
         private val CUSTOMTABS_BROWSERS = listOf(
-                "com.android.chrome",           // Google Chrome - Stable
-                "com.chrome.beta",              // Google Chrome - Beta
-                "com.chrome.dev",               // Google Chrome - Dev
-                "com.chrome.canary",            // Google Chrome - Canary
+                "com.android.chrome", // Google Chrome - Stable
+                "com.chrome.beta", // Google Chrome - Beta
+                "com.chrome.dev", // Google Chrome - Dev
+                "com.chrome.canary", // Google Chrome - Canary
 
-                "org.mozilla.firefox",          // Mozilla Firefox - Stable
-                "org.mozilla.firefox_beta",     // Mozilla Firefox - Beta
-                "org.mozilla.fennec_aurora",    // Mozilla Firefox - Nightly
+                "org.mozilla.firefox", // Mozilla Firefox - Stable
+                "org.mozilla.firefox_beta", // Mozilla Firefox - Beta
+                "org.mozilla.fennec_aurora", // Mozilla Firefox - Nightly
 
-                "com.sec.android.app.sbrowser"  // Samsung Internet
+                "com.sec.android.app.sbrowser" // Samsung Internet
         )
     }
 
@@ -58,7 +65,7 @@ class RNInAppBrowserModule(context: ReactApplicationContext) : ReactContextBaseJ
                     mClient = client
                     mSession = client.newSession(CustomTabsCallback())
                 }
-    
+
                 override fun onServiceDisconnected(name: ComponentName) {
                     mClient = null
                     mSession = null

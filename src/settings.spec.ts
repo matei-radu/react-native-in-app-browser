@@ -6,188 +6,188 @@
  */
 
 // See https://github.com/facebook/react-native/issues/23943
-jest.doMock("react-native", () => {});
+jest.doMock('react-native', () => {});
 
-import { sanitize, initialize, defaultSettings } from "./settings";
+import { sanitize, initialize, defaultSettings, Settings } from './settings';
 
-describe("Sanitize settings - Android", () => {
+describe('Sanitize settings - Android', () => {
   beforeEach(() => {
     initialize({
       android: {},
-      ios: {}
+      ios: {},
     });
   });
 
-  it("filters out invalid toolbarColor", () => {
+  it('filters out invalid toolbarColor', () => {
     expect(
-      sanitize("android", {
-        android: { toolbarColor: "carbonara" }
+      sanitize('android', {
+        android: { toolbarColor: 'carbonara' },
       })
     ).toEqual({});
   });
 
-  it("filters out undefined showTitle", () => {
+  it('filters out undefined showTitle', () => {
     expect(
-      sanitize("android", {
-        android: { showTitle: undefined }
+      sanitize('android', {
+        android: { showTitle: undefined },
       })
     ).toEqual({});
   });
 
-  it("returns empty Settings if none provided", () => {
-    expect(sanitize("android")).toEqual({});
+  it('returns empty Settings if none provided', () => {
+    expect(sanitize('android')).toEqual({});
   });
 
-  it("filters out null addDefaultShareMenu", () => {
+  it('filters out null addDefaultShareMenu', () => {
     expect(
-      sanitize("android", {
-        android: { addDefaultShareMenu: null }
-      } as any)
+      sanitize('android', {
+        android: { addDefaultShareMenu: null },
+      } as unknown as Settings)
     ).toEqual({});
   });
 
-  it("filters out undefined addDefaultShareMenu", () => {
+  it('filters out undefined addDefaultShareMenu', () => {
     expect(
-      sanitize("android", {
-        android: { addDefaultShareMenu: undefined }
+      sanitize('android', {
+        android: { addDefaultShareMenu: undefined },
       })
     ).toEqual({});
   });
 
-  it("returns all valid properties", () => {
+  it('returns all valid properties', () => {
     expect(
-      sanitize("android", {
+      sanitize('android', {
         android: {
-          toolbarColor: "#3fF",
-          showTitle: null
-        }
-      } as any)
+          toolbarColor: '#3fF',
+          showTitle: null,
+        },
+      } as unknown as Settings)
     ).toEqual({
-      toolbarColor: "#33ffff"
+      toolbarColor: '#33ffff',
     });
   });
 
-  it("returns default settings for non provided ones", () => {
+  it('returns default settings for non provided ones', () => {
     const settings = {
       android: {
-        toolbarColor: "red"
-      }
+        toolbarColor: 'red',
+      },
     };
     initialize(settings);
 
     expect(
-      sanitize("android", {
+      sanitize('android', {
         android: {
-          showTitle: true
-        }
+          showTitle: true,
+        },
       })
     ).toEqual({
-      toolbarColor: "#ff0000",
-      showTitle: true
+      toolbarColor: '#ff0000',
+      showTitle: true,
     });
   });
 });
 
-describe("Sanitize settings - iOS", () => {
+describe('Sanitize settings - iOS', () => {
   beforeEach(() => {
     initialize({
       android: {},
-      ios: {}
+      ios: {},
     });
   });
 
-  it("filters out invalid preferredBarTintColor", () => {
+  it('filters out invalid preferredBarTintColor', () => {
     expect(
-      sanitize("ios", {
-        ios: { preferredBarTintColor: "carbonara" }
+      sanitize('ios', {
+        ios: { preferredBarTintColor: 'carbonara' },
       })
     ).toEqual({});
   });
 
-  it("filters out invalid preferredControlTintColor", () => {
+  it('filters out invalid preferredControlTintColor', () => {
     expect(
-      sanitize("ios", {
-        ios: { preferredControlTintColor: "spaghetti" }
+      sanitize('ios', {
+        ios: { preferredControlTintColor: 'spaghetti' },
       })
     ).toEqual({});
   });
 
-  it("filters out invalid barCollapsingEnabled", () => {
+  it('filters out invalid barCollapsingEnabled', () => {
     expect(
-      sanitize("ios", {
-        ios: { barCollapsingEnabled: null }
-      } as any)
+      sanitize('ios', {
+        ios: { barCollapsingEnabled: null },
+      } as unknown as Settings)
     ).toEqual({});
   });
 
-  it("returns empty Settings if none provided", () => {
-    expect(sanitize("ios")).toEqual({});
+  it('returns empty Settings if none provided', () => {
+    expect(sanitize('ios')).toEqual({});
   });
 
-  it("returns all valid properties", () => {
+  it('returns all valid properties', () => {
     expect(
-      sanitize("ios", {
+      sanitize('ios', {
         ios: {
-          preferredBarTintColor: "#3fF",
-          preferredControlTintColor: "3#fF",
-          barCollapsingEnabled: true
-        }
+          preferredBarTintColor: '#3fF',
+          preferredControlTintColor: '3#fF',
+          barCollapsingEnabled: true,
+        },
       })
     ).toEqual({
-      preferredBarTintColor: "#33ffff",
-      barCollapsingEnabled: true
+      preferredBarTintColor: '#33ffff',
+      barCollapsingEnabled: true,
     });
   });
 
-  it("returns default settings for non provided ones", () => {
+  it('returns default settings for non provided ones', () => {
     const settings = {
       ios: {
-        preferredBarTintColor: "#3fF"
-      }
+        preferredBarTintColor: '#3fF',
+      },
     };
     initialize(settings);
 
     expect(
-      sanitize("ios", {
+      sanitize('ios', {
         ios: {
-          preferredControlTintColor: "#3fF",
-          barCollapsingEnabled: true
-        }
+          preferredControlTintColor: '#3fF',
+          barCollapsingEnabled: true,
+        },
       })
     ).toEqual({
-      preferredBarTintColor: "#33ffff",
-      preferredControlTintColor: "#33ffff",
-      barCollapsingEnabled: true
+      preferredBarTintColor: '#33ffff',
+      preferredControlTintColor: '#33ffff',
+      barCollapsingEnabled: true,
     });
   });
 });
 
-describe("Initialize", () => {
+describe('Initialize', () => {
   beforeEach(() => {
     initialize({
       android: {},
-      ios: {}
+      ios: {},
     });
   });
 
-  it("correctly initializes default settings", () => {
+  it('correctly initializes default settings', () => {
     const settings = {
       android: {
-        toolbarColor: "red"
+        toolbarColor: 'red',
       },
       ios: {
-        preferredBarTintColor: "#3fF"
-      }
+        preferredBarTintColor: '#3fF',
+      },
     };
     initialize(settings);
 
     expect(defaultSettings).toEqual({
       android: {
-        toolbarColor: "#ff0000"
+        toolbarColor: '#ff0000',
       },
       ios: {
-        preferredBarTintColor: "#33ffff"
-      }
+        preferredBarTintColor: '#33ffff',
+      },
     });
   });
 });

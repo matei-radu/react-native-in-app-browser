@@ -14,13 +14,12 @@ yarn-error.log
 ## Build artifacts
 #
 lib/
-android/
-ios/
 types/
 !src/ios
 package/
 *.tgz
 coverage/
+.gradle/
 
 ## Example project exceptions
 !example/android

@@ -13,22 +13,22 @@ class RNInAppBrowser: NSObject {
     private let SETTING_CONTROLTINT = "preferredControlTintColor"
     private let SETTING_COLLAPSEBAR = "barCollapsingEnabled"
     private let presentedSafariVC = RCTPresentedViewController()
-    
+
     @objc(openInApp:settings:)
     func openInApp(url: String, settings: NSDictionary) -> Void {
         // Can be safely unwrapped as the provided url was already validated
         // on the JS side before reaching this point.
         let url = URL(string: url)!
-        
+
         if #available(iOS 9.0, *) {
             let safariVC = SFSafariViewController(url: url)
             customize(safariView: safariVC, settings: settings)
-            
+
             DispatchQueue.main.async { [weak self] in
                 self?.presentedSafariVC?.present(safariVC, animated: true)
             }
         }
-        
+
         // Fallback to default browser.
         else {
             DispatchQueue.main.async {
@@ -36,7 +36,7 @@ class RNInAppBrowser: NSObject {
             }
         }
     }
-    
+
     @available(iOS 9.0, *)
     private func customize(safariView: SFSafariViewController, settings: NSDictionary) -> Void {
         if #available(iOS 10.0, *) , settings.value(forKey: SETTING_BARTINT) != nil {
@@ -61,7 +61,7 @@ class RNInAppBrowser: NSObject {
             self.presentedSafariVC?.dismiss(animated: true)
         }
     }
-    
+
     /// See [Difference requiresMainQueueSetup and dispatch_get_main_queue?](https://stackoverflow.com/a/50775641)
     @objc
     static func requiresMainQueueSetup() -> Bool {

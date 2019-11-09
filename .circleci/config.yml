@@ -1,83 +1,86 @@
 version: 2
+
+defaults: &defaults
+  docker:
+    - image: circleci/node:12.13.0
+  working_directory: ~/react-native-in-app-browser
+
 jobs:
-  unit:
-    docker:
-      - image: circleci/node:8.12.0
-
-    working_directory: ~/unit
-
+  checkout_code:
+    <<: *defaults
     steps:
       - checkout
-
+      - attach_workspace:
+          at: ~/react-native-in-app-browser
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
+          - dependencies-{{ checksum "package.json" }}
+          - dependencies-
       - run:
-          name: Installing dependencies
+          name: Installing Dependencies
           command: yarn install
 
       - save_cache:
+          key: dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
 
-      - run:
-          name: Setting up Code Climate test reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-
-      - run:
-          name: Running tests
-          command: |
-            ./cc-test-reporter before-build
-            yarn test --coverage
-      
-      - run:
-          name: Reporting test coverage to Code Climate
-          command: |
-            ./cc-test-reporter after-build -t lcov --exit-code $? coverage/
-
-  deploy:
-    docker:
-      - image: circleci/node:8.12.0
-
-    working_directory: ~/deploy
+  validate_typescript:
+    <<: *defaults
     steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
+      - attach_workspace:
+          at: ~/react-native-in-app-browser
       - run:
-          name: Installing dependencies
-          command: yarn install
+          name: Validating TypeScript typings
+          command: yarn validate:typescript
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
+  validate_eslint:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native-in-app-browser
       - run:
-          name: Publishing new release
-          command: yarn ci-publish
+          name: Linting JS/TS files with ESLint
+          command: yarn validate:eslint
+
+  validate_android:
+    docker:
+      - image: circleci/android:api-28
+    working_directory: ~/react-native-in-app-browser
+    steps:
+      - attach_workspace:
+          at: ~/react-native-in-app-browser
+      - run:
+          name: Linting Android files with Spotless
+          command: cd android && ./gradlew spotlessCheck
+
+  test_js:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native-in-app-browser
+      - run:
+          name: Test JS/TS code with Jest
+          command: yarn test
 
 workflows:
   version: 2
   test_and_deploy:
     jobs:
-      - unit
-      - deploy:
+      - checkout_code
+      - validate_typescript:
           requires:
-            - unit
-          filters:
-            branches:
-              only:
-                - /release-.*/
-                - master
+            - checkout_code
+      - validate_eslint:
+          requires:
+            - checkout_code
+      - validate_android:
+          requires:
+            - checkout_code
+      - test_js:
+          requires:
+            - checkout_code
