@@ -6,6 +6,7 @@ Thank you for even just considering to contribute to this package. Seeing people
   - [Valuable Environment Data](#valuable-environment-data)
 - [Code Contributions and PRs](#code-contributions-and-prs)
   - [Tests](#tests)
+  - [Code Styles](#code-styles)
 - [License](#license)
 
 ## Bug Reporting
@@ -79,5 +80,27 @@ React Native In-App Browser is a wrapper around [Chrome Custom Tabs](https://dev
 
 Consequently, all tests are at the JavaScript-level and this keeps things simple. However, if you think that this project is missing some valuable native-level unit tests, feel free to [open a PR](https://github.com/matei-radu/react-native-in-app-browser/pulls).
 
+### Code Styles
+#### TypeScript
+This project uses [ESLint](https://eslint.org/) to keep a consistent coding style.
+
+It is recommended to use an IDE that can be _ESLint aware_ so that you can get live hints and errors while editing code.
+
+Regardless if you use an IDE with ESLint integration or not, run the validation scripts before committing your changes:
+
+```bash
+# Runs ESLint on all src/ files
+yarn validate:eslint
+
+# Checks that TS types are correct
+yarn validate:typescript
+```
+
+#### Kotlin
+Android code is formatted with [Spotless](https://github.com/diffplug/spotless). Before committing your changes, run the validation script to check for formatting errors:
+
+```
+yarn validate:android
+```
 ## License
 By contributing your code, you agree to license your contribution under the [MIT License](https://github.com/matei-radu/react-native-in-app-browser/blob/master/LICENSE).
