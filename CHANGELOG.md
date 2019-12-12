@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- The React peer dependency is now `16.8.6` as needed by RN 0.60.0 and upwards.
+
 ## [3.1.2] - 2019-10-19
 
 ### Added
