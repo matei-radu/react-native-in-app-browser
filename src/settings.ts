@@ -106,9 +106,7 @@ export const defaultSettings: Settings = {
 };
 
 function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
-  const sanitized = {
-    ...(defaultSettings.android ? defaultSettings.android : {}),
-  };
+  const sanitized = { ...(defaultSettings.android ?? {}) };
 
   if (!settings) {
     return sanitized;
@@ -136,7 +134,7 @@ function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
 }
 
 function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
-  const sanitized = { ...(defaultSettings.ios ? defaultSettings.ios : {}) };
+  const sanitized = { ...(defaultSettings.ios ?? {}) };
 
   if (!settings) {
     return sanitized;
@@ -163,15 +161,18 @@ function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
  * Also, in case of same properties, provided ones have priority
  * over defaults.
  */
+export function sanitize(os: 'android', settings?: Settings): SettingsAndroid;
+export function sanitize(os: 'ios', settings?: Settings): SettingsIOS;
+export function sanitize(os: PlatformOSType, settings?: Settings): {};
 export function sanitize(
   os: PlatformOSType,
   settings?: Settings,
 ): SettingsAndroid | SettingsIOS {
   switch (os) {
     case 'android':
-      return sanitizeAndroid(settings ? settings.android : {});
+      return sanitizeAndroid(settings?.android);
     case 'ios':
-      return sanitizeIOS(settings ? settings.ios : {});
+      return sanitizeIOS(settings?.ios);
     // Other platforms in the future.
     default:
       return {};
@@ -192,6 +193,6 @@ export function initialize(settings: Settings): void {
   defaultSettings.android = {};
   defaultSettings.ios = {};
 
-  defaultSettings.android = sanitize('android', settings) as SettingsAndroid;
-  defaultSettings.ios = sanitize('ios', settings) as SettingsIOS;
+  defaultSettings.android = sanitize('android', settings);
+  defaultSettings.ios = sanitize('ios', settings);
 }
