@@ -100,13 +100,13 @@ export interface SettingsIOS {
  *
  * These values can be augmented throgh initialization.
  */
-export const defaultSettings: Settings = {
+export const defaultSettings: Required<Settings> = {
   android: {},
   ios: {},
 };
 
 function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
-  const sanitized = { ...(defaultSettings.android ?? {}) };
+  const sanitized = { ...defaultSettings.android };
 
   if (!settings) {
     return sanitized;
@@ -135,7 +135,7 @@ function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
 }
 
 function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
-  const sanitized = { ...(defaultSettings.ios ?? {}) };
+  const sanitized = { ...defaultSettings.ios };
 
   if (!settings) {
     return sanitized;
