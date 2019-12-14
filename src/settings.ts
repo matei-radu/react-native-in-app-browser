@@ -6,7 +6,7 @@
  */
 
 import { PlatformOSType, Image } from 'react-native';
-import tinycolor, { ColorInputWithoutInstance } from 'tinycolor2';
+import { TinyColor, ColorInput } from '@ctrl/tinycolor';
 
 export interface Settings {
   /**
@@ -34,7 +34,7 @@ export interface SettingsAndroid {
    *
    * **Note**: if the color string is invalid, this setting will be ignored.
    */
-  toolbarColor?: ColorInputWithoutInstance;
+  toolbarColor?: ColorInput;
 
   /**
    * Flag to toggle if the title should be shown in the custom tab.
@@ -70,7 +70,7 @@ export interface SettingsIOS {
    * **Note**: if the color string is invalid or if the current iOS version
    * is < 10.0, this setting will be ignored.
    */
-  preferredBarTintColor?: ColorInputWithoutInstance;
+  preferredBarTintColor?: ColorInput;
 
   /**
    * The color to tint the control buttons on the navigation bar and the
@@ -81,7 +81,7 @@ export interface SettingsIOS {
    * **Note**: if the color string is invalid or if the current iOS version
    * is < 10.0, this setting will be ignored.
    */
-  preferredControlTintColor?: ColorInputWithoutInstance;
+  preferredControlTintColor?: ColorInput;
 
   /**
    * **Available on**: iOS >= 11.0.
@@ -112,8 +112,9 @@ function sanitizeAndroid(settings?: SettingsAndroid): SettingsAndroid {
     return sanitized;
   }
 
-  if (tinycolor(settings.toolbarColor).isValid()) {
-    sanitized.toolbarColor = tinycolor(settings.toolbarColor).toHexString();
+  const toolbarColor = new TinyColor(settings.toolbarColor);
+  if (toolbarColor.isValid) {
+    sanitized.toolbarColor = toolbarColor.toHexString();
   }
 
   if (typeof settings.showTitle === 'boolean') {
@@ -142,8 +143,9 @@ function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
 
   const colors = ['preferredBarTintColor', 'preferredControlTintColor'];
   colors.forEach(color => {
-    if (tinycolor(settings[color]).isValid()) {
-      sanitized[color] = tinycolor(settings[color]).toHexString();
+    const parsedColor = new TinyColor(settings[color]);
+    if (parsedColor.isValid) {
+      sanitized[color] = parsedColor.toHexString();
     }
   });
 
