@@ -6,6 +6,7 @@
  */
 
 // See https://github.com/facebook/react-native/issues/23943
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 jest.doMock('react-native', () => {});
 
 import { sanitize, initialize, defaultSettings, Settings } from './settings';

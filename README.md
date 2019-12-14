@@ -6,11 +6,6 @@ In-App browser support for React Native, using [Chrome Custom Tabs][chromecustom
 on Android
 and [Safari View Controller][sfsafariviewcontroller] on iOS.
 
-### Features
-
-- [x] Typescript and Flow definitions
-- [x] Actively developed
-
 ## Compatibility
 
 This library will always target the most recent React Native package. If you are

@@ -85,7 +85,7 @@ class InAppBrowser {
     if (Platform.OS === 'android') {
       return NativeModules.RNInAppBrowser.mayLaunchUrl(
         url,
-        additionalUrls ? additionalUrls : []
+        additionalUrls ?? []
       );
     }
 
