@@ -1,6 +1,6 @@
 {
   "name": "@matt-block/react-native-in-app-browser",
-  "version": "3.1.2",
+  "version": "3.1.3",
   "description": "React Native in-app browser",
   "keywords": [
     "in-app",
@@ -17,10 +17,10 @@
   "types": "types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/matt-block/react-native-in-app-browser.git"
+    "url": "https://github.com/matei-radu/react-native-in-app-browser.git"
   },
-  "bugs": "https://github.com/matt-block/react-native-in-app-browser/issues",
-  "homepage": "https://github.com/matt-block/react-native-in-app-browser#readme",
+  "bugs": "https://github.com/matei-radu/react-native-in-app-browser/issues",
+  "homepage": "https://github.com/matei-radu/react-native-in-app-browser#readme",
   "author": "Matei Bogdan Radu <opensource@mateiradu.dev>",
   "license": "MIT",
   "private": false,
