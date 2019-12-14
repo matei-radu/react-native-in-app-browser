@@ -186,7 +186,7 @@ ignored and their default values will be used.
 
 | Setting               | Type                                                | Default     | Description                                                                                                                |
 | --------------------- | --------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `toolbarColor`        | `string`                                            | `undefined` | The color to tint the background of the toolbar.<br/>Provided color can be in any [TinyColor][tinycolor] supported format. |
+| `toolbarColor`        | `string`                                            | `undefined` | The color to tint the background of the toolbar.<br/>Provided color can be in any [@ctrl/tinycolor][tinycolor] supported format. |
 | `showTitle`           | `boolean`                                           | `false`     | Flag to toggle if the page title should be shown in the custom tab.                                                        |
 | `closeButtonIcon`     | `string` _(as resolved by importing an image file)_ | `undefined` | Custom close button icon.<br/><br/>Provided icon must be a `.png`, `.jpg`, or `.gif` file.                                 |
 | `addDefaultShareMenu` | `boolean`                                           | `false`     | Flag to toggle the default share menu.                                                                                     |
@@ -199,8 +199,8 @@ supported by the iOS version at runtime will be ignored as well.
 
 | Setting                     | Type      | Default     | Description                                                                                                                                                                                    |
 | --------------------------- | --------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `preferredBarTintColor`     | `string`  | `undefined` | The color to tint the background of the navigation bar and the toolbar.<br/>Provided color can be in any [TinyColor][tinycolor] supported format.<br/><br/>**Available on**: iOS >= 10.0.      |
-| `preferredControlTintColor` | `string`  | `undefined` | The color to tint the control buttons on the navigation bar and the toolbar.<br/>Provided color can be in any [TinyColor][tinycolor] supported format.<br/><br/>**Available on**: iOS >= 10.0. |
+| `preferredBarTintColor`     | `string`  | `undefined` | The color to tint the background of the navigation bar and the toolbar.<br/>Provided color can be in any [@ctrl/tinycolor][tinycolor] supported format.<br/><br/>**Available on**: iOS >= 10.0.      |
+| `preferredControlTintColor` | `string`  | `undefined` | The color to tint the control buttons on the navigation bar and the toolbar.<br/>Provided color can be in any [@ctrl/tinycolor][tinycolor] supported format.<br/><br/>**Available on**: iOS >= 10.0. |
 | `barCollapsingEnabled`      | `boolean` | `true`      | **Available on**: iOS >= 11.0.                                                                                                                                                                 |
 
 ## Example
@@ -241,4 +241,4 @@ This source code is licensed under the MIT license found in the
 [npm_1_shield]: https://img.shields.io/badge/npm-v1.4.1-blue
 [circleci]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master
 [circleci_shield]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master.svg?style=shield
-[tinycolor]: https://github.com/bgrins/TinyColor
+[tinycolor]: https://github.com/TypeCtrl/tinycolor

@@ -53,7 +53,6 @@
     "@types/react-native": "^0.60.25",
     "@types/semver": "^6.2.0",
     "@types/shelljs": "^0.8.6",
-    "@types/tinycolor2": "^1.4.1",
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
     "commander": "^4.0.1",
@@ -88,6 +87,6 @@
     ]
   },
   "dependencies": {
-    "tinycolor2": "^1.4.1"
+    "@ctrl/tinycolor": "^2.5.4"
   }
 }
