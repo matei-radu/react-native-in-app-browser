@@ -15,7 +15,7 @@ from the compatibility table below (if available):
 |   React Native    |                  Library                  |   Status   | End-of-Life |
 | :---------------: | :---------------------------------------: | :--------: | :---------: |
 |    `>= 0.60.0`    |    [![npm (scoped)][npm_shield]][npm]     | **Active** | Not planned |
-| `0.57.x - 0.59.x` | [![npm v2 (scoped)][npm_2_shield]][npm_2] | **Active** | 2020-01-03  |
+| `0.57.x - 0.59.x` | [![npm v2 (scoped)][npm_2_shield]][npm_2] |  **EOL**   | 2020-01-03  |
 | `0.57.x - 0.59.5` | [![npm v1 (scoped)][npm_1_shield]][npm_1] |  **EOL**   | 2019-06-09  |
 
 **Using Expo?** Check out [WebBrowser](https://docs.expo.io/versions/latest/sdk/webbrowser/).
