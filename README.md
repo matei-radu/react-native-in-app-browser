@@ -1,6 +1,6 @@
 # React Native In-App Browser
 
-[![npm (scoped)][npm_shield]][npm] [![CircleCI][circleci_shield]][circleci] ![license: mit][license_shield]
+[![npm (scoped)][npm_shield]][npm] [![CircleCI][circleci_shield]][circleci] [![codebeat badge][codebeat_shield]][codebeat] ![license: mit][license_shield]
 
 In-App browser support for React Native, using [Chrome Custom Tabs][chromecustomtabs]
 on Android
@@ -241,4 +241,6 @@ This source code is licensed under the MIT license found in the
 [npm_1_shield]: https://img.shields.io/badge/npm-v1.4.1-blue
 [circleci]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master
 [circleci_shield]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master.svg?style=shield
+[codebeat]: https://codebeat.co/projects/github-com-matei-radu-react-native-in-app-browser-master
+[codebeat_shield]: https://codebeat.co/badges/eff3246a-f91a-4197-9484-11a30c22ad07
 [tinycolor]: https://github.com/TypeCtrl/tinycolor
