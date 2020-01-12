@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   View,
   Text,
@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
-import { SlidersColorPicker } from 'react-native-color';
+import {InAppBrowser} from '@matt-block/react-native-in-app-browser';
+import {SlidersColorPicker} from 'react-native-color';
 import tinycolor from 'tinycolor2';
 
 class Configurator extends Component {
@@ -29,8 +29,8 @@ class Configurator extends Component {
   }
 
   onOpen = () => {
-    const { url, ...settings } = { ...this.state };
-    InAppBrowser.open(url, { ios: settings });
+    const {url, ...settings} = {...this.state};
+    InAppBrowser.open(url, {ios: settings});
   };
 
   render() {
@@ -64,13 +64,12 @@ class Configurator extends Component {
         <View style={styles.settingRow}>
           <Text>Set bar tint color</Text>
           <TouchableOpacity
-            onPress={() => this.setState({ barModalVisible: true })}
+            onPress={() => this.setState({barModalVisible: true})}
             style={[
               styles.colorPreview,
-              { backgroundColor: preferredBarTintColor },
-            ]}
-          >
-            <Text style={[styles.colorString, { color: barOverlayTextColor }]}>
+              {backgroundColor: preferredBarTintColor},
+            ]}>
+            <Text style={[styles.colorString, {color: barOverlayTextColor}]}>
               {!preferredBarTintColor ? 'Click to set' : preferredBarTintColor}
             </Text>
           </TouchableOpacity>
@@ -78,15 +77,13 @@ class Configurator extends Component {
         <View style={styles.settingRow}>
           <Text>Set controls tint color</Text>
           <TouchableOpacity
-            onPress={() => this.setState({ controlModalVisible: true })}
+            onPress={() => this.setState({controlModalVisible: true})}
             style={[
               styles.colorPreview,
-              { backgroundColor: preferredControlTintColor },
-            ]}
-          >
+              {backgroundColor: preferredControlTintColor},
+            ]}>
             <Text
-              style={[styles.colorString, { color: controlOverlayTextColor }]}
-            >
+              style={[styles.colorString, {color: controlOverlayTextColor}]}>
               {!preferredControlTintColor
                 ? 'Click to set'
                 : preferredControlTintColor}
@@ -98,7 +95,7 @@ class Configurator extends Component {
           <Switch
             value={barCollapsingEnabled}
             onValueChange={newValue =>
-              this.setState({ barCollapsingEnabled: newValue })
+              this.setState({barCollapsingEnabled: newValue})
             }
           />
         </View>
@@ -123,7 +120,10 @@ class Configurator extends Component {
             });
           }}
           onOk={newValue => {
-            this.setState({ preferredBarTintColor: newValue, barModalVisible: false });
+            this.setState({
+              preferredBarTintColor: newValue,
+              barModalVisible: false,
+            });
           }}
           okLabel="Done"
           cancelLabel="Reset"

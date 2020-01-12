@@ -4,25 +4,22 @@
  *
  * @format
  * @flow
- * @lint-ignore-every XPLATJSCOPYRIGHT1
  */
 
-import React, {Component} from 'react';
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import React from 'react';
+import {StyleSheet, ScrollView, View, Text} from 'react-native';
 import Configurator from './Config';
 
-export default class App extends Component {
-  render() {
-    return (
-      <ScrollView style={styles.scrollBackground}>
-        <View style={styles.container}>
-          <Text style={styles.welcome}>React Native In-App Browser</Text>
-          <Configurator />
-        </View>
-      </ScrollView>
-    );
-  }
-}
+const App: () => React$Node = () => {
+  return (
+    <ScrollView style={styles.scrollBackground}>
+      <View style={styles.container}>
+        <Text style={styles.welcome}>React Native In-App Browser</Text>
+        <Configurator />
+      </View>
+    </ScrollView>
+  );
+};
 
 const styles = StyleSheet.create({
   scrollBackground: {
@@ -46,3 +43,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+export default App;
