@@ -1,6 +1,6 @@
 # React Native In-App Browser
 
-[![npm (scoped)][npm_shield]][npm] [![CircleCI][circleci_shield]][circleci] ![license: mit][license_shield]
+[![npm (scoped)][npm_shield]][npm] [![CircleCI][circleci_shield]][circleci] [![codebeat badge][codebeat_shield]][codebeat] ![license: mit][license_shield]
 
 In-App browser support for React Native, using [Chrome Custom Tabs][chromecustomtabs]
 on Android
@@ -15,7 +15,7 @@ from the compatibility table below (if available):
 |   React Native    |                  Library                  |   Status   | End-of-Life |
 | :---------------: | :---------------------------------------: | :--------: | :---------: |
 |    `>= 0.60.0`    |    [![npm (scoped)][npm_shield]][npm]     | **Active** | Not planned |
-| `0.57.x - 0.59.x` | [![npm v2 (scoped)][npm_2_shield]][npm_2] | **Active** | 2020-01-03  |
+| `0.57.x - 0.59.x` | [![npm v2 (scoped)][npm_2_shield]][npm_2] |  **EOL**   | 2020-01-03  |
 | `0.57.x - 0.59.5` | [![npm v1 (scoped)][npm_1_shield]][npm_1] |  **EOL**   | 2019-06-09  |
 
 **Using Expo?** Check out [WebBrowser](https://docs.expo.io/versions/latest/sdk/webbrowser/).
@@ -186,7 +186,7 @@ ignored and their default values will be used.
 
 | Setting               | Type                                                | Default     | Description                                                                                                                |
 | --------------------- | --------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `toolbarColor`        | `string`                                            | `undefined` | The color to tint the background of the toolbar.<br/>Provided color can be in any [TinyColor][tinycolor] supported format. |
+| `toolbarColor`        | `string`                                            | `undefined` | The color to tint the background of the toolbar.<br/>Provided color can be in any [@ctrl/tinycolor][tinycolor] supported format. |
 | `showTitle`           | `boolean`                                           | `false`     | Flag to toggle if the page title should be shown in the custom tab.                                                        |
 | `closeButtonIcon`     | `string` _(as resolved by importing an image file)_ | `undefined` | Custom close button icon.<br/><br/>Provided icon must be a `.png`, `.jpg`, or `.gif` file.                                 |
 | `addDefaultShareMenu` | `boolean`                                           | `false`     | Flag to toggle the default share menu.                                                                                     |
@@ -199,8 +199,8 @@ supported by the iOS version at runtime will be ignored as well.
 
 | Setting                     | Type      | Default     | Description                                                                                                                                                                                    |
 | --------------------------- | --------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `preferredBarTintColor`     | `string`  | `undefined` | The color to tint the background of the navigation bar and the toolbar.<br/>Provided color can be in any [TinyColor][tinycolor] supported format.<br/><br/>**Available on**: iOS >= 10.0.      |
-| `preferredControlTintColor` | `string`  | `undefined` | The color to tint the control buttons on the navigation bar and the toolbar.<br/>Provided color can be in any [TinyColor][tinycolor] supported format.<br/><br/>**Available on**: iOS >= 10.0. |
+| `preferredBarTintColor`     | `string`  | `undefined` | The color to tint the background of the navigation bar and the toolbar.<br/>Provided color can be in any [@ctrl/tinycolor][tinycolor] supported format.<br/><br/>**Available on**: iOS >= 10.0.      |
+| `preferredControlTintColor` | `string`  | `undefined` | The color to tint the control buttons on the navigation bar and the toolbar.<br/>Provided color can be in any [@ctrl/tinycolor][tinycolor] supported format.<br/><br/>**Available on**: iOS >= 10.0. |
 | `barCollapsingEnabled`      | `boolean` | `true`      | **Available on**: iOS >= 11.0.                                                                                                                                                                 |
 
 ## Example
@@ -241,4 +241,6 @@ This source code is licensed under the MIT license found in the
 [npm_1_shield]: https://img.shields.io/badge/npm-v1.4.1-blue
 [circleci]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master
 [circleci_shield]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master.svg?style=shield
-[tinycolor]: https://github.com/bgrins/TinyColor
+[codebeat]: https://codebeat.co/projects/github-com-matei-radu-react-native-in-app-browser-master
+[codebeat_shield]: https://codebeat.co/badges/eff3246a-f91a-4197-9484-11a30c22ad07
+[tinycolor]: https://github.com/TypeCtrl/tinycolor
