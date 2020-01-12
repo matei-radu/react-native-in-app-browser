@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.4] - 2020-01-12
+
 ### Changed
 
-- `tinycolor2` was replaced with the fork `@ctrl/tinycolor` because the the former has not received an update since 2016.
+- `tinycolor2` was replaced with the fork `@ctrl/tinycolor` because the the former has not received any update since 2016.
 
 ## [3.1.3] - 2019-12-14
 
@@ -192,6 +194,7 @@ The following functions have been deprecated. Please see
 
 - `openInApp`: open a valid http(s) URL with an in-app browser.
 
+[3.1.4]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.1.3...v3.1.4
 [3.1.3]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.1.2...v3.1.3
 [3.1.2]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.1.1...v3.1.2
 [3.1.1]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.1.0...v3.1.1
