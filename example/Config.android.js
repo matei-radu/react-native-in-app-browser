@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   View,
   Text,
@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
-import { SlidersColorPicker } from 'react-native-color';
+import {InAppBrowser} from '@matt-block/react-native-in-app-browser';
+import {SlidersColorPicker} from 'react-native-color';
 import tinycolor from 'tinycolor2';
 import pizzaIcon from './pizza-icon.png';
 
@@ -30,12 +30,12 @@ class Configurator extends Component {
   }
 
   onOpen = () => {
-    const { url, ...settings } = { ...this.state };
+    const {url, ...settings} = {...this.state};
     if (settings.closeButtonIcon) {
       settings.closeButtonIcon = pizzaIcon;
     }
 
-    InAppBrowser.open(url, { android: settings });
+    InAppBrowser.open(url, {android: settings});
   };
 
   render() {
@@ -61,10 +61,9 @@ class Configurator extends Component {
         <View style={styles.settingRow}>
           <Text>Set toolbar color</Text>
           <TouchableOpacity
-            onPress={() => this.setState({ modalVisible: true })}
-            style={[styles.colorPreview, { backgroundColor: toolbarColor }]}
-          >
-            <Text style={[styles.colorString, { color: overlayTextColor }]}>
+            onPress={() => this.setState({modalVisible: true})}
+            style={[styles.colorPreview, {backgroundColor: toolbarColor}]}>
+            <Text style={[styles.colorString, {color: overlayTextColor}]}>
               {!toolbarColor ? 'Click to set' : toolbarColor}
             </Text>
           </TouchableOpacity>
@@ -73,7 +72,7 @@ class Configurator extends Component {
           <Text>Show site title</Text>
           <Switch
             value={showTitle}
-            onValueChange={newValue => this.setState({ showTitle: newValue })}
+            onValueChange={newValue => this.setState({showTitle: newValue})}
           />
         </View>
         <View style={styles.settingRow}>
@@ -81,7 +80,7 @@ class Configurator extends Component {
           <Switch
             value={addDefaultShareMenu}
             onValueChange={newValue =>
-              this.setState({ addDefaultShareMenu: newValue })
+              this.setState({addDefaultShareMenu: newValue})
             }
           />
         </View>
@@ -90,7 +89,7 @@ class Configurator extends Component {
           <Switch
             value={closeButtonIcon}
             onValueChange={newValue =>
-              this.setState({ closeButtonIcon: newValue })
+              this.setState({closeButtonIcon: newValue})
             }
           />
         </View>
@@ -105,10 +104,10 @@ class Configurator extends Component {
           color={!toolbarColor ? defaultCustomToolbarColor : toolbarColor}
           returnMode={'hex'}
           onCancel={() => {
-            this.setState({ toolbarColor: undefined, modalVisible: false });
+            this.setState({toolbarColor: undefined, modalVisible: false});
           }}
           onOk={newValue => {
-            this.setState({ toolbarColor: newValue, modalVisible: false });
+            this.setState({toolbarColor: newValue, modalVisible: false});
           }}
           okLabel="Done"
           cancelLabel="Reset"

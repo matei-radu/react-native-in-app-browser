@@ -213,8 +213,9 @@ and run the app.
 ```sh
 git clone https://github.com/matei-radu/react-native-in-app-browser.git
 cd react-native-in-app-browser/example
-npm install #or yarn install
-$ react-native run-android #or react-native run-ios
+yarn install
+yarn start
+yarn android # or yarn ios
 ```
 
 ## License
