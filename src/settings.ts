@@ -101,9 +101,20 @@ export interface SettingsIOS {
    */
   entersReaderIfAvailable?: boolean;
 
+  /**
+   * **Available on**: iOS >= 11.0.
+   *
+   * **Note**: if the value is invalid or if the current iOS version
+   * is < 11.0, this setting will be ignored.
+   */
+  dismissButtonStyle?: IOSDismissButtonStyle;
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
+
+const iosDismissButtonStyles = ['done', 'close', 'cancel'] as const;
+type IOSDismissButtonStyle = typeof iosDismissButtonStyles[number]
 
 /**
  * Default settings.
@@ -166,6 +177,11 @@ function sanitizeIOS(settings?: SettingsIOS): SettingsIOS {
   if (typeof settings.entersReaderIfAvailable === 'boolean') {
     sanitized.entersReaderIfAvailable = settings.entersReaderIfAvailable;
   }
+
+  if (settings.dismissButtonStyle && iosDismissButtonStyles.includes(settings.dismissButtonStyle)) {
+    sanitized.dismissButtonStyle = settings.dismissButtonStyle;
+  }
+
   return sanitized;
 }
 

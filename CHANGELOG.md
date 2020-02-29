@@ -6,8 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
 ### Added
+
 - iOS specific: `entersReaderIfAvailable` setting to instruct Safari to enter in Reader mode, if available (thanks to [@fonov](https://github.com/fonov)).
+- iOS specific: `dismissButtonStyle` setting to change the label of the dismiss button.
 
 ## [3.1.4] - 2020-01-12
 

@@ -13,6 +13,7 @@ class RNInAppBrowser: NSObject {
     private let SETTING_CONTROLTINT = "preferredControlTintColor"
     private let SETTING_COLLAPSEBAR = "barCollapsingEnabled"
     private let SETTING_READERMODE = "entersReaderIfAvailable"
+    private let SETTING_DISMISSBTN = "dismissButtonStyle"
     private let presentedSafariVC = RCTPresentedViewController()
 
     @objc(openInApp:settings:)
@@ -62,6 +63,18 @@ class RNInAppBrowser: NSObject {
         if #available(iOS 11.0, *) , settings.value(forKey: SETTING_COLLAPSEBAR) != nil {
             let collapse = settings.value(forKey: SETTING_COLLAPSEBAR) as! Bool
             safariView.configuration.barCollapsingEnabled = collapse
+        }
+
+        if #available(iOS 11.0, *) , settings.value(forKey: SETTING_DISMISSBTN) != nil {
+            let btnStyleRaw = settings.value(forKey: SETTING_DISMISSBTN) as! String
+            switch btnStyleRaw {
+                case "close":
+                    safariView.dismissButtonStyle = SFSafariViewController.DismissButtonStyle.close
+                case "cancel":
+                    safariView.dismissButtonStyle = SFSafariViewController.DismissButtonStyle.cancel
+                default:
+                    safariView.dismissButtonStyle = SFSafariViewController.DismissButtonStyle.done
+            }
         }
     }
 
