@@ -19,7 +19,8 @@ export type SettingsAndroid = {|
 export type SettingsIOS = {|
   preferredBarTintColor?: string,
   preferredControlTintColor?: string,
-  barCollapsingEnabled?: boolean
+  barCollapsingEnabled?: boolean,
+  entersReaderIfAvailable?: boolean
 |};
 
 export type Settings = {|

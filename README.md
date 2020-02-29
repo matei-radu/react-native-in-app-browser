@@ -201,7 +201,8 @@ supported by the iOS version at runtime will be ignored as well.
 | --------------------------- | --------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `preferredBarTintColor`     | `string`  | `undefined` | The color to tint the background of the navigation bar and the toolbar.<br/>Provided color can be in any [@ctrl/tinycolor][tinycolor] supported format.<br/><br/>**Available on**: iOS >= 10.0.      |
 | `preferredControlTintColor` | `string`  | `undefined` | The color to tint the control buttons on the navigation bar and the toolbar.<br/>Provided color can be in any [@ctrl/tinycolor][tinycolor] supported format.<br/><br/>**Available on**: iOS >= 10.0. |
-| `barCollapsingEnabled`      | `boolean` | `true`      | **Available on**: iOS >= 11.0.                                                                                                                                                                 |
+| `barCollapsingEnabled`      | `boolean` | `true`      | **Available on**: iOS >= 11.0.   |
+| `entersReaderIfAvailable`      | `boolean` | `false`      | A value that specifies whether Safari should enter Reader mode, if it is available.<br/><br/>**Available on**: iOS >= 11.0.                                                                                                                                                                |
 
 ## Example
 
