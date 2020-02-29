@@ -20,7 +20,8 @@ export type SettingsIOS = {|
   preferredBarTintColor?: string,
   preferredControlTintColor?: string,
   barCollapsingEnabled?: boolean,
-  entersReaderIfAvailable?: boolean
+  entersReaderIfAvailable?: boolean,
+  dismissButtonStyle?: "done" | "close" | "cancel"
 |};
 
 export type Settings = {|
