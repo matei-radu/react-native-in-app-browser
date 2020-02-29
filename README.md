@@ -201,7 +201,10 @@ supported by the iOS version at runtime will be ignored as well.
 | --------------------------- | --------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `preferredBarTintColor`     | `string`  | `undefined` | The color to tint the background of the navigation bar and the toolbar.<br/>Provided color can be in any [@ctrl/tinycolor][tinycolor] supported format.<br/><br/>**Available on**: iOS >= 10.0.      |
 | `preferredControlTintColor` | `string`  | `undefined` | The color to tint the control buttons on the navigation bar and the toolbar.<br/>Provided color can be in any [@ctrl/tinycolor][tinycolor] supported format.<br/><br/>**Available on**: iOS >= 10.0. |
-| `barCollapsingEnabled`      | `boolean` | `true`      | **Available on**: iOS >= 11.0.                                                                                                                                                                 |
+| `barCollapsingEnabled`      | `boolean` | `true`      | **Available on**: iOS >= 11.0. |
+| `dismissButtonStyle`      | `string` | `undefined`      | **Available on**: iOS >= 11.0.   |
+| `entersReaderIfAvailable`      | `boolean` | `false`      | A value that specifies whether Safari should enter Reader mode, if it is available.<br/><br/>**Available on**: iOS >= 11.0. |
+
 
 ## Example
 
@@ -213,8 +216,9 @@ and run the app.
 ```sh
 git clone https://github.com/matei-radu/react-native-in-app-browser.git
 cd react-native-in-app-browser/example
-npm install #or yarn install
-$ react-native run-android #or react-native run-ios
+yarn install
+yarn start
+yarn android # or yarn ios
 ```
 
 ## License

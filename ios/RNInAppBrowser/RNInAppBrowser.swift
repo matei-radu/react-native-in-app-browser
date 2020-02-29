@@ -12,6 +12,8 @@ class RNInAppBrowser: NSObject {
     private let SETTING_BARTINT = "preferredBarTintColor"
     private let SETTING_CONTROLTINT = "preferredControlTintColor"
     private let SETTING_COLLAPSEBAR = "barCollapsingEnabled"
+    private let SETTING_READERMODE = "entersReaderIfAvailable"
+    private let SETTING_DISMISSBTN = "dismissButtonStyle"
     private let presentedSafariVC = RCTPresentedViewController()
 
     @objc(openInApp:settings:)
@@ -21,7 +23,16 @@ class RNInAppBrowser: NSObject {
         let url = URL(string: url)!
 
         if #available(iOS 9.0, *) {
-            let safariVC = SFSafariViewController(url: url)
+            var safariVC: SFSafariViewController;
+
+            if #available(iOS 11.0, *) {
+                let config = SFSafariViewController.Configuration()
+                config.entersReaderIfAvailable = readerModeIsEnabled(settings: settings)
+                safariVC = SFSafariViewController(url: url, configuration: config)
+            } else {
+                safariVC = SFSafariViewController(url: url, entersReaderIfAvailable: readerModeIsEnabled(settings: settings))
+            }
+
             customize(safariView: safariVC, settings: settings)
 
             DispatchQueue.main.async { [weak self] in
@@ -53,6 +64,27 @@ class RNInAppBrowser: NSObject {
             let collapse = settings.value(forKey: SETTING_COLLAPSEBAR) as! Bool
             safariView.configuration.barCollapsingEnabled = collapse
         }
+
+        if #available(iOS 11.0, *) , settings.value(forKey: SETTING_DISMISSBTN) != nil {
+            let btnStyleRaw = settings.value(forKey: SETTING_DISMISSBTN) as! String
+            switch btnStyleRaw {
+                case "close":
+                    safariView.dismissButtonStyle = SFSafariViewController.DismissButtonStyle.close
+                case "cancel":
+                    safariView.dismissButtonStyle = SFSafariViewController.DismissButtonStyle.cancel
+                default:
+                    safariView.dismissButtonStyle = SFSafariViewController.DismissButtonStyle.done
+            }
+        }
+    }
+
+    @available(iOS 9.0, *)
+    private func readerModeIsEnabled(settings: NSDictionary) -> Bool {
+        if settings.value(forKey: SETTING_READERMODE) != nil {
+            let readerMode = settings.value(forKey: SETTING_READERMODE) as! Bool
+            return readerMode
+        }
+        return false
     }
 
     @objc(closeInApp)
