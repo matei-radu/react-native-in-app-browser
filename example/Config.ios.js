@@ -94,7 +94,7 @@ class Configurator extends Component {
           <Text>Enabled bar collapsing</Text>
           <Switch
             value={barCollapsingEnabled}
-            onValueChange={newValue =>
+            onValueChange={(newValue) =>
               this.setState({barCollapsingEnabled: newValue})
             }
           />
@@ -119,7 +119,7 @@ class Configurator extends Component {
               barModalVisible: false,
             });
           }}
-          onOk={newValue => {
+          onOk={(newValue) => {
             this.setState({
               preferredBarTintColor: newValue,
               barModalVisible: false,
@@ -144,7 +144,7 @@ class Configurator extends Component {
               controlModalVisible: false,
             });
           }}
-          onOk={newValue => {
+          onOk={(newValue) => {
             this.setState({
               preferredControlTintColor: newValue,
               controlModalVisible: false,
