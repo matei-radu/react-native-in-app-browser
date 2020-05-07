@@ -367,10 +367,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@ctrl/tinycolor@^2.5.4":
-  version "2.5.4"
-  resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-2.5.4.tgz#fa20f45eaae74696070328342553ed5de224bb4d"
-  integrity sha512-PXqAcLD6R8GL8dFcls728HrYzDdYN60U8RXvc39wmOs1pJIcyc3g+dleWu+fGgLnEGG4SwblEUu+EF4/dH/2ew==
+"@ctrl/tinycolor@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.1.0.tgz#aeeb39271e0a797196a40e988558842610d2e1a5"
+  integrity sha512-J92yG122XoF+UiuQSzBgV451vSm9B0xMb5oGs7vgZijYZtNc80hNep/KbgUeBbj5f+YHehrmbAHlg/yBGX3/+w==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.0.0"

@@ -44,6 +44,9 @@
     "validate:eslint": "eslint \"src/**/*.{js,ts,tsx}\" \"example/**/*.{js,ts,tsx}\"",
     "validate:typescript": "tsc --noEmit"
   },
+  "dependencies": {
+    "@ctrl/tinycolor": "^3.1.0"
+  },
   "devDependencies": {
     "@react-native-community/eslint-config": "^1.1.0",
     "@team-griffin/install-self-peers": "^1.1.1",
@@ -78,8 +81,5 @@
     "*.{js,ts,tsx}": [
       "yarn eslint --fix"
     ]
-  },
-  "dependencies": {
-    "@ctrl/tinycolor": "^2.5.4"
   }
 }
