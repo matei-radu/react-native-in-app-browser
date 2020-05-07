@@ -72,14 +72,14 @@ class Configurator extends Component {
           <Text>Show site title</Text>
           <Switch
             value={showTitle}
-            onValueChange={newValue => this.setState({showTitle: newValue})}
+            onValueChange={(newValue) => this.setState({showTitle: newValue})}
           />
         </View>
         <View style={styles.settingRow}>
           <Text>Add default share menu</Text>
           <Switch
             value={addDefaultShareMenu}
-            onValueChange={newValue =>
+            onValueChange={(newValue) =>
               this.setState({addDefaultShareMenu: newValue})
             }
           />
@@ -88,7 +88,7 @@ class Configurator extends Component {
           <Text>Use custom close button icon</Text>
           <Switch
             value={closeButtonIcon}
-            onValueChange={newValue =>
+            onValueChange={(newValue) =>
               this.setState({closeButtonIcon: newValue})
             }
           />
@@ -106,7 +106,7 @@ class Configurator extends Component {
           onCancel={() => {
             this.setState({toolbarColor: undefined, modalVisible: false});
           }}
-          onOk={newValue => {
+          onOk={(newValue) => {
             this.setState({toolbarColor: newValue, modalVisible: false});
           }}
           okLabel="Done"
