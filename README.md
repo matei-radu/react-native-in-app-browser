@@ -1,6 +1,6 @@
 # React Native In-App Browser
 
-[![npm (scoped)][npm_shield]][npm] [![CircleCI][circleci_shield]][circleci] [![codebeat badge][codebeat_shield]][codebeat] ![license: mit][license_shield]
+[![npm (scoped)][npm_shield]][npm] ![license: mit][license_shield]
 
 In-App browser support for React Native, using [Chrome Custom Tabs][chromecustomtabs]
 on Android
@@ -8,13 +8,13 @@ and [Safari View Controller][sfsafariviewcontroller] on iOS.
 
 ## Compatibility
 
-⚠️**This library will stop being supported on October 1st 2020.**
+⚠️**Support has ended on October 1st 2020.**
 
 It is recommended migrating to [react-native-inappbrowser-reborn] for continued support and more features.
 
 |   React Native    |                  Library                  |   Status   | End-of-Life |
 | :---------------: | :---------------------------------------: | :--------: | :---------: |
-| `0.60.0 - 0.62.x` |    [![npm (scoped)][npm_shield]][npm]     | **Maintenance** | 2020-10-01 |
+| `0.60.0 - 0.62.x` |    [![npm (scoped)][npm_shield]][npm]     |  **EOL**   | 2020-10-01  |
 | `0.57.x - 0.59.x` | [![npm v2 (scoped)][npm_2_shield]][npm_2] |  **EOL**   | 2020-01-03  |
 | `0.57.x - 0.59.5` | [![npm v1 (scoped)][npm_1_shield]][npm_1] |  **EOL**   | 2019-06-09  |
 
@@ -243,9 +243,5 @@ This source code is licensed under the MIT license found in the
 [npm_2_shield]: https://img.shields.io/npm/v/@matt-block/react-native-in-app-browser/legacy
 [npm_1]: https://www.npmjs.com/package/@matt-block/react-native-in-app-browser/v/1.4.1
 [npm_1_shield]: https://img.shields.io/badge/npm-v1.4.1-blue
-[circleci]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master
-[circleci_shield]: https://circleci.com/gh/matei-radu/react-native-in-app-browser/tree/master.svg?style=shield
-[codebeat]: https://codebeat.co/projects/github-com-matei-radu-react-native-in-app-browser-master
-[codebeat_shield]: https://codebeat.co/badges/eff3246a-f91a-4197-9484-11a30c22ad07
 [tinycolor]: https://github.com/TypeCtrl/tinycolor
 [react-native-inappbrowser-reborn]: https://github.com/proyecto26/react-native-inappbrowser
