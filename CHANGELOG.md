@@ -5,7 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [3.2.2] - 2020-09-30
+
+### Changed
+- Bump `@ctrl/tinycolor` to version `3.1.2`.
+- Bump other devDependencies.
 
 ## [3.2.1] - 2020-05-17
 
@@ -207,7 +211,8 @@ The following functions have been deprecated. Please see
 
 - `openInApp`: open a valid http(s) URL with an in-app browser.
 
-[Unreleased]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.2.1...HEAD
+[Unreleased]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.2.2...HEAD
+[3.2.2]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.2.1...v3.2.2
 [3.2.1]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.2.0...v3.2.1
 [3.2.0]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.1.4...v3.2.0
 [3.1.4]: https://github.com/matei-radu/react-native-in-app-browser/compare/v3.1.3...v3.1.4
