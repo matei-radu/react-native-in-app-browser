@@ -223,7 +223,7 @@ yarn android # or yarn ios
 
 ## License
 
-Copyright (c) 2018-present Matei Bogdan Radu.
+Copyright (c) 2018-2020 Matei Bogdan Radu.
 
 This source code is licensed under the MIT license found in the
 [LICENSE][license] file in the root directory of this source tree.
