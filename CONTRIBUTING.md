@@ -103,4 +103,4 @@ Android code is formatted with [Spotless](https://github.com/diffplug/spotless).
 yarn validate:android
 ```
 ## License
-By contributing your code, you agree to license your contribution under the [MIT License](https://github.com/matei-radu/react-native-in-app-browser/blob/master/LICENSE).
+By contributing your code, you agree to license your contribution under the [MIT License](https://github.com/matei-radu/react-native-in-app-browser/blob/main/LICENSE).

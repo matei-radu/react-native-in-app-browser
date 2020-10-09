@@ -233,7 +233,7 @@ This source code is licensed under the MIT license found in the
 [chromecustomtabs]: https://developer.chrome.com/multidevice/android/customtabs
 [customtabsmanualclose]: https://stackoverflow.com/a/41596629/1887860
 [sfsafariviewcontroller]: https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller
-[license]: https://github.com/matei-radu/react-native-in-app-browser/blob/master/LICENSE
+[license]: https://github.com/matei-radu/react-native-in-app-browser/blob/main/LICENSE
 [license_shield]: https://img.shields.io/badge/license-MIT-blue.svg
 [prettier_shield]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
 [prettier]: https://github.com/prettier/prettier
